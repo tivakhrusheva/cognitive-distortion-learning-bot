@@ -1,5 +1,5 @@
 theme: /Exercise
 
     state: Start
-        q!: $regex</diary>
-        a: Начнём.
+        q!: $regex</train>
+        a: {{contents.exercise}}

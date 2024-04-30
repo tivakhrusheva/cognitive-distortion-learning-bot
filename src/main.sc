@@ -1,10 +1,10 @@
 require: slotfilling/slotFilling.sc
   module = sys.zb-common
-  
-  
 require: functions.js
 require: ./data/contents.yaml
     var = contents
+require: Exercise.sc
+require: Diary.sc
     
   
 init:
@@ -25,6 +25,7 @@ theme: /
     state: Start
         q!: $regex</start>
         a: {{contents.start}}
+        a: {{contents.start_second}}
 
     state: NoMatch
         event!: noMatch
