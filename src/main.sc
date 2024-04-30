@@ -5,6 +5,7 @@ require: ./data/contents.yaml
     var = contents
 require: Exercise.sc
 require: Diary.sc
+require: Distortion.sc
     
   
 init:
@@ -24,16 +25,23 @@ theme: /
 
     state: Start
         q!: $regex</start>
+        script:
+            $jsapi.startSession();
         a: {{contents.start}}
-        a: {{contents.start_second}}
+        timeout: CommandDescription || interval = "5 seconds"
+        
+        state: CommandDescription
+            a: {{contents.start_second}}
 
     state: NoMatch
         event!: noMatch
         a: Простите, я вас не понял :( Пожалуйста, переформулируйте ваш запрос.
+        script:
+            log($request)
 
     state: Match
         event!: match
         a: {{$context.intent.answer}}
     
     state: Unauthorized
-        a: Вы не авторизованы
+        a: У вас нет доступа к этому боту :) 

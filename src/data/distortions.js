@@ -1,7 +1,7 @@
-{
+var urls = {
     "Черно-белое мышление": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/black-n-white-thinking.jpg",
     "Фильтрация": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/filtering.jpg",
-    "Сверхобобщение": "",
+    "Сверхобобщение": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/overgeneralization.jpg",
     "Эмоциональное рассуждение": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/emotional-argument.jpg",
     "Катастрофизация": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/catastrophizing.jpg",
     "jumping_to_conclusions": "",
