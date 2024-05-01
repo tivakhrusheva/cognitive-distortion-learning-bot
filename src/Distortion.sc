@@ -5,6 +5,17 @@ require: ./data/distortions.js
 
 theme: /Distortion
     
+    state: callBackProcessor
+        event: telegramCallbackQuery || fromState = "/Distortion/DistortionBegin", onlyThisState = false
+        if: $request.query == "/train"
+            go!: /Exercise/Start
+        elseif: $request.query == "Distortion_ready"
+            go!: /Distortion/DistortionBegin/DistortionCard
+        elseif: $request.query == "Distortion_next"
+            go!: /Distortion/DistortionBegin/DistortionCard
+        elseif: $request.query == "Distortion_back_to_menu"
+            go!: /Start
+    
     state: DistortionBegin
         q!: $regex</learn>
         if: $client.cardNumber
@@ -14,11 +25,10 @@ theme: /Distortion
             inlineButtons:
                 {text: "Да", callback_data: "Distortion_ready"}
                 {text: "Нет", callback_data: "Distortion_not_ready"}
-    
+            
         state: DistortionCard
             q: Да || fromState = "/Distortion/DistortionBegin"
             # q: Distortion_ready || fromState = "/Distortion/DistortionBegin"
-            event: telegramCallbackQuery || fromState = "/Distortion/DistortionBegin", onlyThisState = false
             # q: Дальше || fromState = "/Distortion/DistortionCard", onlyThisState = true
             # q: Distortion_next || fromState = "/Distortion/DistortionCard", onlyThisState = true
             script:
