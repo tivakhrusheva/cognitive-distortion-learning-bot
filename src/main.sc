@@ -12,7 +12,7 @@ init:
     $global.USERS_TABLE = $injector.usersTable;
     bind("preMatch", function($context) {
         log($context)
-    if ($context.request.channelType === "telegram" && $context.data.chatId != "635678009") {
+    if ($context.request.channelType === "telegram" && $context.request.data.chatId != "635678009") {
         $context.temp.targetState = "/Unauthorized"
     }
     },
