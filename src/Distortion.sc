@@ -16,8 +16,10 @@ theme: /Distortion
                 {text: "Нет", callback_data: "Distortion_not_ready"}
     
     state: DistortionCard
-        q: (Да/Distortion_ready) || fromState = "/Distortion/DistortionBegin"
-        q: (Дальше/Distortion_next) || fromState = "/Distortion/DistortionCard", onlyThisState = true
+        q: Да || fromState = "/Distortion/DistortionBegin"
+        q: Distortion_ready || fromState = "/Distortion/DistortionBegin"
+        q: Дальше || fromState = "/Distortion/DistortionCard", onlyThisState = true
+        q: Distortion_next || fromState = "/Distortion/DistortionCard", onlyThisState = true
         script:
             $client.cardNumber = $client.cardNumber+=1 || 0;
             sendCard($context, urls, $client.cardNumber);
