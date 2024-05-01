@@ -10,6 +10,7 @@ require: Distortion.sc
   
 init:
     $global.USERS_TABLE = $injector.usersTable;
+    $global.MY_ID = $injector.myId;
     bind("onAnyError", function($context) {
         var answers = [
             "Что-то пошло не так.",
@@ -21,7 +22,7 @@ init:
     });
     bind("preMatch", function($context) {
         log($context)
-    if ($context.request.channelType === "telegram" && $context.request.data.chatId != "635678009") {
+    if ($context.request.channelType === "telegram" && $context.request.data.chatId != MY_ID) {
         $context.temp.targetState = "/Unauthorized"
     }
     },

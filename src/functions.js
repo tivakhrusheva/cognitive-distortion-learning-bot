@@ -28,7 +28,7 @@ function sendInlineButtons(context, buttonsNames) {
     for (var i = 0; i < buttonsNames.length; i++) {
         buttons.push({
           "text": buttonsNames[i],
-          "url": "inline_" + buttonsNames[i]
+          "callback_data": "inline_" + buttonsNames[i],
     })
     };
     log("buttons")
