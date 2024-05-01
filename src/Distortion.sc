@@ -37,6 +37,19 @@ theme: /Distortion
                       ]
                     });
                 }
+                else {
+                    $response.replies = $response.replies || [];
+                    $response.replies.push(
+                    {
+                      "type": "inlineButtons",
+                      "buttons": [
+                        {
+                          "text": "Тренироваться",
+                          "callback_data": "/train"
+                        }
+                      ]
+                    });
+                }
             inlineButtons:
                 {text: "Назад в меню", callback_data: "Distortion_back_to_menu"}
                     
