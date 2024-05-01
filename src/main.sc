@@ -11,8 +11,6 @@ require: Distortion.sc
 init:
     $global.USERS_TABLE = $injector.usersTable;
     bind("preMatch", function($context) {
-        
-    
     if ($context.request.channelType === "telegram" && $context.request.rawRequest.message.from.id != "635678009") {
         $context.temp.targetState = "/Unauthorized"
     }
@@ -27,8 +25,14 @@ theme: /
         q!: $regex</start>
         script:
             $jsapi.startSession();
-        a: {{contents.start}}
-        timeout: CommandDescription || interval = "5 seconds"
+        if: !$client.cardNumber
+            # if: $context.request.channelType === "telegram":
+            #     a: Здравствуйте{{$request.rawRequest.message.from.username}}!\n\n{{contents.start}}
+            #else:
+            a: {{contents.start}}
+            timeout: CommandDescription || interval = "3 seconds"
+        else:
+            go!: CommandDescription
         
         state: CommandDescription
             a: {{contents.start_second}}

@@ -15,3 +15,4 @@ nlp:
     patterns: 0.2
 injector:
   usersTable: "user_cogdis"
+  myId: 

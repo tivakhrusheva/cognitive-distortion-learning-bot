@@ -22,6 +22,22 @@
     }
   },
   "intents" : [ {
+    "path" : "/нет",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "нет"
+    }, {
+      "text" : "не"
+    }, {
+      "text" : "не возникло"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
     "path" : "/пока",
     "enabled" : true,
     "shared" : false,
