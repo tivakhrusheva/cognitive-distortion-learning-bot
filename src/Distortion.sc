@@ -8,7 +8,7 @@ theme: /Distortion
     state: DistortionBegin
         q!: $regex</learn>
         if: $client.cardNumber
-            go!: /Distortion/DistortionCard
+            go!: DistortionCard
         else:
             a: {{contents.distortion_begin}}
             inlineButtons:
