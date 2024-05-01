@@ -10,6 +10,15 @@ require: Distortion.sc
   
 init:
     $global.USERS_TABLE = $injector.usersTable;
+    bind("onAnyError", function($context) {
+        var answers = [
+            "Что-то пошло не так.",
+            "Произошла ошибка. Пожалуйста, повторите запрос позже.",
+            "Все сломалось. Попробуйте еще раз."
+        ];
+        var randomAnswer = answers[$reactions.random(answers.length)];
+        $reactions.answer(randomAnswer);
+    });
     bind("preMatch", function($context) {
         log($context)
     if ($context.request.channelType === "telegram" && $context.request.data.chatId != "635678009") {

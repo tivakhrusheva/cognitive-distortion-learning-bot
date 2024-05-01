@@ -5,7 +5,7 @@ require: ./data/distortions.js
 
 theme: /Distortion
     
-    state: callBackProcessor
+    state: CallBackProcessor
         event: telegramCallbackQuery || fromState = "/Distortion/DistortionBegin", onlyThisState = false
         if: $request.query == "/train"
             go!: /Exercise/Start
@@ -28,9 +28,6 @@ theme: /Distortion
             
         state: DistortionCard
             q: Да || fromState = "/Distortion/DistortionBegin"
-            # q: Distortion_ready || fromState = "/Distortion/DistortionBegin"
-            # q: Дальше || fromState = "/Distortion/DistortionCard", onlyThisState = true
-            # q: Distortion_next || fromState = "/Distortion/DistortionCard", onlyThisState = true
             script:
                 $client.cardNumber = $client.cardNumber+=1 || 0;
                 sendCard($context, urls, $client.cardNumber);
