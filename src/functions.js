@@ -13,7 +13,7 @@ function sendCard(context, object, i) {
     else {
         context.response.replies.push({
             "type": "text",
-            "text": "Вы изучили все искажения, которые мне известны! Время переходить к практике.\n Введите команду \train.",
+            "text": "Вы изучили все искажения, которые мне известны! Время переходить к практике.\n Введите команду /train.",
             "markup": "html"
         })
     }
