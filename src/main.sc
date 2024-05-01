@@ -27,10 +27,10 @@ theme: /
         script:
             $jsapi.startSession();
         if: !$client.cardNumber
-            # if: $context.request.channelType === "telegram":
-            #     a: Здравствуйте{{$request.rawRequest.message.from.username}}!\n\n{{contents.start}}
-            #else:
-            a: {{contents.start}}
+            if: $context.request.channelType == "telegram"
+                a: Здравствуйте{{$request.rawRequest.message.from.username}}!\n\n{{contents.start}}
+            else:
+                a: {{contents.start}}
             timeout: CommandDescription || interval = "3 seconds"
         else:
             go!: CommandDescription
