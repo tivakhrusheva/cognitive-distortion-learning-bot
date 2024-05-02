@@ -5,6 +5,14 @@ require: ./data/contents.yaml
 
 theme: /Diary
     
+    state: CallBackProcessor
+        event: telegramCallbackQuery || fromState = "/Diary", onlyThisState = false
+        script:
+            if (emotions.includes($request.query)) {
+                $reactions.transition("/Diary/EmotionIntensivity");
+            }
+
+    
     state: Start
         q!: $regex</diary>
         a: {{contents.diary_begin}}
