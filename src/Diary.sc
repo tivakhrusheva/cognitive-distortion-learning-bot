@@ -11,6 +11,9 @@ theme: /Diary
             if (emotions.indexOf($request.query) != -1) {
                 $reactions.transition("/Diary/EmotionIntensivity");
             }
+            else if ($request.query >= 1 && $request.query < 10) {
+                $reactions.transition("/Diary/Autothought");
+            }
 
     
     state: Start
