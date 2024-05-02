@@ -19,13 +19,20 @@ theme: /Diary
         q:* || fromState = "/Diary/Thought"
         a: {{contents.diary_emotion}}
         script:
+            $client.thought = $request.query;
             sendInlineButtons($context, emotions)
     
     state: EmotionIntensivity
+        script: 
+            $client.emotion = $request.query
         q:* || fromState = "/Diary/Emotion"
         a: {{contents.diary_emotion_intensivity}}
+        script:
+            sendInlineButtons($context, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     
     state: Autothought
+        script: 
+            $client.emotion_intensivity = $request.query
         q:* || fromState = "/Diary/EmotionIntensivity"
         a: {{contents.diary_authothought}}
     
