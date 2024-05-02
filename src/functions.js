@@ -47,16 +47,16 @@ function sendMultipleCards(context, object1, object2, i) {
     log("index " + i);
     context.response.replies = context.response.replies || [];
     
-    if (i < Object.keys(object1.length)) {
+    if (i < Object.keys(object1).length) {
         context.response.replies.push({
           "type": "raw",
           "media": [
             {
             "type": "photo",
-            "media": object1[Object.keys(object)[i]],},
+            "media": object1[Object.keys(object1)[i]]},
             {
             "type": "photo",
-            "media": object2[Object.keys(object)[i]],
+            "media": object2[Object.keys(object2)[i]],
             }
         ],
           "method": "sendMediaGroup"
