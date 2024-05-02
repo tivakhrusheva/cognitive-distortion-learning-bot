@@ -3,23 +3,23 @@ require: ./data/emotions.js
 require: ./data/contents.yaml
     var = contents
 
-theme: /Diary
+theme: /Journal
     
     state: CallBackProcessor
-        event: telegramCallbackQuery || fromState = "/Diary", onlyThisState = false
+        event: telegramCallbackQuery || fromState = "/Journal", onlyThisState = false
         script:
             if (emotions.indexOf($request.query) != -1) {
-                $reactions.transition("/Diary/EmotionIntensivity");
+                $reactions.transition("/Journal/EmotionIntensivity");
             }
             else if ($request.query >= 1 && $request.query < 10) {
-                $reactions.transition("/Diary/Autothought");
+                $reactions.transition("/Journal/Autothought");
             }
 
     
     state: Start
-        q!: $regex</diary>
+        q!: $regex</journal>
         a: {{contents.diary_begin}}
-        timeout: /Diary/Thought || interval = "1 seconds"
+        timeout: /Journal/Thought || interval = "1 seconds"
     
     state: Thought
         q!: $regex</diary>
@@ -27,7 +27,7 @@ theme: /Diary
     
     state: Emotion
         q!: test
-        q:* || fromState = "/Diary/Thought"
+        q:* || fromState = "/Journal/Thought"
         a: {{contents.diary_emotion}}
         script:
             $client.thought = $request.query;
@@ -36,7 +36,7 @@ theme: /Diary
     state: EmotionIntensivity
         script: 
             $client.emotion = $request.query
-        q:* || fromState = "/Diary/Emotion"
+        q:* || fromState = "/Journal/Emotion"
         a: {{contents.diary_emotion_intensivity}}
         script:
             sendInlineButtons($context, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
@@ -44,7 +44,7 @@ theme: /Diary
     state: Autothought
         script: 
             $client.emotion_intensivity = $request.query
-        q:* || fromState = "/Diary/EmotionIntensivity"
+        q:* || fromState = "/Journal/EmotionIntensivity"
         a: {{contents.diary_authothought}}
     
     state: NoThought
@@ -52,14 +52,14 @@ theme: /Diary
         #a: 
     
     state: DistortionFormulation
-        q:* || fromState = "/Diary/Autothought"
+        q:* || fromState = "/Journal/Autothought"
         a: {{contents.diary_distortion}}
     
     state: RationalResponse
-        q:* || fromState = "/Diary/DistortionFormulation"
+        q:* || fromState = "/Journal/DistortionFormulation"
         a: {{contents.diary_rational}}
         
     state: FinalEmotionIntensivity
-        q:* || fromState = "/Diary/RationalResponse"
+        q:* || fromState = "/Journal/RationalResponse"
         a: {{contents.diary_emotion_aftermath}}
     

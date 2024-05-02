@@ -11,6 +11,8 @@ require: Distortion.sc
 init:
     $global.USERS_TABLE = $injector.usersTable;
     $global.MY_ID = $injector.myId;
+    $global.SYSTEM_PROMPT = $injector.prompt;
+    $global.EXAMPLE_QUESTIONS = $injector.exampleQuestions;
     
     # bind("onAnyError", function($context) {
     #     log();

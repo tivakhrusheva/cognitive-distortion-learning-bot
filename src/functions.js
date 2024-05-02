@@ -24,7 +24,7 @@ function sendCard(context, object, i, caption) {
                 "markup": "html"
             })
         }
-}
+};
 
 
 function sendInlineButtons(context, buttonsNames) {
@@ -46,7 +46,7 @@ function sendInlineButtons(context, buttonsNames) {
         "buttons": buttons
         }
     )
-}
+};
 
 
 function sendMultipleCards(context, object1, object2, i) {
@@ -79,4 +79,28 @@ function sendMultipleCards(context, object1, object2, i) {
             "markup": "html"
         })
     }
+};
+
+function predict(question) {
+    var body = 
+        {
+        "clientId":"foobar",
+        "input": SYSTEM_PROMPT + "Автоматическая мысль: " + question + " Рациональный ответ:"
+    };
+    log("body")
+    log(body)
+
+    var result = $http.post("/predict?configId=499", {
+        body: body,
+        dataType: "json",
+    });
+
+    if (result.isOk && result.data.output[0]) {
+        return result.data.output[0].answer || null;
+    }
+    return null;
 }
+
+_.sample = _.wrap(_.sample, function(_sample, array, n) {
+    return $jsapi.context().testContext ? (n ? array.slice(0, n) : array[0]) : _sample(array, n);
+});
