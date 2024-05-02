@@ -50,6 +50,7 @@ function sendMultipleCards(context, object1, object2, i) {
     if (i < Object.keys(object1).length) {
         context.response.replies.push({
           "type": "raw",
+          "body": {
           "media": [
             {
             "type": "photo",
@@ -58,7 +59,7 @@ function sendMultipleCards(context, object1, object2, i) {
             "type": "photo",
             "media": object2[Object.keys(object2)[i]],
             }
-        ],
+        ]},
           "method": "sendMediaGroup"
         })
     }
