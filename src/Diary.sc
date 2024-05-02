@@ -8,7 +8,7 @@ theme: /Diary
     state: CallBackProcessor
         event: telegramCallbackQuery || fromState = "/Diary", onlyThisState = false
         script:
-            if (emotions.includes($request.query)) {
+            if (emotions.indexOf($request.query) != -1) {
                 $reactions.transition("/Diary/EmotionIntensivity");
             }
 
@@ -16,7 +16,7 @@ theme: /Diary
     state: Start
         q!: $regex</diary>
         a: {{contents.diary_begin}}
-        timeout: /Diary/Thought || interval = "2 seconds"
+        timeout: /Diary/Thought || interval = "1 seconds"
     
     state: Thought
         q!: $regex</diary>
