@@ -54,7 +54,7 @@ theme: /Distortion
                           "callback_data": "Distortion_next"
                         }
                       ]
-                    });
+                    })
                 }
                 else {
                     $response.replies = $response.replies || [];
