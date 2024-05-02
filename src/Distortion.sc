@@ -5,6 +5,12 @@ require: ./data/distortions.js
 
 theme: /Distortion
     
+    state: Zero
+        q!: zero_distortion
+        script:
+            $client.cardNumber = 0
+        a: Обнулились..
+        
     state: CallBackProcessor
         event: telegramCallbackQuery || fromState = "/Distortion/DistortionBegin", onlyThisState = false
         if: $request.query == "/train"
@@ -31,6 +37,7 @@ theme: /Distortion
             script:
                 $client.cardNumber = $client.cardNumber+=1 || 0;
                 sendCard($context, urls, $client.cardNumber);
+                sendCard($context, urls_solutions, $client.cardNumber);
                 if ($client.cardNumber < Object.keys(urls).length) {
                     $response.replies = $response.replies || [];
                     $response.replies.push(
