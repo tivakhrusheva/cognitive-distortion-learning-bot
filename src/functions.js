@@ -40,3 +40,33 @@ function sendInlineButtons(context, buttonsNames) {
         }
     )
 }
+
+
+function sendMultipleCards(context, object1, object2, i) {
+    log("obj " + object1);
+    log("index " + i);
+    context.response.replies = context.response.replies || [];
+    
+    if (i < Object.keys(object1.length)) {
+        context.response.replies.push({
+          "type": "raw",
+          "media": [
+            {
+            "type": "photo",
+            "media": object1[Object.keys(object)[i]],},
+            {
+            "type": "photo",
+            "media": object2[Object.keys(object)[i]],
+            }
+        ],
+          "method": "sendMediaGroup"
+        })
+    }
+    else {
+        context.response.replies.push({
+            "type": "text",
+            "text": "Вы изучили все искажения, которые мне известны! Время переходить к практике.\n Введите команду /train.",
+            "markup": "html"
+        })
+    }
+}

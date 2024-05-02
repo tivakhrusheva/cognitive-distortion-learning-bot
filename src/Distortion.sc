@@ -36,8 +36,9 @@ theme: /Distortion
             q: Да || fromState = "/Distortion/DistortionBegin"
             script:
                 $client.cardNumber = $client.cardNumber+=1 || 0;
-                sendCard($context, urls, $client.cardNumber);
-                sendCard($context, urls_solutions, $client.cardNumber);
+                # sendCard($context, urls, $client.cardNumber);
+                # sendCard($context, urls_solutions, $client.cardNumber);
+                sendMultipleCards($context, urls, urls_solutions, $client.cardNumber);
                 if ($client.cardNumber < Object.keys(urls).length) {
                     $response.replies = $response.replies || [];
                     $response.replies.push(

@@ -11,15 +11,17 @@ require: Distortion.sc
 init:
     $global.USERS_TABLE = $injector.usersTable;
     $global.MY_ID = $injector.myId;
-    bind("onAnyError", function($context) {
-        var answers = [
-            "Что-то пошло не так.",
-            "Произошла ошибка. Пожалуйста, повторите запрос позже.",
-            "Все сломалось. Попробуйте еще раз."
-        ];
-        var randomAnswer = answers[$reactions.random(answers.length)];
-        $reactions.answer(randomAnswer);
-    });
+    
+    # bind("onAnyError", function($context) {
+    #     log();
+    #     var answers = [
+    #         "Ой, что-то пошло не так.. Мы уже исправляем проблему, попробуйте зайти немного позже!",
+    #         "Кажется, произошла какая-то ошибка. Пожалуйста, повторите запрос немного позже!"
+    #     ];
+    #     var randomAnswer = answers[$reactions.random(answers.length)];
+    #     $reactions.answer(randomAnswer);
+    # });
+    
     bind("preMatch", function($context) {
         log($context)
     if ($context.request.channelType === "telegram" && $context.request.data.chatId != MY_ID) {
