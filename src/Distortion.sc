@@ -37,7 +37,7 @@ theme: /Distortion
             script:
                 $client.cardNumber = $client.cardNumber+=1 || 0;
                 # if ($context.request.channelType != "telegram") {
-                sendCard($context, urls, $client.cardNumber);
+                sendCard($context, urls, $client.cardNumber, true);
                 sendCard($context, urls_solutions, $client.cardNumber, false);
                 #    }
                 # else {

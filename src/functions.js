@@ -16,7 +16,7 @@ function sendCard(context, object, i, caption) {
                 "type": "image",
                 "imageUrl": object[Object.keys(object)[i]]
             })
-        }
+        }}
     else {
             context.response.replies.push({
                 "type": "text",
