@@ -36,13 +36,13 @@ theme: /Distortion
             q: Да || fromState = "/Distortion/DistortionBegin"
             script:
                 $client.cardNumber = $client.cardNumber+=1 || 0;
-                if ($context.request.channelType != "telegram") {
-                    sendCard($context, urls, $client.cardNumber);
-                    sendCard($context, urls_solutions, $client.cardNumber)
-                    }
-                else {
-                    sendMultipleCards($context, urls, urls_solutions, $client.cardNumber)
-                };
+                # if ($context.request.channelType != "telegram") {
+                sendCard($context, urls, $client.cardNumber);
+                sendCard($context, urls_solutions, $client.cardNumber);
+                #    }
+                # else {
+                #     sendMultipleCards($context, urls, urls_solutions, $client.cardNumber)
+                # };
                 if ($client.cardNumber < Object.keys(urls).length) {
                     $response.replies = $response.replies || [];
                     $response.replies.push(
