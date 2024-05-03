@@ -52,7 +52,7 @@ theme: /
             go!: CommandDescription
         
         state: CommandDescription
-            a: {{contents.start_second}} || htmlEnabled = true
+            a: Навигация: \n\n{{contents.start_second}} || htmlEnabled = true
 
     state: NoMatch
         event!: noMatch
