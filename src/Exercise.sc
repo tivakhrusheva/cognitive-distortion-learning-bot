@@ -12,7 +12,8 @@ theme: /Exercise
             go!: /Start
 
     state: Start
-        q!: $regex</train>
+        q!: $regex</reframe>
+        q!: $regex</ask>
         q!: Тренироваться
         a: {{contents.exercise}}
         if: $client.agreeAI
@@ -29,19 +30,19 @@ theme: /Exercise
     state: UserInput
         q: Да ||fromState = "/Exercise/Start/Continue"
         a: Пожалуйста, введите ваш запрос:
-        timeout: /Exercise/Question || interval = "2 seconds"
+        timeout: Question || interval = "2 seconds"
     
-    state: Question
-        random:
-            a: Можете также посмотреть на примеры формулировок негативных мыслей:
-            a: Примеры формулировок:
-        script:
-            log(EXAMPLE_QUESTIONS)
-            log(_.sample(EXAMPLE_QUESTIONS, 2))
-            $reactions.buttons(_.sample(EXAMPLE_QUESTIONS, 2));
+        state: Question
+            random:
+                a: Можете также посмотреть на примеры формулировок негативных мыслей:
+                a: Примеры формулировок:
+            script:
+                log(EXAMPLE_QUESTIONS)
+                log(_.sample(EXAMPLE_QUESTIONS, 2))
+                $reactions.buttons(_.sample(EXAMPLE_QUESTIONS, 2));
     
     state: Predict
-        q!: *
+        q: * || fromState = "/Exercise/UserInput", onlyThisState = false
         script:
             if (!$context.testContext) {
                 $conversationApi.sendTextToClient(

@@ -13,6 +13,15 @@ init:
     $global.MY_ID = $injector.myId;
     $global.SYSTEM_PROMPT = $injector.prompt;
     $global.EXAMPLE_QUESTIONS = $injector.exampleQuestions;
+    bind("postProcess", function(context) {
+    if (context.request.channelType === "telegram") {
+        context.response.replies.forEach(function(reply) {
+            if (reply.type === "text") {
+                reply.markup = "markdown";
+            }
+            });
+        }
+    });
     # $http.config($injector.httpConfig);
     
     # bind("onAnyError", function($context) {
