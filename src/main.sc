@@ -17,7 +17,7 @@ init:
     if (context.request.channelType === "telegram") {
         context.response.replies.forEach(function(reply) {
             if (reply.type === "text") {
-                reply.markup = "markdown";
+                reply.markup = "html";
             }
             });
         }
