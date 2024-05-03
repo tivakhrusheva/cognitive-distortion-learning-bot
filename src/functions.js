@@ -85,18 +85,23 @@ function predict(question) {
     var body = 
         {
         "clientId":"foobar",
-        "input": SYSTEM_PROMPT + "Автоматическая мысль: " + question + " Рациональный ответ:"
+        "input": SYSTEM_PROMPT + "Автоматическая мысль: " + question
+    };
+    var headers = {
+        "Content-Type": "application/json",
+        "MLP-API-KEY": $secrets.get("MLP_API_KEY")
     };
     log("body")
     log(body)
 
-    var result = $http.post("/predict?configId=499", {
+    var result = $http.post("https://caila.io/api/mlpgate/account/1000062767/model/51022/predict?configId=499", {
         body: body,
         dataType: "json",
+        headers: headers
     });
-
-    if (result.isOk && result.data.output[0]) {
-        return result.data.output[0].answer || null;
+    
+    if (result.isOk && result.data.replies[0]) {
+        return result.data.replies[0].text || null;
     }
     return null;
 }

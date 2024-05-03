@@ -5,6 +5,8 @@ theme: /Exercise
     state: CallBackProcessor
         event: telegramCallbackQuery || fromState = "/Exercise/Start/Continue", onlyThisState = true
         if: $request.query == "Да"
+            script:
+                $client.agreeAI = 1;
             go!: /Exercise/UserInput
         elseif: $request.query == "Нет"
             go!: /Start
@@ -13,7 +15,10 @@ theme: /Exercise
         q!: $regex</train>
         q!: Тренироваться
         a: {{contents.exercise}}
-        timeout: Continue || interval = "1 seconds"
+        if: $client.agreeAI
+            timeout: Continue || interval = "1 seconds"
+        else: 
+            timeout: /Exercise/UserInput || interval = "1 seconds"
         
         state: Continue
             a: Желаете продолжить?
@@ -31,6 +36,8 @@ theme: /Exercise
             a: Можете также посмотреть на примеры формулировок негативных мыслей:
             a: Примеры формулировок:
         script:
+            log(EXAMPLE_QUESTIONS)
+            log(_.sample(EXAMPLE_QUESTIONS, 2))
             $reactions.buttons(_.sample(EXAMPLE_QUESTIONS, 2));
     
     state: Predict
@@ -53,11 +60,11 @@ theme: /Exercise
             go!: ./Error
 
         state: Answer
-            a: {{$temp.result}}
+            a: {{toPrettyString($temp.result)}}
             script:
                 $analytics.setSessionResult("Answer");
                 $analytics.setSessionData("Answer", $temp.result);
-            go!: /Actions
+            go!: /Exercise/Actions
 
         state: Error
             random:
@@ -70,6 +77,6 @@ theme: /Exercise
 
     state: Actions
         buttons:
-            "Задать еще вопрос" -> /Question
+            "Задать еще вопрос" -> /Exercise/UserInput
 
     

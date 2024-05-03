@@ -13,6 +13,7 @@ init:
     $global.MY_ID = $injector.myId;
     $global.SYSTEM_PROMPT = $injector.prompt;
     $global.EXAMPLE_QUESTIONS = $injector.exampleQuestions;
+    # $http.config($injector.httpConfig);
     
     # bind("onAnyError", function($context) {
     #     log();
@@ -39,18 +40,19 @@ theme: /
     state: Start
         q!: $regex</start>
         script:
+            log(EXAMPLE_QUESTIONS);
             $jsapi.startSession();
         if: !$client.cardNumber
             if: $context.request.channelType == "telegram"
                 a: Здравствуйте, {{$request.rawRequest.message.from.first_name}}!\n\n{{contents.start}}
             else:
-                a: {{contents.start}}
+                a: {{contents.start}} || htmlEnabled = true
             timeout: CommandDescription || interval = "3 seconds"
         else:
             go!: CommandDescription
         
         state: CommandDescription
-            a: {{contents.start_second}}
+            a: {{contents.start_second}} || htmlEnabled = true
 
     state: NoMatch
         event!: noMatch
