@@ -58,11 +58,14 @@ theme: /
             if: $context.request.channelType == "telegram"
                 a: Здравствуйте, {{$request.rawRequest.message.from.first_name}}!\n\n{{contents.start}} 
                 a: {{contents.start}}
-            timeout: CommandDescription || interval = "3 seconds"
+                timeout: CommandDescription || interval = "3 seconds"
         else:
             go!: CommandDescription
         
         state: CommandDescription
+            script:
+                log("client");
+                log($client)
             a: Навигация: \n\n{{contents.nagivation}}
 
     state: NoMatch

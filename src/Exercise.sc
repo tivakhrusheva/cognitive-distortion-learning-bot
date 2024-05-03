@@ -1,28 +1,29 @@
-theme: /Exercise
+theme: /Consultation
     
     state: CallBackProcessor
-        event: telegramCallbackQuery || fromState = "/Exercise/Start/Continue", onlyThisState = true
-        event: telegramCallbackQuery || fromState = "/Exercise/Predict/Answer", onlyThisState = true
+        event: telegramCallbackQuery || fromState = "/Consultation/Start/Continue", onlyThisState = true
+        event: telegramCallbackQuery || fromState = "/Consultation/Predict/Answer", onlyThisState = true
         if: $request.query == "Да"
             script:
                 $client.agreeAI = 1;
-            go!: /Exercise/UserInput
+            go!: /Consultation/UserInput
         elseif: $request.query == "Нет"
             go!: /Start
         elseif: $request.query == "Задать еще вопрос"
-            go!: /Exercise/UserInput
+            go!: /Consultation/UserInput
         elseif: $request.query == "Вернуться в меню"
+            a: Были рады помочь!
             go!: /Start
 
     state: Start
         q!: $regex</reframe>
         q!: $regex</ask>
         q!: Тренироваться
-        a: {{contents.exercise}}
+        a: {{contents.Consultation}}
         if: $client.agreeAI
             timeout: Continue || interval = "1 seconds"
         else: 
-            timeout: /Exercise/UserInput || interval = "1 seconds"
+            timeout: /Consultation/UserInput || interval = "1 seconds"
         
         state: Continue
             a: Желаете продолжить?
@@ -31,7 +32,7 @@ theme: /Exercise
                 {text: "Нет", callback_data: "Нет"}
         
     state: UserInput
-        q: Да ||fromState = "/Exercise/Start/Continue"
+        q: Да ||fromState = "/Consultation/Start/Continue"
         a: Пожалуйста, введите ваш запрос:
         timeout: Question || interval = "2 seconds"
     
@@ -45,7 +46,7 @@ theme: /Exercise
                 $reactions.buttons(_.sample(EXAMPLE_QUESTIONS, 2));
     
     state: Predict
-        q: * || fromState = "/Exercise/UserInput", onlyThisState = false
+        q: * || fromState = "/Consultation/UserInput", onlyThisState = false
         script:
             if (!$context.testContext) {
                 $conversationApi.sendTextToClient(
@@ -65,12 +66,12 @@ theme: /Exercise
 
         state: Answer
             a: {{$temp.result}}
-            script:
-                $analytics.setSessionResult("Answer");
-                $analytics.setSessionData("Answer", $temp.result);
-            inlinebuttons:
+            inlineButtons:
                 {text: "Задать еще вопрос", callback_data: "Задать еще вопрос"}
                 {text: "Вернуться в меню", callback_data: "Вернуться в меню"}
+            # script:
+            #     $analytics.setSessionResult("Answer");
+            #     $analytics.setSessionData("Answer", $temp.result);
 
         state: Error
             random:
