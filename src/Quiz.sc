@@ -1,0 +1,4 @@
+theme: /Quiz
+    
+    state: Start
+        

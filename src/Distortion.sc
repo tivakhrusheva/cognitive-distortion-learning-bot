@@ -1,8 +1,3 @@
-require: functions.js
-require: ./data/contents.yaml
-    var = contents
-require: ./data/distortions.js
-
 theme: /Distortion
     
     state: Zero

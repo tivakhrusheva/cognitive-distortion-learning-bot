@@ -1,14 +1,17 @@
-require: functions.js
-
 theme: /Exercise
     
     state: CallBackProcessor
         event: telegramCallbackQuery || fromState = "/Exercise/Start/Continue", onlyThisState = true
+        event: telegramCallbackQuery || fromState = "/Exercise/Predict/Answer", onlyThisState = true
         if: $request.query == "Да"
             script:
                 $client.agreeAI = 1;
             go!: /Exercise/UserInput
         elseif: $request.query == "Нет"
+            go!: /Start
+        elseif: $request.query == "Задать еще вопрос"
+            go!: /Exercise/UserInput
+        elseif: $request.query == "Вернуться в меню"
             go!: /Start
 
     state: Start
@@ -34,8 +37,8 @@ theme: /Exercise
     
         state: Question
             random:
-                a: Можете также посмотреть на примеры формулировок негативных мыслей:
-                a: Примеры формулировок:
+                a: Примеры негативных мыслей:
+                a: Примеры автоматических мыслей:
             script:
                 log(EXAMPLE_QUESTIONS)
                 log(_.sample(EXAMPLE_QUESTIONS, 2))
@@ -65,7 +68,9 @@ theme: /Exercise
             script:
                 $analytics.setSessionResult("Answer");
                 $analytics.setSessionData("Answer", $temp.result);
-            go!: /Exercise/Actions
+            inlinebuttons:
+                {text: "Задать еще вопрос", callback_data: "Задать еще вопрос"}
+                {text: "Вернуться в меню", callback_data: "Вернуться в меню"}
 
         state: Error
             random:
@@ -75,9 +80,7 @@ theme: /Exercise
             script:
                 $analytics.setSessionResult("Error");
                 $jsapi.stopSession();
+                
 
-    state: Actions
-        buttons:
-            "Задать еще вопрос" -> /Exercise/UserInput
 
     

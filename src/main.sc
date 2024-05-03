@@ -1,11 +1,14 @@
 require: slotfilling/slotFilling.sc
   module = sys.zb-common
 require: functions.js
+require: ./data/distortions.js
+require: ./data/emotions.js
 require: ./data/contents.yaml
     var = contents
-require: Exercise.sc
 require: Diary.sc
 require: Distortion.sc
+require: Exercise.sc
+require: Quiz.sc
     
   
 init:
@@ -53,15 +56,14 @@ theme: /
             $jsapi.startSession();
         if: !$client.cardNumber
             if: $context.request.channelType == "telegram"
-                a: Здравствуйте, {{$request.rawRequest.message.from.first_name}}!\n\n{{contents.start}} || htmlEnabled = true
-            else:
-                a: {{contents.start}} || htmlEnabled = true
+                a: Здравствуйте, {{$request.rawRequest.message.from.first_name}}!\n\n{{contents.start}} 
+                a: {{contents.start}}
             timeout: CommandDescription || interval = "3 seconds"
         else:
             go!: CommandDescription
         
         state: CommandDescription
-            a: Навигация: \n\n{{contents.start_second}} || htmlEnabled = true
+            a: Навигация: \n\n{{contents.nagivation}}
 
     state: NoMatch
         event!: noMatch
