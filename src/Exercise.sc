@@ -60,7 +60,7 @@ theme: /Exercise
             go!: ./Error
 
         state: Answer
-            a: {{toPrettyString($temp.result)}}
+            a: {{$temp.result}}
             script:
                 $analytics.setSessionResult("Answer");
                 $analytics.setSessionData("Answer", $temp.result);
