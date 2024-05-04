@@ -8,7 +8,7 @@ require: ./data/contents.yaml
 require: Diary.sc
 require: Distortion.sc
 require: Exercise.sc
-require: Quiz.sc
+require: Consultation.sc
     
   
 init:
