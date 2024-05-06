@@ -35,14 +35,14 @@ theme: /Exercise
                 var explanation = _.sample(contents.quiz_correct, 1);
                 log("corr")
                 log(contents["explanation_correct" + $client.QuizQuestinNumber]);
-                explanation += "\n" + contents["explanation_correct" + $client.QuizQuestinNumber];
+                explanation += "\n\n" + contents["explanation_correct" + $client.QuizQuestinNumber];
                 log(explanation)
             }
             else {
                 log("wrong bitch")
                 var explanation = _.sample(contents.quiz_incorrect, 1);
-                log(contents["explanation_incorrect" + $client.QuizQuestinNumber]);
-                explanation += "\n" + contents["explanation_incorrect" + $client.QuizQuestinNumber];
+                log(contents["explanation_correct" + $client.QuizQuestinNumber]);
+                explanation += "\n\n" + contents["explanation_correct" + $client.QuizQuestinNumber];
                 log(explanation)
             }
             $reactions.answer(explanation)

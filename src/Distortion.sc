@@ -11,7 +11,8 @@ theme: /Distortion
         if: $request.query == "/train"
             go!: /Exercise/Start
         elseif: $request.query == "Виды искажений"
-            go!: /Distortion/DistortionBegin/DistortionCard
+            a: {{contents.distortion_intro_to_specific}}
+            timeout: /Distortion/DistortionBegin/DistortionCard || interval = "2 seconds"
         elseif: $request.query == "Distortion_next"
             go!: /Distortion/DistortionBegin/DistortionCard
         elseif: $request.query == "Distortion_back_to_menu" 
