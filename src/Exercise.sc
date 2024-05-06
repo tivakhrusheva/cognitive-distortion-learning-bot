@@ -20,6 +20,7 @@ theme: /Exercise
                 $reactions.answer(contents.last_question_occured);
             }
             $reactions.answer(contents["quiz" + $client.QuizQuestinNumber]);
+            log(contents["options" + $client.QuizQuestinNumber])
             sendInlineButtons($context, contents["options" + $client.QuizQuestinNumber]);
         
     state: Answer
