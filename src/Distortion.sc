@@ -13,7 +13,9 @@ theme: /Distortion
         elseif: $request.query == "Виды искажений"
             a: {{contents.distortion_intro_to_specific}}
             timeout: /Distortion/DistortionBegin/DistortionCard || interval = "2 seconds"
-        elseif: $request.query == "Distortion_next" ||  $request.query == "Дальше
+        elseif: $request.query == "Distortion_next"
+            go!: /Distortion/DistortionBegin/DistortionCard
+        elseif: $request.query == "Дальше
             go!: /Distortion/DistortionBegin/DistortionCard
         elseif: $request.query == "Distortion_back_to_menu" 
             go!: /Start
