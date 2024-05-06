@@ -56,7 +56,9 @@ theme: /
             $jsapi.startSession();
         if: !$client.cardNumber
             if: $context.request.channelType == "telegram"
-                a: Здравствуйте, {{$request.rawRequest.message.from.first_name}}!\n\n{{contents.start}} 
+                script:
+                    $client.name = $request.rawRequest.message.from.first_name
+                a: Здравствуйте, {{$client.name}}!\n\n{{contents.start}} 
                 a: {{contents.start}}
                 timeout: CommandDescription || interval = "3 seconds"
         else:
@@ -66,6 +68,8 @@ theme: /
             script:
                 log("client");
                 log($client)
+            if: $client.cardNumber
+                a: Здравствуйте, {{$client.name}}!
             a: Навигация: \n\n{{contents.nagivation}}
 
     state: NoMatch

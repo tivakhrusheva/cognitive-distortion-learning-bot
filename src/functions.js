@@ -1,6 +1,4 @@
 function sendCard(context, object, i, caption) {
-    log("obj " + object);
-    log("index " + i);
     context.response.replies = context.response.replies || [];
     if (i < Object.keys(object).length) {
         if (!caption) {
@@ -29,17 +27,13 @@ function sendCard(context, object, i, caption) {
 
 function sendInlineButtons(context, buttonsNames) {
     context.response.replies = context.response.replies || [];
-    log(buttonsNames)
     var buttons = [];
-    log(buttons)
     for (var i = 0; i < buttonsNames.length; i++) {
         buttons.push({
           "text": buttonsNames[i],
           "callback_data": buttonsNames[i],
     })
     };
-    log("buttons")
-    log(toPrettyString(buttons))
     context.response.replies.push(
         {
         "type": "inlineButtons",
@@ -50,8 +44,6 @@ function sendInlineButtons(context, buttonsNames) {
 
 
 function sendMultipleCards(context, object1, object2, i) {
-    log("obj " + object1);
-    log("index " + i);
     context.response.replies = context.response.replies || [];
     
     if (i < Object.keys(object1).length) {
@@ -75,7 +67,7 @@ function sendMultipleCards(context, object1, object2, i) {
     else {
         context.response.replies.push({
             "type": "text",
-            "text": "Вы изучили все искажения, которые мне известны! Время переходить к практике.\n Введите команду /train.",
+            "text": "Вы изучили все искажения, которые мне известны! Самое время переходить к практике — для этого введите команду /practice.",
             "markup": "html"
         })
     }
