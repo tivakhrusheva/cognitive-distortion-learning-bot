@@ -80,7 +80,9 @@ options0:
 correct0: |
   Нет
 explanation_correct0: |
+ ква-ква
 explanation_incorrect0: |
+  кря-кря
 distortion0: |
   Катастрофизация, эвристика доступности
   
@@ -89,10 +91,12 @@ quiz1: |
 options1:
   - Да
   - Нет
-correct1: |
+correct1:
   Нет
 explanation_correct1: |
+  кряяяя
 explanation_incorrect1: |
+  кваааа
 distortion1: |
   Катастрофизация, эвристика доступности
   
@@ -102,7 +106,7 @@ quiz2: |
 options2:
   - Да
   - Нет
-correct2: |
+correct2:
   Нет
 explanation_correct2: |
 explanation_incorrect2: |
@@ -114,7 +118,7 @@ quiz3: |
 options3:
   - Да
   - Нет
-correct3: |
+correct3:
   Нет
 explanation_correct3: |
 explanation_incorrect3: |
@@ -155,6 +159,7 @@ distortion5: |
 quiz7: |
   Д. нервничает по поводу предстоящего собеседования. Он начинает представлять себе, что может пойти не так: он начнет заикаться, забудет теорию и выставит себя дураком. Он приходит к выводу, что не получит работу и навсегда останется безработным. Что бы вы посоветовали Д.?
 options7:
+
 correct7:
 explanation_correct7: |
 explanation_incorrect7: |
