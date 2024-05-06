@@ -70,7 +70,7 @@ theme: /
             script:
                 log("client");
                 log($client)
-            if: $client.cardNumber
+            if: $client.name
                 a: Здравствуйте, {{$client.name}}!
             a: Навигация: \n\n{{contents.nagivation}}
 
