@@ -108,7 +108,7 @@ options2:
 correct2:
   Нет
 explanation_correct2: |
-explanation_incorrect2: |
+  няяяяя
 distortion2: |
   Катастрофизация, эвристика доступности
 
@@ -140,7 +140,9 @@ options4:
 - А. поступает неэтично
 - Нет никакой проблемы
 correct4:
+  К. не учитывает право А. на наличие других причин для усталости
 explanation_correct4: |
+ няяяяя
 distortion4: |
   Персонализация
 
