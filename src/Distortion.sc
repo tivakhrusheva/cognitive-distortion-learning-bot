@@ -27,15 +27,15 @@ theme: /Distortion
             go!: DistortionCard
         else:
             a: {{contents.distortion_begin}}
-            timeout: /Distortion/DistortionBegin/DistortionBegin2 || interval = "5 seconds"
+            timeout: /Distortion/DistortionBegin/DistortionBegin2 || interval = "20 seconds"
         
         state: DistortionBegin2
             a: {{contents.distortion_begin2}}
-            timeout: /Distortion/DistortionBegin/DistortionBegin3 || interval = "5 seconds"
+            timeout: /Distortion/DistortionBegin/DistortionBegin3 || interval = "20 seconds"
         
         state: DistortionBegin3
             a: {{contents.distortion_begin3}}
-            timeout: /Distortion/DistortionBegin/DistortionFightInfo || interval = "5 seconds"
+            timeout: /Distortion/DistortionBegin/DistortionFightInfo || interval = "20 seconds"
         
         state: DistortionFightInfo
             a: {{contents.distortion_fight}}
