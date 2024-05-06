@@ -53,10 +53,13 @@ theme: /
 
     state: Start
         q!: $regex</start>
+        if: $context.request.channelType == "chatwdiget"
+            script:
+                $client.name = "Таня"
         script:
             log(EXAMPLE_QUESTIONS);
             $jsapi.startSession();
-        if: !$client.cardNumber && !$client.name
+        if: !$client.name
             if: $context.request.channelType == "telegram"
                 script:
                     $client.name = $request.rawRequest.message.from.first_name
