@@ -41,7 +41,7 @@ theme: /Distortion
             a: {{contents.distortion_fight}}
             inlineButtons:
                 {text: "Виды искажений", callback_data: "Виды искажений"}
-                {text: "Вернуться в меню", callback_data: "Distortion_not_ready"}
+                {text: "Вернуться в меню", callback_data: "Вернуться в меню"}
                 
             
         state: DistortionCard
