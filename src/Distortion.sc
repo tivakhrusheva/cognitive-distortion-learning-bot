@@ -15,7 +15,7 @@ theme: /Distortion
             timeout: /Distortion/DistortionBegin/DistortionCard || interval = "2 seconds"
         elseif: $request.query == "Distortion_next"
             go!: /Distortion/DistortionBegin/DistortionCard
-        elseif: $request.query == "Дальше
+        elseif: $request.query == "Дальше"
             go!: /Distortion/DistortionBegin/DistortionCard
         elseif: $request.query == "Distortion_back_to_menu" 
             go!: /Start
