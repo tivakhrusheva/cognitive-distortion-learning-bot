@@ -27,12 +27,20 @@ theme: /Distortion
             go!: DistortionCard
         else:
             a: {{contents.distortion_begin}}
+            timeout: /Distortion/DistortionBegin/DistortionBegin2 || interval = "5 seconds"
+        
+        state: DistortionBegin2
+            a: {{contents.distortion_begin2}}
+            timeout: /Distortion/DistortionBegin/DistortionBegin3 || interval = "5 seconds"
+        
+        state: DistortionBegin3
+            a: {{contents.distortion_begin3}}
             timeout: /Distortion/DistortionBegin/DistortionFightInfo || interval = "5 seconds"
         
         state: DistortionFightInfo
             a: {{contents.distortion_fight}}
             inlineButtons:
-                {text: "Виды искажений", callback_data: "Distortion_ready"}
+                {text: "Виды искажений", callback_data: "Виды искажений"}
                 {text: "Вернуться в меню", callback_data: "Distortion_not_ready"}
                 
             
