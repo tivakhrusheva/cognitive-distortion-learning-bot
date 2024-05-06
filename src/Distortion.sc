@@ -38,6 +38,7 @@ theme: /Distortion
             timeout: /Distortion/DistortionBegin/DistortionFightInfo || interval = "20 seconds"
         
         state: DistortionFightInfo
+            q!: Катя
             a: {{contents.distortion_fight}}
             inlineButtons:
                 {text: "Виды искажений", callback_data: "Виды искажений"}
