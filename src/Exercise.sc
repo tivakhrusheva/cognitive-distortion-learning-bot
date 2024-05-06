@@ -13,19 +13,19 @@ theme: /Exercise
         
     state: Question
         script: 
-            # $client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
-            $client.QuizQuestinNumber = $client.QuizQuestinNumber= 1;
+            $client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
+            #$client.QuizQuestinNumber = $client.QuizQuestinNumber= 1;
             if ($client.QuizQuestinNumber > 10) {
                 $client.QuizQuestinNumber = 11;
                 $reactions.answer(contents.last_question_occured);
             }
             $reactions.answer(contents["quiz" + $client.QuizQuestinNumber]);
-            log(contents["options" + $client.QuizQuestinNumber])
+            log(contents["options" + $client.QuizQuestinNumber]);
             sendInlineButtons($context, contents["options" + $client.QuizQuestinNumber]);
         
     state: Answer
         q: * || fromState = "/Exercise/Question", onlyThisState = true
-        event: telegramCallbackQuery || fromState = "/Exercise/Question",
+        event: telegramCallbackQuery || fromState = "/Exercise/Question"
         script: 
             var corrAnswer = contents["correct" + $client.QuizQuestinNumber];
             log("corrAnswer")
