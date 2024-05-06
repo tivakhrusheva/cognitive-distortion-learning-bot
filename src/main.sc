@@ -18,12 +18,14 @@ init:
     $global.EXAMPLE_QUESTIONS = $injector.exampleQuestions;
     bind("postProcess", function(context) {
     if (context.request.channelType === "telegram") {
+        if (context.response.replies) {
         context.response.replies.forEach(function(reply) {
             if (reply.type === "text") {
                 reply.markup = "html";
             }
             });
         }
+    }
     });
     # $http.config($injector.httpConfig);
     
