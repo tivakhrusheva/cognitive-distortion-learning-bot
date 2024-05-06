@@ -56,15 +56,15 @@ theme: /
         script:
             log(EXAMPLE_QUESTIONS);
             $jsapi.startSession();
-        if: !$client.cardNumber && !$client.name
-            if: $context.request.channelType == "telegram"
+        # if: !$client.cardNumber && !$client.name
+        if: $context.request.channelType == "telegram"
                 script:
                     $client.name = $request.rawRequest.message.from.first_name
                 a: Здравствуйте, {{$client.name}}!\n\n{{contents.start}} 
                 a: {{contents.start}}
                 timeout: CommandDescription || interval = "3 seconds"
-        else:
-            go!: CommandDescription
+        # else:
+        #     go!: CommandDescription
         
         state: CommandDescription
             script:
