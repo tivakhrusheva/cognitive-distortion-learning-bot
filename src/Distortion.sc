@@ -7,7 +7,7 @@ theme: /Distortion
         a: Обнулились..
         
     state: CallBackProcessor
-        event: telegramCallbackQuery || fromState = "/Distortion", onlyThisState = false
+        event: telegramCallbackQuery || fromState = "/DistortionBegin", onlyThisState = false
         if: $request.query == "/train"
             go!: /Exercise/Start
         elseif: $request.query == "Виды искажений"
