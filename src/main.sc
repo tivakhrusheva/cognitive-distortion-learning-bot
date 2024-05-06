@@ -56,7 +56,7 @@ theme: /
         script:
             log(EXAMPLE_QUESTIONS);
             $jsapi.startSession();
-        if: !$client.cardNumber
+        if: !$client.cardNumber && !$client.name
             if: $context.request.channelType == "telegram"
                 script:
                     $client.name = $request.rawRequest.message.from.first_name
