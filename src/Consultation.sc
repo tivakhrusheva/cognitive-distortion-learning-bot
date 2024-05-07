@@ -13,14 +13,14 @@ theme: /Consultation
             go!: /Consultation/UserInput
         elseif: $request.query == "Вернуться в меню"
             a: Были рады помочь!
-            timeout: /Start || interval = "2 seconds"
+            timeout: /Start || interval = "3 seconds"
     
     state: CallBackProcessor2
         q: Вернуться в меню || fromState = "/Consultation/UserInput/Question", onlyThisState = true
         event: telegramCallbackQuery || fromState = "/Consultation/UserInput", onlyThisState = false
         if: $request.query == "Вернуться в меню"
             a: Возвращайтесь, если захотите попробовать данный функционал!
-            go!: /Start
+            timeout: /Start || interval = "3 seconds"
 
     state: Start
         q!: $regex</reframe>
