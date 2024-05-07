@@ -33,19 +33,20 @@ theme: /Journal
         q!: $regex</diary>
         if: $client.diaryExplanationDone == 1
             go!: /Journal/DiarySession/Thought
-        a: {{diary_contents.diary_begin}}
-        timeout: /Journal/Explanation || interval = "5 seconds"
+        a: {{diary_contents.diary_session_beg}}\n\n{{diary_contents.diary_begin}}
+
+        timeout: /Journal/Start/Explanation || interval = "5 seconds"
     
         state: Explanation
             a: {{diary_contents.diary_automatic_thoughts}}
-            timeout: /Journal/DiaryGoal || interval = "5 seconds"
+            timeout: /Journal/Start/DiaryGoal || interval = "5 seconds"
         
         state: DiaryGoal
             a: {{diary_contents.diary_goal}}
-            timeout: /Journal/DiaryGoal || interval = "1 seconds"
+            timeout: /Journal/Start/Agreement || interval = "5 seconds"
         
         state: Agreement
-            a: {{diary_contents.diary_goal}}
+            a: {{diary_contents.diary_readiness}}
             script:
                 sendInlineButtons($context, ["Да", "Нет"])
     
