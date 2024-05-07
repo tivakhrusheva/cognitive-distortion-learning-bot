@@ -57,13 +57,13 @@ theme: /Journal
             timeout: /Journal/DiarySession/Thought || interval = "2 seconds"
         
         state: Thought
-            q:* || fromState = "/Journal/NoThought"
+            q:* || fromState = "/Journal/DiarySession/NoThought"
             a: {{diary_contents.diary_situation}}
         
         state: Emotion
             #TODO: DELETE SHORTCUT
             q!: test
-            q:* || fromState = "/Journal/Thought"
+            q:* || fromState = "/Journal/DiarySession/Thought"
             a: {{diary_contents.diary_emotion}}
             script:
                 $session.thought = $request.query;
@@ -72,7 +72,7 @@ theme: /Journal
         state: EmotionIntensivity
             script: 
                 $session.emotion = $request.query
-            q:* || fromState = "/Journal/Emotion"
+            q:* || fromState = "/Journal/DiarySession/Emotion"
             a: {{diary_contents.diary_emotion_intensivity}}
             script:
                 sendInlineButtons($context, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
@@ -80,7 +80,7 @@ theme: /Journal
         state: Autothought
             script: 
                 $session.emotion_intensivity = $request.query
-            q:* || fromState = "/Journal/EmotionIntensivity"
+            q:* || fromState = "/Journal/DiarySession/EmotionIntensivity"
             a: {{diary_contents.diary_authothought}}
             script:
                 sendInlineButtons($context, Object.keys(urls))
@@ -92,15 +92,15 @@ theme: /Journal
                 sendInlineButtons($context, ["Да", "Нет"])
         
         state: DistortionFormulation
-            q:* || fromState = "/Journal/Autothought"
+            q:* || fromState = "/Journal/DiarySession/Autothought"
             a: {{diary_contents.diary_distortion}}
         
         state: RationalResponse
-            q:* || fromState = "/Journal/DistortionFormulation"
+            q:* || fromState = "/Journal/DiarySession/DistortionFormulation"
             a: {{diary_contents.diary_rational}}
             
         state: FinalEmotionIntensivity
-            q:* || fromState = "/Journal/RationalResponse"
+            q:* || fromState = "/Journal/DiarySession/RationalResponse"
             a: {{diary_contents.diary_emotion_aftermath}}
             script:
                 sendInlineButtons($context, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
