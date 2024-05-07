@@ -51,6 +51,8 @@ theme: /Consultation
                 log(EXAMPLE_QUESTIONS)
                 log(_.sample(EXAMPLE_QUESTIONS, 2))
                 $reactions.buttons(_.sample(EXAMPLE_QUESTIONS, 2));
+            inlineButtons:
+                { text: "Вернуться в меню", callback_data: "Вернуться в меню" }
             
     state: Predict
         q: * || fromState = "/Consultation/UserInput", onlyThisState = false
