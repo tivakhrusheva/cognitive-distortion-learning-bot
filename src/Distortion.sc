@@ -87,10 +87,11 @@ theme: /Distortion
                         {
                           "text": "Тренироваться",
                           "callback_data": "/train"
+                        },
+                        {
+                          "text": "Назад в меню",
+                          "callback_data": "Distortion_back_to_menu"
                         }
                       ]
                     });
                 }
-            inlineButtons:
-                {text: "Назад в меню", callback_data: "Distortion_back_to_menu"}
-                    
