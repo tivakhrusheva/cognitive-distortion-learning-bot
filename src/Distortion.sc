@@ -62,23 +62,13 @@ theme: /Distortion
                     }
                 else {
                     sendMultipleCards($context, urls, urls_solutions, $client.cardNumber);
+                    
+                };
+                if ($client.cardNumber < Object.keys(urls).length) {
                     $reactions.answer("Навигация");
                     sendInlineButtons($context, ["Дальше", "В меню"]);
-                };
-                if ($client.cardNumber > Object.keys(urls).length) {
-                #     $response.replies = $response.replies || [];
-                #     $response.replies.push(
-                #     {
-                #       "type": "inlineButtons",
-                #       "buttons": [
-                #         {
-                #           "text": "Дальше",
-                #           "callback_data": "Дальше"
-                #         }
-                #       ]
-                #     })
-                # }
-                # else {
+                }
+                else {
                     $response.replies = $response.replies || [];
                     $response.replies.push(
                     {
@@ -94,4 +84,5 @@ theme: /Distortion
                         }
                       ]
                     });
+                }
                 }
