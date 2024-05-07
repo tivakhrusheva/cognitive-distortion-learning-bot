@@ -34,13 +34,13 @@ theme: /Journal
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/DistortionFormulation", onlyThisState = true
         script:
             $session.distortion = $request.query
-        go!: /Journal/DiarySession/Autothought
+        go!: /Journal/DiarySession/RationalResponse
     
     state: CallBackProcessorEmotionIntensivityAfter
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/FinalEmotionIntensivity", onlyThisState = true
         script:
             $session.emotion_intensivity_after = $request.query
-        go!: /Journal/DiarySession/Autothought
+        go!: /Journal/DiarySession/End
     
     # state: CallBackProcessor2
         # event: telegramCallbackQuery || fromState = "/Journal/DiarySession", onlyThisState = false
