@@ -14,6 +14,12 @@ theme: /Consultation
         elseif: $request.query == "Вернуться в меню"
             a: Были рады помочь!
             go!: /Start
+    
+    state: CallBackProcessor2
+        event: telegramCallbackQuery || fromState = "/Consultation/UserInput/Question", onlyThisState = true
+        if: $request.query == "Вернуться в меню"
+            a: Возвращайтесь, если захотите попробовать данный функционал!
+            go!: /Start
 
     state: Start
         q!: $regex</reframe>
@@ -44,7 +50,7 @@ theme: /Consultation
                 log(EXAMPLE_QUESTIONS)
                 log(_.sample(EXAMPLE_QUESTIONS, 2))
                 $reactions.buttons(_.sample(EXAMPLE_QUESTIONS, 2));
-    
+            
     state: Predict
         q: * || fromState = "/Consultation/UserInput", onlyThisState = false
         script:
