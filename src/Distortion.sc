@@ -64,33 +64,33 @@ theme: /Distortion
                     sendMultipleCards($context, urls, urls_solutions, $client.cardNumber);
                     $reactions.answer("Навигация");
                     sendInlineButtons($context, ["Дальше", "В меню"]);
-                };
-                if ($client.cardNumber < Object.keys(urls).length) {
-                    $response.replies = $response.replies || [];
-                    $response.replies.push(
-                    {
-                      "type": "inlineButtons",
-                      "buttons": [
-                        {
-                          "text": "Дальше",
-                          "callback_data": "Дальше"
-                        }
-                      ]
-                    })
-                }
-                else {
-                    $response.replies = $response.replies || [];
-                    $response.replies.push(
-                    {
-                      "type": "inlineButtons",
-                      "buttons": [
-                        {
-                          "text": "Тренироваться",
-                          "callback_data": "/train"
-                        }
-                      ]
-                    });
-                }
+                # };
+                # if ($client.cardNumber < Object.keys(urls).length) {
+                #     $response.replies = $response.replies || [];
+                #     $response.replies.push(
+                #     {
+                #       "type": "inlineButtons",
+                #       "buttons": [
+                #         {
+                #           "text": "Дальше",
+                #           "callback_data": "Дальше"
+                #         }
+                #       ]
+                #     })
+                # }
+                # else {
+                #     $response.replies = $response.replies || [];
+                #     $response.replies.push(
+                #     {
+                #       "type": "inlineButtons",
+                #       "buttons": [
+                #         {
+                #           "text": "Тренироваться",
+                #           "callback_data": "/train"
+                #         }
+                #       ]
+                #     });
+                # }
             inlineButtons:
                 {text: "Назад в меню", callback_data: "Distortion_back_to_menu"}
                     
