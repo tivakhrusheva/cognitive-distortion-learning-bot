@@ -130,14 +130,14 @@ theme: /Journal
         state: End
             script:
                 if ($session.emotion_intensivity_after > $session.emotion_intensivity_before) {
-                    $reactions.answer(diary_neg_result);
+                    $reactions.answer(diary_contents.diary_neg_result);
                 }
                 else if ($session.emotion_intensivity_after == $session.emotion_intensivity_before) { 
-                    $reactions.answer(diary_no_result);
+                    $reactions.answer(diary_contents.diary_no_result);
                 }
                 
                 else {
-                    $reactions.answer(diary_pos_result);
+                    $reactions.answer(diary_contents.diary_pos_result);
                 }
 
             a: {{diary_contents.diary_session_end}}
