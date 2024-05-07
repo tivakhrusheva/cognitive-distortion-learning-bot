@@ -57,13 +57,13 @@ theme: /Distortion
             script:
                 $client.cardNumber = $client.cardNumber+=1 || 0;
                 if ($context.request.channelType != "telegram") {
-                sendCard($context, urls, $client.cardNumber, true);
-                sendCard($context, urls_solutions, $client.cardNumber, false);
+                    sendCard($context, urls, $client.cardNumber, true);
+                    sendCard($context, urls_solutions, $client.cardNumber, false);
                     }
                 else {
                     sendMultipleCards($context, urls, urls_solutions, $client.cardNumber);
                     $reactions.answer("Навигация");
-                    sendInlineButtons(["Дальше", "В меню"]);
+                    sendInlineButtons($context, ["Дальше", "В меню"]);
                 };
                 if ($client.cardNumber < Object.keys(urls).length) {
                     $response.replies = $response.replies || [];
