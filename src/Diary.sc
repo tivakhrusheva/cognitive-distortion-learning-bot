@@ -18,12 +18,36 @@ theme: /Journal
                 }
             go!: /Start/CommandDescription
             
-    state: CallBackProcessor2
-        event: telegramCallbackQuery || fromState = "/Journal/DiarySession", onlyThisState = false
+    state: CallBackProcessorEmotion
+        event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Emotion", onlyThisState = true
         script:
-            if (emotions.indexOf($request.query) != -1) {
-                $reactions.transition("/Journal/EmotionIntensivity");
-            }
+            $session.emotion = $request.query
+        go!: /Journal/DiarySession/EmotionIntensivity
+    
+    state: CallBackProcessorEmotionIntensivity
+        event: telegramCallbackQuery || fromState = "/Journal/DiarySession/EmotionIntensivity", onlyThisState = true
+        script:
+            $session.emotion_intensivity_before = $request.query
+        go!: /Journal/DiarySession/Autothought
+    
+    state: CallBackProcessorDistortion
+        event: telegramCallbackQuery || fromState = "/Journal/DiarySession/DistortionFormulation", onlyThisState = true
+        script:
+            $session.distortion = $request.query
+        go!: /Journal/DiarySession/Autothought
+    
+    state: CallBackProcessorEmotionIntensivityAfter
+        event: telegramCallbackQuery || fromState = "/Journal/DiarySession/FinalEmotionIntensivity", onlyThisState = true
+        script:
+            $session.emotion_intensivity_after = $request.query
+        go!: /Journal/DiarySession/Autothought
+    
+    # state: CallBackProcessor2
+        # event: telegramCallbackQuery || fromState = "/Journal/DiarySession", onlyThisState = false
+        # script:
+        #     if (emotions.indexOf($request.query) != -1) {
+        #         $reactions.transition("/Journal/EmotionIntensivity");
+        #     }
             # else if ($request.query >= 1 && $request.query < 10) {
             #     $reactions.transition("/Journal/Autothought");
             # }
@@ -70,16 +94,12 @@ theme: /Journal
                 sendInlineButtons($context, emotions)
         
         state: EmotionIntensivity
-            script: 
-                $session.emotion = $request.query
             q:* || fromState = "/Journal/DiarySession/Emotion"
             a: {{diary_contents.diary_emotion_intensivity}}
             script:
                 sendInlineButtons($context, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
         
         state: Autothought
-            script: 
-                $session.emotion_intensivity = $request.query
             q:* || fromState = "/Journal/DiarySession/EmotionIntensivity"
             a: {{diary_contents.diary_authothought}}
             script:
@@ -94,6 +114,8 @@ theme: /Journal
         state: DistortionFormulation
             q:* || fromState = "/Journal/DiarySession/Autothought"
             a: {{diary_contents.diary_distortion}}
+            script:
+                $session.autothought = $request.query
         
         state: RationalResponse
             q:* || fromState = "/Journal/DiarySession/DistortionFormulation"
@@ -103,5 +125,21 @@ theme: /Journal
             q:* || fromState = "/Journal/DiarySession/RationalResponse"
             a: {{diary_contents.diary_emotion_aftermath}}
             script:
+                $session.rational_resp = $request.query;
                 sendInlineButtons($context, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+            
+        state: End
+            script:
+                if ($session.emotion_intensivity_after > $session.emotion_intensivity_before) {
+                    $reactions.answer(diary_neg_result);
+                }
+                else if ($session.emotion_intensivity_after == $session.emotion_intensivity_before) { 
+                    $reactions.answer(diary_no_result);
+                }
+                
+                else {
+                    $reactions.answer(diary_pos_result);
+                }
+
+            a: {{diary_contents.diary_session_end}}
         
