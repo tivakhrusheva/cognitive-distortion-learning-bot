@@ -101,9 +101,7 @@ theme: /Journal
         
         state: Autothought
             q:* || fromState = "/Journal/DiarySession/EmotionIntensivity"
-            a: {{diary_contents.diary_authothought}}
-            script:
-                sendInlineButtons($context, Object.keys(urls))
+            a: {{diary_contents.diary_autothought}}
         
         state: NoThought
             intent: /нет
@@ -115,7 +113,8 @@ theme: /Journal
             q:* || fromState = "/Journal/DiarySession/Autothought"
             a: {{diary_contents.diary_distortion}}
             script:
-                $session.autothought = $request.query
+                $session.autothought = $request.query;
+                sendInlineButtons($context, Object.keys(urls))
         
         state: RationalResponse
             q:* || fromState = "/Journal/DiarySession/DistortionFormulation"
