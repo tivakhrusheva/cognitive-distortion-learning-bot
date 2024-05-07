@@ -16,7 +16,8 @@ theme: /Consultation
             timeout: /Start || interval = "2 seconds"
     
     state: CallBackProcessor2
-        event: telegramCallbackQuery || fromState = "/Consultation/UserInput/Question", onlyThisState = true
+        q: Вернуться в меню || fromState = "/Consultation/UserInput/Question", onlyThisState = true
+        event: telegramCallbackQuery || fromState = "/Consultation/UserInput", onlyThisState = false
         if: $request.query == "Вернуться в меню"
             a: Возвращайтесь, если захотите попробовать данный функционал!
             go!: /Start
