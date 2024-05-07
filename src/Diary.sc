@@ -8,7 +8,7 @@ theme: /Journal
         if: $request.query == "Да"
             script:
                 $client.diaryExplanationDone = 1;
-            go!: /Journal/DiarySession/Thought 
+            timeout:!: /Journal/DiarySession/Thought || interval = "2 seconds"
                 
         elseif: $request.query == "Нет"
             a: {{diary_contents.diary_later}}
@@ -24,15 +24,15 @@ theme: /Journal
             if (emotions.indexOf($request.query) != -1) {
                 $reactions.transition("/Journal/EmotionIntensivity");
             }
-            else if ($request.query >= 1 && $request.query < 10) {
-                $reactions.transition("/Journal/Autothought");
-            }
+            # else if ($request.query >= 1 && $request.query < 10) {
+            #     $reactions.transition("/Journal/Autothought");
+            # }
     
     state: Start
         q!: $regex</journal>
         q!: $regex</diary>
         if: $client.diaryExplanationDone == 1
-            go!: /Journal/DiarySession/Thought
+            go!: /Journal/DiarySession/Beginning
         a: {{diary_contents.diary_session_beg}}\n\n{{diary_contents.diary_begin}}
 
         timeout: /Journal/Start/Explanation || interval = "5 seconds"
@@ -66,12 +66,12 @@ theme: /Journal
             q:* || fromState = "/Journal/Thought"
             a: {{diary_contents.diary_emotion}}
             script:
-                $client.thought = $request.query;
+                $session.thought = $request.query;
                 sendInlineButtons($context, emotions)
         
         state: EmotionIntensivity
             script: 
-                $client.emotion = $request.query
+                $session.emotion = $request.query
             q:* || fromState = "/Journal/Emotion"
             a: {{diary_contents.diary_emotion_intensivity}}
             script:
@@ -79,7 +79,7 @@ theme: /Journal
         
         state: Autothought
             script: 
-                $client.emotion_intensivity = $request.query
+                $session.emotion_intensivity = $request.query
             q:* || fromState = "/Journal/EmotionIntensivity"
             a: {{diary_contents.diary_authothought}}
             script:
