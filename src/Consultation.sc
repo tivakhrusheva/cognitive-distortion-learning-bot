@@ -13,7 +13,7 @@ theme: /Consultation
             go!: /Consultation/UserInput
         elseif: $request.query == "Вернуться в меню"
             a: Были рады помочь!
-            go!: /Start
+            timeout: /Start || interval = "2 seconds"
     
     state: CallBackProcessor2
         event: telegramCallbackQuery || fromState = "/Consultation/UserInput/Question", onlyThisState = true
