@@ -5,18 +5,18 @@ theme: /Journal
     
     state: CallBackProcessor
         event: telegramCallbackQuery || fromState = "/Journal/Start", onlyThisState = false
-            if: $request.query == "Да"
-                script:
-                    $client.diaryExplanationDone = 1;
-                go!: /Journal/DiarySession/Thought 
-                    
-            elseif: $request.query == "Нет"
-                a: {{diary_contents.diary_later}}
-                script:
-                    if (!$client.diaryExplanationDone) {
-                        $client.diaryExplanationDone = 0;
-                    }
-                go!: /Start/CommandDescription
+        if: $request.query == "Да"
+            script:
+                $client.diaryExplanationDone = 1;
+            go!: /Journal/DiarySession/Thought 
+                
+        elseif: $request.query == "Нет"
+            a: {{diary_contents.diary_later}}
+            script:
+                if (!$client.diaryExplanationDone) {
+                    $client.diaryExplanationDone = 0;
+                }
+            go!: /Start/CommandDescription
             
     state: CallBackProcessor2
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession", onlyThisState = false
@@ -31,7 +31,7 @@ theme: /Journal
     state: Start
         q!: $regex</journal>
         q!: $regex</diary>
-        if: $client.diaryExplanationDone == 1:
+        if: $client.diaryExplanationDone == 1
             go!: /Journal/DiarySession/Thought
         a: {{diary_contents.diary_begin}}
         timeout: /Journal/Explanation || interval = "5 seconds"
