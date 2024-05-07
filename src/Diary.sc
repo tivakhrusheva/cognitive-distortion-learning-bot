@@ -8,7 +8,7 @@ theme: /Journal
         if: $request.query == "Да"
             script:
                 $client.diaryExplanationDone = 1;
-            timeout:!: /Journal/DiarySession/Thought || interval = "2 seconds"
+            timeout: /Journal/DiarySession/Thought || interval = "2 seconds"
                 
         elseif: $request.query == "Нет"
             a: {{diary_contents.diary_later}}
@@ -141,4 +141,5 @@ theme: /Journal
                 }
 
             a: {{diary_contents.diary_session_end}}
+            timeout:: /Start/CommandDescription || interval = "5 seconds"
         
