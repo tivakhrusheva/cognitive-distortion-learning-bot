@@ -53,19 +53,17 @@ theme: /
 
     state: Start
         q!: $regex</start>
-        if: $context.request.channelType == "chatwdiget"
+        if: $context.request.channelType == "chatwidget"
             script:
                 $client.name = "Таня"
         script:
-            log(EXAMPLE_QUESTIONS);
+            log($context.request.channelType);
             $jsapi.startSession();
-        if: !$client.name
-            if: $context.request.channelType == "telegram"
-                script:
-                    $client.name = $request.rawRequest.message.from.first_name
-                a: Здравствуйте, {{$client.name}}!\n\n{{contents.start}} 
-                a: {{contents.start}}
-                timeout: CommandDescription || interval = "3 seconds"
+        if: (!$client.name && $context.request.channelType == "telegram")
+            script:
+                $client.name = $request.rawRequest.message.from.first_name
+            a: Здравствуйте, {{$client.name}}!\n\n{{contents.start}} 
+            timeout: CommandDescription || interval = "3 seconds"
         else:
             go!: CommandDescription
         

@@ -1,3 +1,6 @@
+require: ./data/distortion_contents.yaml
+    var = distortion_contents
+
 theme: /Distortion
     
     state: Zero
@@ -11,7 +14,7 @@ theme: /Distortion
         if: $request.query == "/train"
             go!: /Exercise/Start
         elseif: $request.query == "Виды искажений"
-            a: {{contents.distortion_intro_to_specific}}
+            a: {{distortion_contents.distortion_intro_to_specific}}
             timeout: /Distortion/DistortionBegin/DistortionCard || interval = "2 seconds"
         elseif: $request.query == "Distortion_next"
             go!: /Distortion/DistortionBegin/DistortionCard
@@ -28,20 +31,21 @@ theme: /Distortion
         if: $client.cardNumber
             go!: DistortionCard
         else:
-            a: {{contents.distortion_begin}}
+            a: {{distortion_contents.distortion_begin}}
             timeout: /Distortion/DistortionBegin/DistortionBegin2 || interval = "20 seconds"
         
         state: DistortionBegin2
-            a: {{contents.distortion_begin2}}
+            a: {{distortion_contents.distortion_begin2}}
             timeout: /Distortion/DistortionBegin/DistortionBegin3 || interval = "20 seconds"
         
         state: DistortionBegin3
-            a: {{contents.distortion_begin3}}
+            a: {{distortion_contents.distortion_begin3}}
             timeout: /Distortion/DistortionBegin/DistortionFightInfo || interval = "20 seconds"
         
         state: DistortionFightInfo
-            q!: Катя
-            a: {{contents.distortion_fight}}
+            # TODO: DELETE SHORTCUT!
+            q!: Катя 
+            a: {{distortion_contents.distortion_fight}}
             inlineButtons:
                 {text: "Виды искажений", callback_data: "Виды искажений"}
                 {text: "Вернуться в меню", callback_data: "Вернуться в меню"}
@@ -52,13 +56,15 @@ theme: /Distortion
             q: Виды искажений || fromState = "/Distortion/DistortionBegin/DistortionFightInfo"
             script:
                 $client.cardNumber = $client.cardNumber+=1 || 0;
-                # if ($context.request.channelType != "telegram") {
+                if ($context.request.channelType != "telegram") {
                 sendCard($context, urls, $client.cardNumber, true);
                 sendCard($context, urls_solutions, $client.cardNumber, false);
-                #    }
-                # else {
-                #     sendMultipleCards($context, urls, urls_solutions, $client.cardNumber)
-                # };
+                    }
+                else {
+                    sendMultipleCards($context, urls, urls_solutions, $client.cardNumber);
+                    $reactions.answer("Навигация");
+                    sendInlineButtons(["Дальше", "В меню"]);
+                };
                 if ($client.cardNumber < Object.keys(urls).length) {
                     $response.replies = $response.replies || [];
                     $response.replies.push(
