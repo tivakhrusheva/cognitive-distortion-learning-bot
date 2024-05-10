@@ -10,18 +10,18 @@
       <a state="/Unauthorized"/>
     </test-case>
     
-    <!--<test-case id="Start_new_known_user">-->
-    <!--    <request>-->
-    <!--    {-->
-    <!--        "query": "/start",-->
-    <!--        "channelType": "telegram",-->
-    <!--        "data": {"chatId": "635678009"},-->
-    <!--        "rawRequest": {"message": {"from": {"first_name": {"Tanya"}}}}-->
-    <!--    }-->
-    <!--    </request>-->
-    <!--  <a state="/Start"/>-->
-    <!--  <a state="/Start/CommandDescription"/>-->
-    <!--</test-case>-->
+    <test-case id="Start_new_known_user">
+        <request>
+        {
+            "query": "/start",
+            "channelType": "telegram",
+            "data": {"chatId": "635678009"},
+            "rawRequest": {"message": {"from": {"first_name": "Tanya"}}}
+        }
+        </request>
+      <a state="/Start"/>
+      <timeoutReply targetState="/Start/CommandDescription"/>
+    </test-case>
     
     <test-case id="Start_old_user">
         <context var="client">
