@@ -5,7 +5,7 @@ function sendCard(context, object, i, caption) {
             context.response.replies.push({
                 "type": "image",
                 "imageUrl": object[Object.keys(object)[i]],
-                "imageName": "<u>" + Object.keys(object)[i] + "</u>",
+                "imageName": "<b>" + Object.keys(object)[i] + "</b>",
                 "markup": "html"
             })
         }

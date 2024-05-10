@@ -73,7 +73,7 @@ theme: /
                 log($client)
             if: $client.name
                 a: Здравствуйте, {{$client.name}}!
-            a: Навигация: \n\n{{contents.nagivation}}
+            a: <b>Навигация</b>: \n\n{{contents.nagivation}}
 
     state: NoMatch
         event!: noMatch

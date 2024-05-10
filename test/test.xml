@@ -1,2 +1,13 @@
 <test>
+
+    <!--<test-case id="Start_new_user">-->
+    <!--  <q>/start</q>-->
+    <!--  <a state="/Start"/>-->
+    <!--  <a state="/Симптомы"/>-->
+    <!--</test-case>-->
+    
+    <test-case id="Start_old_user">
+      <q>/start</q>
+      <a>Здравствуйте, Таня!</a>
+    </test-case>
 </test>    
