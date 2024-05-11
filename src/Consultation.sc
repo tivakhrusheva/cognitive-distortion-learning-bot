@@ -40,17 +40,17 @@ theme: /Consultation
         
     state: UserInput
         q: Да ||fromState = "/Consultation/Start/Continue"
-        a: Пожалуйста, введите ваш запрос:
+        a: Пожалуйста, введите ваш запрос или выберите один из примеров ниже:
         timeout: Question || interval = "2 seconds"
     
         state: Question
-            random:
-                a: Примеры негативных мыслей:
-                a: Примеры автоматических мыслей:
+            # random:
+            #     a: Примеры негативных мыслей:
+            #     a: Примеры автоматических мыслей:
             script:
                 log(EXAMPLE_QUESTIONS)
                 log(_.sample(EXAMPLE_QUESTIONS, 2))
-                $reactions.buttons(_.sample(EXAMPLE_QUESTIONS, 2));
+                $reactions.inlineButtons(_.sample(EXAMPLE_QUESTIONS, 2));
             inlineButtons:
                 { text: "Вернуться в меню", callback_data: "Вернуться в меню" }
             
