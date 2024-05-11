@@ -55,7 +55,11 @@ theme: /Distortion
             q: Дальше || fromState = "/Distortion/DistortionBegin/DistortionCard", onlyThisState = true
             q: Виды искажений || fromState = "/Distortion/DistortionBegin/DistortionFightInfo"
             script:
+                log("$client.cardNumber")
+                log($client.cardNumber)
                 $client.cardNumber = $client.cardNumber+=1 || 0;
+                log("$client.cardNumber NOW")
+                log($client.cardNumber)
                 if ($context.request.channelType != "telegram") {
                     sendCard($context, urls, $client.cardNumber, true);
                     sendCard($context, urls_solutions, $client.cardNumber, false);
@@ -67,7 +71,7 @@ theme: /Distortion
                     
                 };
                 if ($client.cardNumber < Object.keys(urls).length) {
-                    $reactions.answer("Навигация");
+                    $reactions.answer("Навигация⬇️");
                     sendInlineButtons($context, ["Дальше", "В меню"]);
                 }
                 else {
