@@ -62,14 +62,31 @@ function sendMultipleCards(context, object1, object2, i) {
             }
         ]},
           "method": "sendMediaGroup"
-        })
+        });
+        $reactions.answer("<b>" + Object.keys(object1)[i] + "</b>");
+        sendInlineButtons($context, ["Дальше", "В меню"]);
     }
     else {
         context.response.replies.push({
             "type": "text",
             "text": "Вы изучили все искажения, которые мне известны! Самое время переходить к практике — для этого введите команду /practice.",
             "markup": "html"
-        })
+        });
+
+        context.response.replies.push(
+                    {
+                      "type": "inlineButtons",
+                      "buttons": [
+                        {
+                          "text": "Тренироваться",
+                          "callback_data": "/train"
+                        },
+                        {
+                          "text": "Назад в меню",
+                          "callback_data": "Distortion_back_to_menu"
+                        }
+                      ]
+                    });
     }
 };
 
