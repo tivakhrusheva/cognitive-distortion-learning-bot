@@ -93,7 +93,7 @@ function predict(question) {
     var body = 
         {
         "clientId":"foobar",
-        "input": SYSTEM_PROMPT + "Автоматическая мысль: " + question
+        "input": SYSTEM_PROMPT + "Запрос: " + question
     };
     var headers = {
         "Content-Type": "application/json",
