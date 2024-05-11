@@ -54,7 +54,6 @@ function sendMultipleCards(context, object1, object2, i) {
             {
             "type": "photo",
             "media": object1[Object.keys(object1)[i]],
-            // "caption": "<b>" + Object.keys(object1)[i] + "</b>",
             "parse_mode": "html"},
             {
             "type": "photo",
