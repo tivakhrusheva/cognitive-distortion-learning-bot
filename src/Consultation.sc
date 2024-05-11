@@ -40,10 +40,10 @@ theme: /Consultation
         
     state: UserInput
         q: Да ||fromState = "/Consultation/Start/Continue"
-        a: Пожалуйста, введите ваш запрос или выберите один из примеров ниже:
         timeout: Question || interval = "2 seconds"
     
         state: Question
+            a: Пожалуйста, введите ваш запрос или выберите один из примеров ниже:
             # random:
             #     a: Примеры негативных мыслей:
             #     a: Примеры автоматических мыслей:
