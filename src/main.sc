@@ -63,7 +63,7 @@ theme: /
             script:
                 $client.name = $request.rawRequest.message.from.first_name;
                 $client.cardNumber = 0
-            a: Здравствуйте, {{$client.name}}!\n\n{{contents.start}} 
+            a: Здравствуйте, {{$client.name}}😊!\n\n{{contents.start}} 
             timeout: CommandDescription || interval = "3 seconds"
         else:
             go!: CommandDescription
