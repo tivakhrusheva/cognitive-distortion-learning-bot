@@ -65,8 +65,6 @@ theme: /Distortion
                     sendCard($context, urls_solutions, $client.cardNumber, false);
                     }
                 else {
-                    //sendCard($context, urls, $client.cardNumber, true);
-                    //sendCard($context, urls_solutions, $client.cardNumber, false);
                     sendMultipleCards($context, urls, urls_solutions, $client.cardNumber);
                     
                 };
