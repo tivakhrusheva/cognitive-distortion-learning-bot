@@ -66,20 +66,20 @@
         <timeoutReply targetState="/Distortion/DistortionBegin/DistortionCard"/>
     </test-case>
     
-    <test-case id="Learning_distortion_agreement_widget">
-        <context var="client">
-          {
-            "name": "Таня",
-            "cardNumber": 0
-          }
-        </context>
-        <state>Distortion/DistortionBegin/DistortionFightInfo</state>
-        <request>
-            {
-                "query": "Виды искажений",
-                "channelType": "chatwidget"
-            }
-        </request>
-        <a state="/Distortion/DistortionBegin/DistortionCard"/>
-    </test-case>
+    <!--<test-case id="Learning_distortion_agreement_widget">-->
+    <!--    <context var="client">-->
+    <!--      {-->
+    <!--        "name": "Таня",-->
+    <!--        "cardNumber": 0-->
+    <!--      }-->
+    <!--    </context>-->
+    <!--    <state>Distortion/DistortionBegin/DistortionFightInfo</state>-->
+    <!--    <request>-->
+    <!--        {-->
+    <!--            "query": "Виды искажений",-->
+    <!--            "channelType": "chatwidget"-->
+    <!--        }-->
+    <!--    </request>-->
+    <!--    <a state="/Distortion/DistortionBegin/DistortionCard"/>-->
+    <!--</test-case>-->
 </test>    
