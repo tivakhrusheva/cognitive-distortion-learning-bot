@@ -34,8 +34,6 @@ theme: /Exercise
             log("corrAnswer")
             log(corrAnswer)
             var DistortionName = exercise_contents["distortion" + $client.QuizQuestinNumber];
-            log("request")
-            log($request.query)
             if ($request.query == corrAnswer) {
                 var explanation = _.sample(exercise_contents.quiz_correct, 1);
                 log("corr")
@@ -44,7 +42,6 @@ theme: /Exercise
                 log(explanation)
             }
             else {
-                log("wrong bitch")
                 var explanation = _.sample(exercise_contents.quiz_incorrect, 1);
                 log(exercise_contents["explanation_correct" + $client.QuizQuestinNumber]);
                 explanation += "\n\n" + exercise_contents["explanation_correct" + $client.QuizQuestinNumber];

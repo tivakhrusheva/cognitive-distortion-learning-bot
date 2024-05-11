@@ -69,7 +69,7 @@ theme: /Distortion
                     
                 };
                 if ($client.cardNumber < Object.keys(urls).length) {
-                    $reactions.answer("Навигация⬇️");
+                    $reactions.answer("Катастрофизация");
                     sendInlineButtons($context, ["Дальше", "В меню"]);
                 }
                 else {
