@@ -64,7 +64,7 @@ function sendMultipleCards(context, object1, object2, i) {
           "method": "sendMediaGroup"
         });
         $reactions.answer("<b>" + Object.keys(object1)[i] + "</b>");
-        sendInlineButtons($context, ["Дальше", "В меню"]);
+        sendInlineButtons(context, ["Дальше", "В меню"]);
     }
     else {
         context.response.replies.push({
