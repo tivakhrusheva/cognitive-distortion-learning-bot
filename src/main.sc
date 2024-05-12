@@ -9,6 +9,7 @@ require: Diary.sc
 require: Distortion.sc
 require: Exercise.sc
 require: Consultation.sc
+require: Settings.sc
     
   
 init:
