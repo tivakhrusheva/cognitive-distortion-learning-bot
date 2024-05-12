@@ -3,6 +3,33 @@ require: ./data/distortion_contents.yaml
 
 theme: /Distortion
     
+    state: DistortionExplanation
+        intent!: /distortions/Катастрофизация
+        intent!: /distortions/Негативный фильтр
+        intent!: /distortions/Черно-белое мышление
+        script:
+            log("$context");
+            var intentName = $context.nluResults.intents[0].debugInfo.intent.path.split('/')[2]
+            log(intentName)
+            log(urls[intentName])
+            $context.response.replies = $context.response.replies || [];
+            $context.response.replies.push({
+              "type": "raw",
+              "body": {
+              "media": [
+                {
+                "type": "photo",
+                "media": urls[intentName],
+                "parse_mode": "html"},
+                {
+                "type": "photo",
+                "media": urls_solutions[intentName],
+                }
+            ]},
+              "method": "sendMediaGroup"
+            });
+            $reactions.answer("<b>" + intentName + "</b>");
+    
     state: Zero
         q!: (zero_distortion|distortion_zero)
         script:

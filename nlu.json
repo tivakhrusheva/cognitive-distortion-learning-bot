@@ -59,6 +59,64 @@
       "refs" : [ ]
     },
     "priority" : 0
+  }, {
+    "path" : "/distortions/Негативный фильтр",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "фильтрация негатива"
+    }, {
+      "text" : "негативный фильтр"
+    }, {
+      "text" : "фильтрация"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "path" : "/distortions",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "path" : "/distortions/Катастрофизация",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "Катастрофическое мышление"
+    }, {
+      "text" : "катастрофизация"
+    }, {
+      "text" : "катастрофа"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "path" : "/distortions/Черно-белое мышление",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "черно-белое мышление"
+    }, {
+      "text" : "чёрно-белое мышление"
+    }, {
+      "text" : "черно-белое"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
   } ],
   "entities" : [ ],
   "enabledSystemEntities" : [ "duckling.number", "duckling.time", "duckling.duration", "duckling.phone-number", "duckling.email", "duckling.url" ],
