@@ -81,9 +81,5 @@ theme: /
         script:
             log($request)
 
-    state: Match
-        event!: match
-        a: {{$context.intent.answer}}
-    
     state: Unauthorized
         a: У вас нет доступа к этому боту :) 
