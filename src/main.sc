@@ -70,9 +70,6 @@ theme: /
             go!: CommandDescription
         
         state: CommandDescription
-            script:
-                log("client");
-                log($client)
             a: <b>Навигация</b>: \n\n{{contents.nagivation}}
 
     state: NoMatch
