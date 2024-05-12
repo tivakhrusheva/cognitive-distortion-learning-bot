@@ -42,16 +42,6 @@ theme: /Journal
             $session.emotion_intensivity_after = $request.query
         go!: /Journal/DiarySession/End
     
-    # state: CallBackProcessor2
-        # event: telegramCallbackQuery || fromState = "/Journal/DiarySession", onlyThisState = false
-        # script:
-        #     if (emotions.indexOf($request.query) != -1) {
-        #         $reactions.transition("/Journal/EmotionIntensivity");
-        #     }
-            # else if ($request.query >= 1 && $request.query < 10) {
-            #     $reactions.transition("/Journal/Autothought");
-            # }
-    
     state: Start
         q!: $regex</journal>
         q!: $regex</diary>
