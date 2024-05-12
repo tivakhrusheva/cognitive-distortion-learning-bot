@@ -76,6 +76,44 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
+    "path" : "/distortions/Навешивание ярлыков",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "Навешивание ярлыков"
+    }, {
+      "text" : "ярлыков"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "path" : "/distortions/Обесценивание",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "Обесценивание"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "path" : "/distortions/Долженствование",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "Долженствование"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
     "path" : "/distortions",
     "enabled" : true,
     "shared" : false,
@@ -111,6 +149,56 @@
       "text" : "чёрно-белое мышление"
     }, {
       "text" : "черно-белое"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "path" : "/distortions/Персонализация",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "Персонализация"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "path" : "/distortions/Чтение мыслей",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "Чтение мыслей"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "path" : "/distortions/Иллюзия контроля",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "Иллюзия контроля"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "path" : "/distortions/Сверхобобщение",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "Сверхобобщение"
+    }, {
+      "text" : "овергенерализация"
     } ],
     "classificationRules" : {
       "refs" : [ ]

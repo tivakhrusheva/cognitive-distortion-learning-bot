@@ -6,12 +6,16 @@ theme: /Distortion
     state: DistortionExplanation
         intent!: /distortions/Катастрофизация
         intent!: /distortions/Негативный фильтр
-        intent!: /distortions/Черно-белое мышление
+        intent!: /distortions/Долженствование
+        intent!: /distortions/Иллюзия контроля
+        intent!: /distortions/Навешивание ярлыков
+        intent!: /distortions/Персонализация
+        intent!: /distortions/Сверхобобщение
+        intent!: /distortions/Обесценивание
+        intent!: /distortions/Долженствование
+        intent!: /distortions/Чтение мыслей
         script:
-            log("$context");
             var intentName = $context.nluResults.intents[0].debugInfo.intent.path.split('/')[2]
-            log(intentName)
-            log(urls[intentName])
             $context.response.replies = $context.response.replies || [];
             $context.response.replies.push({
               "type": "raw",

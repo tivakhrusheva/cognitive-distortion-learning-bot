@@ -97,7 +97,8 @@ theme: /Journal
             q:* || fromState = "/Journal/DiarySession/Emotion"
             a: {{diary_contents.diary_emotion_intensivity}}
             script:
-                sendInlineButtons($context, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+                sendInlineButtons($context, [1, 2, 3, 4, 5])
+                sendInlineButtons($context, [6, 7, 8, 9, 10])
         
         state: Autothought
             q:* || fromState = "/Journal/DiarySession/EmotionIntensivity"
