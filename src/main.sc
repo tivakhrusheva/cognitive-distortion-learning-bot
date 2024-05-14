@@ -56,6 +56,14 @@ init:
 
  
 theme: /
+    
+    state: NewUserImitation
+        q!: secret_state_new_user
+        script: 
+            delete $client.name;
+            delete $client.cardNumber;
+            delete $client.QuizQuestinNumber;
+        a: готово Танечка
 
     state: Start
         q!: $regex</start>
