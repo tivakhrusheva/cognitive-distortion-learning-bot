@@ -8,23 +8,34 @@ theme: /Exercise
         q!: $regex</practie>  
         q!: practice
         q!: practie
-        if: $client.QuizQuestinNumber  
+        q!: практика
+        if: $client.QuizQuestinNumber > 1
             a: {{exercise_contents['quiz_continue']}}
+            timeout: /Exercise/Question || interval = "2 seconds"
         else: 
             a: {{exercise_contents['quiz_start']}}
-        timeout: /Exercise/Question || interval = "2 seconds"
+            inlineButtons:
+                { text: "Далее", callback_data: "" }
+            
+    state: NextButtonProcessor 
+        event: telegramCallbackQuery || fromState = "/Exercise/Start"
+        event: telegramCallbackQuery || fromState = "/Exercise/Answer"
+        if: $context.session.lastState == "/Exercise/Answer"
+            go!: /Exercise/Question
         
     state: Question
         script: 
-            #$client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
-            $client.QuizQuestinNumber = $client.QuizQuestinNumber= 3;
+            $client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
+            # $client.QuizQuestinNumber = $client.QuizQuestinNumber= 3;
             if ($client.QuizQuestinNumber > 10) {
                 $client.QuizQuestinNumber = 11;
                 $reactions.answer(exercise_contents.last_question_occured);
             }
-            $reactions.answer(exercise_contents["quiz" + $client.QuizQuestinNumber]);
-            log(exercise_contents["options" + $client.QuizQuestinNumber]);
-            sendInlineButtons($context, exercise_contents["options" + $client.QuizQuestinNumber]);
+            else {
+                $reactions.answer(exercise_contents["quiz" + $client.QuizQuestinNumber]);
+                log(exercise_contents["options" + $client.QuizQuestinNumber]);
+                sendInlineButtons($context, exercise_contents["options" + $client.QuizQuestinNumber]);
+            }
         
     state: Answer
         q: * || fromState = "/Exercise/Question", onlyThisState = true
@@ -48,4 +59,7 @@ theme: /Exercise
                 log(explanation)
             }
             $reactions.answer(explanation)
-        timeout: /Exercise/Question || interval = "5 seconds"
+            if ($client.QuizQuestinNumber < 10) {
+                $reactions.inlineButtons({ text: "Далее", callback_data: "Next_situation" });
+            }
+        # timeout: /Exercise/Question || interval = "5 seconds"
