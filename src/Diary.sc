@@ -76,6 +76,7 @@ theme: /Journal
         
         state: Thought
             q:* || fromState = "/Journal/DiarySession/NoThought"
+            q: Да || fromState = "/Journal/Start/Agreement"
             a: {{diary_contents.diary_situation}}
         
         state: Emotion
@@ -120,7 +121,8 @@ theme: /Journal
             a: {{diary_contents.diary_emotion_aftermath}}
             script:
                 $session.rational_resp = $request.query;
-                sendInlineButtons($context, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+                sendInlineButtons($context, [1, 2, 3, 4, 5])
+                sendInlineButtons($context, [6, 7, 8, 9, 10])
             
         state: End
             script:
