@@ -40,14 +40,14 @@ init:
     #     $reactions.answer(randomAnswer);
     # });
     
-    # bind("preMatch", function($context) {
-    #     log($context)
-    # if ($context.request.channelType === "telegram" && $context.request.data.chatId != MY_ID) {
-    #     $context.temp.targetState = "/Unauthorized"
-    # }
-    # },
-    # "/"
-    # )
+    bind("preMatch", function($context) {
+        log($context)
+    if ($context.request.channelType === "telegram" && $context.request.data.chatId != MY_ID) {
+        $context.temp.targetState = "/Unauthorized"
+    }
+    },
+    "/"
+    )
 
  
 theme: /
