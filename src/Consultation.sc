@@ -46,9 +46,6 @@ theme: /Consultation
     
         state: Question
             a: Пожалуйста, введите ваш запрос, содержащий негативные мысли, или выберите один из примеров ниже:
-            # random:
-            #     a: Примеры негативных мыслей:
-            #     a: Примеры автоматических мыслей:
             script:
                 log(EXAMPLE_QUESTIONS)
                 log(_.sample(EXAMPLE_QUESTIONS, 2))

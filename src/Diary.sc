@@ -57,6 +57,10 @@ theme: /Journal
         
         state: DiaryGoal
             a: {{diary_contents.diary_goal}}
+            timeout: /Journal/Start/DiaryInstructions || interval = "5 seconds"
+        
+        state: DiaryInstructions
+            a: {{diary_contents.diary_instructions}}
             timeout: /Journal/Start/Agreement || interval = "5 seconds"
         
         state: Agreement

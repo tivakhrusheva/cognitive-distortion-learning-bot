@@ -64,7 +64,8 @@ theme: /
             script:
                 $client.name = $request.rawRequest.message.from.first_name;
                 $client.cardNumber = 0
-            a: Здравствуйте, {{$client.name}}😊!\n\n{{contents.start}} 
+                $client.QuizQuestinNumber = 1
+            a: Здравствуйте, {{$client.name}}!😊\n\n{{contents.start}} 
             timeout: CommandDescription || interval = "3 seconds"
         else:
             go!: CommandDescription
@@ -72,7 +73,7 @@ theme: /
         state: CommandDescription
             a: <b>Навигация</b>: \n\n{{contents.nagivation}}
 
-    state: NoMatch
+    state: NoMatch || noContext = true
         event!: noMatch
         a: Простите, я вас не понял :( Пожалуйста, переформулируйте ваш запрос.
         script:
