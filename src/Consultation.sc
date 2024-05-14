@@ -3,7 +3,6 @@ theme: /Consultation
     state: CallBackProcessor
         event: telegramCallbackQuery || fromState = "/Consultation/Start/Continue", onlyThisState = true
         event: telegramCallbackQuery || fromState = "/Consultation/Predict/Answer", onlyThisState = true
-        event: telegramCallbackQuery || fromState = "/Consultation/UserInput", onlyThisState = false
         if: $request.query == "Да"
             script:
                 $client.agreeAI = 1;
@@ -15,12 +14,10 @@ theme: /Consultation
         elseif: $request.query == "Вернуться в меню"
             a: Были рады помочь!
             timeout: /Start || interval = "3 seconds"
-        else: 
-            go!: /Consultation/Predict
     
     state: CallBackProcessor2
         q: Вернуться в меню || fromState = "/Consultation/UserInput/Question", onlyThisState = true
-        event: telegramCallbackQuery || fromState = "/Consultation/UserInput", onlyThisState = false
+        event: telegramCallbackQuery || fromState = "/Consultation/UserInput"
         if: $request.query == "Вернуться в меню"
             a: Возвращайтесь, если захотите попробовать данный функционал!
             timeout: /Start || interval = "3 seconds"
