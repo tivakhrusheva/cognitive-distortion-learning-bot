@@ -77,7 +77,7 @@ function sendMultipleCards(context, object1, object2, i) {
                       "type": "inlineButtons",
                       "buttons": [
                         {
-                          "text": "Тренироваться",
+                          "text": "Практика",
                           "callback_data": "/train"
                         },
                         {
