@@ -43,6 +43,23 @@ function sendInlineButtons(context, buttonsNames) {
 };
 
 
+function sendInlineButtonsWIndeces(context, buttonsNames) {
+    context.response.replies = context.response.replies || [];
+    var buttons = [];
+    for (var i = 0; i < buttonsNames.length; i++) {
+        buttons.push({
+          "text": buttonsNames[i],
+          "callback_data": i,
+    })
+    };
+    context.response.replies.push(
+        {
+        "type": "inlineButtons",
+        "buttons": buttons
+        }
+    )
+};
+
 function sendMultipleCards(context, object1, object2, i) {
     context.response.replies = context.response.replies || [];
     

@@ -58,7 +58,7 @@ theme: /Exercise
             else {
                 $reactions.answer(exercise_contents["quiz" + $client.QuizQuestinNumber]);
                 log(exercise_contents["options" + $client.QuizQuestinNumber]);
-                sendInlineButtons($context, exercise_contents["options" + $client.QuizQuestinNumber]);
+                sendInlineButtonsWIndeces($context, exercise_contents["options" + $client.QuizQuestinNumber]);
             }
         
     state: Answer
