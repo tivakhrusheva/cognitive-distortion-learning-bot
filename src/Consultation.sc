@@ -17,10 +17,12 @@ theme: /Consultation
     
     state: CallBackProcessor2
         q: Вернуться в меню || fromState = "/Consultation/UserInput/Question", onlyThisState = true
-        event: telegramCallbackQuery || fromState = "/Consultation/UserInput"
+        event: telegramCallbackQuery || fromState = "/Consultation/UserInput", onlyThisState = false
         if: $request.query == "Вернуться в меню"
             a: Возвращайтесь, если захотите попробовать данный функционал!
             timeout: /Start || interval = "3 seconds"
+        else:
+            go!: /Consultation/Predict
 
     state: Start
         q!: $regex</reframe>
