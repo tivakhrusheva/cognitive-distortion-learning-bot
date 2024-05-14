@@ -17,7 +17,7 @@ theme: /Exercise
     state: Question
         script: 
             #$client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
-            $client.QuizQuestinNumber = $client.QuizQuestinNumber= 1;
+            $client.QuizQuestinNumber = $client.QuizQuestinNumber= 2;
             if ($client.QuizQuestinNumber > 10) {
                 $client.QuizQuestinNumber = 11;
                 $reactions.answer(exercise_contents.last_question_occured);
