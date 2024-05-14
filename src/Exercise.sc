@@ -15,7 +15,8 @@ theme: /Exercise
         else: 
             a: {{exercise_contents['quiz_start']}}
             inlineButtons:
-                { text: "Далее", callback_data: "" }
+                { text: "Далее", callback_data: "Begin_practice" }
+                { text: "Вернуться в меню", callback_data: "To_menu" }
     
     state: Zero
         q!: (zero_ex|ex_zero)
@@ -26,9 +27,24 @@ theme: /Exercise
     state: NextButtonProcessor 
         event: telegramCallbackQuery || fromState = "/Exercise/Start"
         event: telegramCallbackQuery || fromState = "/Exercise/Answer"
-        if: $context.session.lastState == "/Exercise/Answer"
+        if: ($context.session.lastState == "/Exercise/Answer") && ($request.query == "Next_situation") 
             go!: /Exercise/Question
+            
+        elseif: ($context.session.lastState == "/Exercise/Start") && ($request.query == "To_menu") 
+            go!: /Start/CommandDescription
+            
+        elseif: ($context.session.lastState == "/Exercise/Start") && ($request.query == "Begin_practice") 
+            go!: 'Exercise/Question
+            
+        elseif: ($context.session.lastState == "/Exercise/Answer") && ($request.query == "To_menu") 
+            go!: /Start/CommandDescription
         
+        elseif: ($context.session.lastState == "/Exercise/Question") && ($request.query == "To_menu") 
+            go!: /Start/CommandDescription
+            
+        elseif: ($context.session.lastState == "/Exercise/Question") && ($request.query == "To_diary") 
+            go!: /Diary/Start
+            
     state: Question
         script: 
             $client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
@@ -36,6 +52,8 @@ theme: /Exercise
             if ($client.QuizQuestinNumber > 10) {
                 $client.QuizQuestinNumber = 11;
                 $reactions.answer(exercise_contents.last_question_occured);
+                $reactions.inlineButtons({ text: "Дневник искажений", callback_data: "To_diary" });
+                $reactions.inlineButtons({ text: "Вернуться в меню", callback_data: "To_menu" });
             }
             else {
                 $reactions.answer(exercise_contents["quiz" + $client.QuizQuestinNumber]);
@@ -67,5 +85,7 @@ theme: /Exercise
             $reactions.answer(explanation)
             if ($client.QuizQuestinNumber < 10) {
                 $reactions.inlineButtons({ text: "Далее", callback_data: "Next_situation" });
+                $reactions.inlineButtons({ text: "Вернуться в меню", callback_data: "To_menu" });
             }
+            
         # timeout: /Exercise/Question || interval = "5 seconds"
