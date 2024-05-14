@@ -16,6 +16,12 @@ theme: /Exercise
             a: {{exercise_contents['quiz_start']}}
             inlineButtons:
                 { text: "Далее", callback_data: "" }
+    
+    state: Zero
+        q!: (zero_ex|ex_zero)
+        script:
+            $client.QuizQuestinNumber = 0
+        a: Обнулились..
             
     state: NextButtonProcessor 
         event: telegramCallbackQuery || fromState = "/Exercise/Start"
