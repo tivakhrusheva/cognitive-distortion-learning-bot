@@ -3,6 +3,7 @@ theme: /Consultation
     state: CallBackProcessor
         event: telegramCallbackQuery || fromState = "/Consultation/Start/Continue", onlyThisState = true
         event: telegramCallbackQuery || fromState = "/Consultation/Predict/Answer", onlyThisState = true
+        event: telegramCallbackQuery || fromState = "/Consultation/UserInput", onlyThisState = false
         if: $request.query == "Да"
             script:
                 $client.agreeAI = 1;
