@@ -125,6 +125,7 @@ theme: /Journal
                 sendInlineButtons($context, [6, 7, 8, 9, 10])
             
         state: End
+            q!: тест таня
             script:
                 $client.DiaryHistory.push({"Thought": $session.thought, "Emotion": $session.emotion,
                     "Intensivity": $session.emotion_intensivity_before, "AutoThought": $session.autothought,
