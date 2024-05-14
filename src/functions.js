@@ -137,12 +137,12 @@ _.sample = _.wrap(_.sample, function(_sample, array, n) {
 
 
 function showDiaryNote(situation, emotion, strenth_before, autothought, rat_response, strenth_after) {
-    var Text = "Ситуация: ${situation} \
-     Эмоция: ${emotion} \
-     Сила эмоции : ${strenth_before} \
-     Автомысль: ${autothought} \
-     Рациональный ответ: ${rat_response} \
-     Сила эмоции посе рационального ответа: ${strenth_after} \
+    var Text = "Ситуация: {situation} \
+     \nЭмоция: ${emotion} \
+     \nСила эмоции : ${strenth_before} \
+     \nАвтомысль: ${autothought} \
+     \nРациональный ответ: ${rat_response} \
+     \nСила эмоции посе рационального ответа: {{$strenth_after}} \
      ";
     $reactions.answer("Ваша запись:\n\n" + Text)
 }
