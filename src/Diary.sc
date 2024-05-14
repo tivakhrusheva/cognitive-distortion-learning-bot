@@ -140,9 +140,10 @@ theme: /Journal
                 else {
                     $reactions.answer(diary_contents.diary_pos_result);
                 };
+                log($session.thought, $session.emotion, $session.emotion_intensivity_before, 
+                    $session.autothought, $session.rational_resp, $session.emotion_intensivity_after)
                 showDiaryNote($session.thought, $session.emotion, $session.emotion_intensivity_before, 
                     $session.autothought, $session.rational_resp, $session.emotion_intensivity_after)
-                
 
             a: {{diary_contents.diary_session_end}}
             timeout:: /Start/CommandDescription || interval = "5 seconds"
