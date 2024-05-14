@@ -34,7 +34,7 @@ theme: /Exercise
             go!: /Start/CommandDescription
             
         elseif: ($context.session.lastState == "/Exercise/Start") && ($request.query == "Begin_practice") 
-            go!: 'Exercise/Question
+            go!: /Exercise/Question
             
         elseif: ($context.session.lastState == "/Exercise/Answer") && ($request.query == "To_menu") 
             go!: /Start/CommandDescription
