@@ -126,6 +126,9 @@ theme: /Journal
             
         state: End
             script:
+                $client.DiaryHistory.push({"Thought": $session.thought, "Emotion": $session.emotion,
+                    "Intensivity": $session.emotion_intensivity_before, "AutoThought": $session.autothought,
+                    "Rational": $session.rational_resp, "IntensivityRepeat": $session.emotion_intensivity_after});
                 if ($session.emotion_intensivity_after > $session.emotion_intensivity_before) {
                     $reactions.answer(diary_contents.diary_neg_result);
                 }
@@ -135,7 +138,10 @@ theme: /Journal
                 
                 else {
                     $reactions.answer(diary_contents.diary_pos_result);
-                }
+                };
+                showDiaryNote($session.thought, $session.emotion, $session.emotion_intensivity_before, 
+                    $session.autothought, $session.rational_resp, $session.emotion_intensivity_after)
+                
 
             a: {{diary_contents.diary_session_end}}
             timeout:: /Start/CommandDescription || interval = "5 seconds"

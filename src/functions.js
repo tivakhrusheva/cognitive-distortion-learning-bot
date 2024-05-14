@@ -134,3 +134,15 @@ function predict(question) {
 _.sample = _.wrap(_.sample, function(_sample, array, n) {
     return $jsapi.context().testContext ? (n ? array.slice(0, n) : array[0]) : _sample(array, n);
 });
+
+
+function showDiaryNote(situation, emotion, strenth_before, autothought, rat_response, strenth_after) {
+    var Text = "Ситуация: ${situation} \
+     Эмоция: ${emotion} \
+     Сила эмоции : ${strenth_before} \
+     Автомысль: ${autothought} \
+     Рациональный ответ: ${rat_response} \
+     Сила эмоции посе рационального ответа: ${strenth_after} \
+     ";
+    $reactions.answer("Ваша запись:\n\n" + Text)
+}
