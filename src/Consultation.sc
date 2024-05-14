@@ -14,6 +14,8 @@ theme: /Consultation
         elseif: $request.query == "Вернуться в меню"
             a: Были рады помочь!
             timeout: /Start || interval = "3 seconds"
+        else: 
+            go!: /Consultation/Predict
     
     state: CallBackProcessor2
         q: Вернуться в меню || fromState = "/Consultation/UserInput/Question", onlyThisState = true
