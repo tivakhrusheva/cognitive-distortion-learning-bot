@@ -56,6 +56,13 @@ theme: /Distortion
         elseif: $request.query == "Distortion_not_ready" || $request.query == "Вернуться в меню" 
             a: Возвращайтесь, когда будете готовы!
             go!: /Start
+        elseif: ($request.query == "Next_theory") && ($context.session.lastState == "/Distortion/DistortionBegin")
+            go!: /Distortion/DistortionBegin/DistortionBegin2
+        elseif: ($request.query == "Next_theory") && ($context.session.lastState == "/Distortion/DistortionBegin/DistortionBegin2")
+            go!: /Distortion/DistortionBegin/DistortionBegin3
+        elseif: ($request.query == "Next_theory") && ($context.session.lastState == "/Distortion/DistortionBegin/DistortionBegin3")
+            go!: /Distortion/DistortionBegin/DistortionFightInfo
+        
     
     state: DistortionBegin
         q!: $regex</learn>
@@ -63,15 +70,21 @@ theme: /Distortion
             go!: DistortionCard
         else:
             a: {{distortion_contents.distortion_begin}}
-            timeout: /Distortion/DistortionBegin/DistortionBegin2 || interval = "20 seconds"
+            inlineButtons:
+                { text: "Далее", callback_data: "Next_theory" }
+            # timeout: /Distortion/DistortionBegin/DistortionBegin2 || interval = "20 seconds"
         
         state: DistortionBegin2
             a: {{distortion_contents.distortion_begin2}}
-            timeout: /Distortion/DistortionBegin/DistortionBegin3 || interval = "20 seconds"
+            inlineButtons:
+                { text: "Далее", callback_data: "Next_theory" }
+            # timeout: /Distortion/DistortionBegin/DistortionBegin3 || interval = "20 seconds"
         
         state: DistortionBegin3
             a: {{distortion_contents.distortion_begin3}}
-            timeout: /Distortion/DistortionBegin/DistortionFightInfo || interval = "20 seconds"
+            inlineButtons:
+                { text: "Далее", callback_data: "Next_theory" }
+            # timeout: /Distortion/DistortionBegin/DistortionFightInfo || interval = "20 seconds"
         
         state: DistortionFightInfo
             # TODO: DELETE SHORTCUT!
