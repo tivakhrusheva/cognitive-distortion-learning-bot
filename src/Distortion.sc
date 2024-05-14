@@ -72,19 +72,16 @@ theme: /Distortion
             a: {{distortion_contents.distortion_begin}}
             inlineButtons:
                 { text: "Далее", callback_data: "Next_theory" }
-            # timeout: /Distortion/DistortionBegin/DistortionBegin2 || interval = "20 seconds"
         
         state: DistortionBegin2
             a: {{distortion_contents.distortion_begin2}}
             inlineButtons:
                 { text: "Далее", callback_data: "Next_theory" }
-            # timeout: /Distortion/DistortionBegin/DistortionBegin3 || interval = "20 seconds"
         
         state: DistortionBegin3
             a: {{distortion_contents.distortion_begin3}}
             inlineButtons:
                 { text: "Далее", callback_data: "Next_theory" }
-            # timeout: /Distortion/DistortionBegin/DistortionFightInfo || interval = "20 seconds"
         
         state: DistortionFightInfo
             # TODO: DELETE SHORTCUT!
