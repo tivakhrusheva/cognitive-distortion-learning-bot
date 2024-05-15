@@ -62,7 +62,8 @@ theme: /
             delete $client.name;
             delete $client.cardNumber;
             delete $client.QuizQuestinNumber;
-            delete $client.DiaryHistory
+            delete $client.DiaryHistory;
+            delete $client.diaryExplanationDone
         a: готово Танечка
 
     state: Start
