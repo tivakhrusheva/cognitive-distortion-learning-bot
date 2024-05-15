@@ -88,6 +88,12 @@ theme: /Distortion
             a: {{distortion_contents.distortion_begin}}
             inlineButtons:
                 { text: "Далее", callback_data: "Next_theory" }
+            
+        state: аина
+            q!: Next_theory
+            a: {{distortion_contents.distortion_begin}}
+            inlineButtons:
+                { text: "Далее", callback_data: "Next_theory" }
         
         state: DistortionBegin2
             a: {{distortion_contents.distortion_begin2}}
