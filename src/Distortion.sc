@@ -55,8 +55,10 @@ theme: /Distortion
             go!: /Distortion/DistortionBegin/DistortionCard
         elseif: $request.query == "Distortion_back_to_menu" 
             go!: /Start
-        elseif: $request.query == "Distortion_not_ready" || ($request.query == "Вернуться в меню" && $context.session.lastState == "/Distortion/DistortionBegin/DistortionFightInfo")
+        elseif: ($request.query == "Вернуться в меню" && $context.session.lastState == "/Distortion/DistortionBegin/DistortionFightInfo")
             a: Возвращайтесь, когда будете готовы!
+            go!: /Start
+        elseif: ($request.query == "Вернуться в меню" && $context.session.lastState != "/Distortion/DistortionBegin/DistortionFightInfo")
             go!: /Start
         elseif: ($request.query == "Next_theory") && ($context.session.lastState == "/Distortion/DistortionBegin")
             go!: /Distortion/DistortionBegin/DistortionBegin2
