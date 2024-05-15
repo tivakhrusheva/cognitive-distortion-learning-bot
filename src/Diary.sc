@@ -37,7 +37,10 @@ theme: /Journal
             
     state: CallBackProcessorNo
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Thought", onlyThisState = true
-        if: $request.query == "Нет"
+        event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Autothought", onlyThisState = true
+        if: $request.query == "Нет" && $context.session.lastState == "/Journal/DiarySession/Thought"
+            go!: /Journal/DiarySession/NoThought
+        if: $request.query == "Нет" && $context.session.lastState == "/Journal/DiarySession/Autothought"
             go!: /Journal/DiarySession/NoSituation
     
     state: CallBackProcessorEmotion
@@ -70,9 +73,9 @@ theme: /Journal
     
     state: CallBackProcessorConclusion
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/End/Conclusion", onlyThisState = true
-        if: $request.query == "to_journal_writing
+        if: $request.query == "to_journal_writing"
             go!: /Journal/DiarySession/Beginning
-        elseif: $request.query == "to_menu
+        elseif: $request.query == "to_menu"
             go!: /Start
     
     state: Start
