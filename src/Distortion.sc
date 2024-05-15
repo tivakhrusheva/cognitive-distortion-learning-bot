@@ -44,6 +44,8 @@ theme: /Distortion
         event!: telegramCallbackQuery 
         if: $request.query == "/train"
             go!: /Exercise/Start
+        elseif: $request.query == "Виды искажений" && $context.session.lastState != "/Distortion/DistortionBegin/DistortionFightInfo"
+            timeout: /Distortion/DistortionBegin/DistortionCard 
         elseif: $request.query == "Виды искажений" && $context.session.lastState == "/Distortion/DistortionBegin/DistortionFightInfo"
             a: {{distortion_contents.distortion_intro_to_specific}}
             timeout: /Distortion/DistortionBegin/DistortionCard || interval = "1 seconds"
@@ -68,6 +70,8 @@ theme: /Distortion
             go!: /Start/CommandDescription
         elseif: $request.query == "Теория искажений"
             go!: /Distortion/DistortionBegin
+        elseif: ($request.query == "Next_regulation")  && ($context.session.lastState == "/Distortion/RegulationInfo")
+            go!: /Distortion/RegulationInfo/RegulationTechniques
     
     state: DistortionBegin
         q!: $regex</learn>
@@ -120,10 +124,15 @@ theme: /Distortion
         a: {{distortion_contents.regulation_info}}
         inlineButtons:
             { text: "Далее", callback_data: "Next_regulation" }
+            
+        state: RegulationTechniques
+        a: {{distortion_contents.regulation_technics}}
+        inlineButtons:
+            {text: "Вернуться в меню", callback_data: "Вернуться в меню"}
         
     
     state: DistortionNavigation
-        a: Выберите раздел:
+        a: ⬇️Выберите раздел теории:
         inlineButtons:
             {text: "Теория искажений", callback_data: "Теория искажений"}
             {text: "Виды искажений", callback_data: "Виды искажений"}
