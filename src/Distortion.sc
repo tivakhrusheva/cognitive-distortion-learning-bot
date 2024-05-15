@@ -44,7 +44,7 @@ theme: /Distortion
         event!: telegramCallbackQuery 
         if: $request.query == "/train"
             go!: /Exercise/Start
-        elseif: $request.query == "Виды искажений"
+        elseif: $request.query == "Виды искажений" && $context.session.lastState == "/Distortion/DistortionBegin/DistortionFightInfo"
             a: {{distortion_contents.distortion_intro_to_specific}}
             timeout: /Distortion/DistortionBegin/DistortionCard || interval = "1 seconds"
         elseif: $request.query == "Distortion_next"
@@ -64,14 +64,16 @@ theme: /Distortion
             go!: /Distortion/DistortionBegin/DistortionBegin3
         elseif: ($request.query == "Next_theory") && ($context.session.lastState == "/Distortion/DistortionBegin/DistortionBegin3")
             go!: /Distortion/DistortionBegin/DistortionFightInfo
-        elseif: ($request.query == "В меню")
+        elseif: $request.query == "В меню"
             go!: /Start/CommandDescription
+        elseif: $request.query == "Теория искажений"
+            go!: /Distortion/DistortionBegin
     
     state: DistortionBegin
         q!: $regex</learn>
         if: $client.cardNumber
             # go!: DistortionCard
-            go!: /Distortion/DistortionBegin/DistortionFightInfo
+            go!: /Distortion/DistortionNavigation
         else:
             a: {{distortion_contents.distortion_begin}}
             inlineButtons:
@@ -93,7 +95,6 @@ theme: /Distortion
             a: {{distortion_contents.distortion_fight}}
             inlineButtons:
                 {text: "Виды искажений", callback_data: "Виды искажений"}
-                {text: "Техники эмоциональной саморегуляции", callback_data: "regulation"}
                 {text: "Вернуться в меню", callback_data: "Вернуться в меню"}
                 
             
@@ -119,3 +120,12 @@ theme: /Distortion
         a: {{distortion_contents.regulation_info}}
         inlineButtons:
             { text: "Далее", callback_data: "Next_regulation" }
+        
+    
+    state: DistortionNavigation
+        a: Выберите раздел:
+        inlineButtons:
+            {text: "Теория искажений", callback_data: "Теория искажений"}
+            {text: "Виды искажений", callback_data: "Виды искажений"}
+            {text: "Техники эмоциональной саморегуляции", callback_data: "regulation"}
+            {text: "Вернуться в меню", callback_data: "Вернуться в меню"}
