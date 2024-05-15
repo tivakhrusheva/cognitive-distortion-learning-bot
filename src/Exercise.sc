@@ -15,7 +15,7 @@ theme: /Exercise
         else: 
             a: {{exercise_contents['quiz_start']}}
             inlineButtons:
-                { text: "Далее", callback_data: "Begin_practice" }
+                { text: "Хорошо", callback_data: "Begin_practice" }
                 { text: "Вернуться в меню", callback_data: "To_menu" }
     
     state: Zero
@@ -84,7 +84,7 @@ theme: /Exercise
             }
             $reactions.answer(explanation)
             if ($client.QuizQuestinNumber < 10) {
-                $reactions.inlineButtons({ text: "Далее", callback_data: "Next_situation" });
+                $reactions.inlineButtons({ text: "Следующий вопрос", callback_data: "Next_situation" });
                 $reactions.inlineButtons({ text: "Вернуться в меню", callback_data: "To_menu" });
             }
             
