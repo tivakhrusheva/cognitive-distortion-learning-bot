@@ -18,7 +18,10 @@ theme: /Journal
                     $client.diaryExplanationDone = 0;
                 }
             go!: /Start/CommandDescription
-        
+            
+        elseif: $request.query == "to_explanation"
+            go!: /Journal/Start/Explanation
+            
         elseif: $request.query == "to_goal"
             go!: /Start/DiaryGoal
             
@@ -63,9 +66,11 @@ theme: /Journal
         q!: $regex</diary>
         if: $client.diaryExplanationDone == 1
             go!: /Journal/DiarySession/Beginning
+            
         a: {{diary_contents.diary_session_beg}}\n\n{{diary_contents.diary_begin}}
-
-        timeout: /Journal/Start/Explanation || interval = "5 seconds"
+        inlineButtons:
+            { text: "Далее", callback_data: "to_explanation" }
+        # timeout: /Journal/Start/Explanation || interval = "5 seconds"
     
         state: Explanation
             a: {{diary_contents.diary_automatic_thoughts}}
@@ -101,6 +106,12 @@ theme: /Journal
             q: Да || fromState = "/Journal/Start/Agreement"
             a: {{diary_contents.diary_situation}}
         
+        state: NoSituation
+            intent: /нет || fromState = "/Journal/DiarySession/Thought"
+            a: {{diary_contents.diary_no_situation}}
+            script:
+                sendInlineButtons($context, ["Вернуться в меню"])
+        
         state: Emotion
             q:* || fromState = "/Journal/DiarySession/Thought"
             a: {{diary_contents.diary_emotion}}
@@ -129,8 +140,8 @@ theme: /Journal
             a: {{diary_contents.diary_autothought}}
         
         state: NoThought
-            intent: /нет
-            a: {{diary_contents.ddiary_no_thoughts_head_empty}}
+            intent: /нет || fromState = "/Journal/DiarySession/Autothought"
+            a: {{diary_contents.diary_no_thoughts_head_empty}}
             script:
                 sendInlineButtons($context, ["Да", "Нет"])
         
