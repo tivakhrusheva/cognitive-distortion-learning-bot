@@ -120,9 +120,11 @@ theme: /Journal
             a: {{diary_contents.diary_no_situation}}
             script:
                 sendInlineButtons($context, ["Вернуться в меню"])
+            # go: /Journal/DiarySession/Emotion
         
         state: Emotion
             q:* || fromState = "/Journal/DiarySession/Thought"
+            q:* || fromState = "/Journal/DiarySession/NoSituation"
             a: {{diary_contents.diary_emotion}}
             script:
                 $session.thought = $request.query;
