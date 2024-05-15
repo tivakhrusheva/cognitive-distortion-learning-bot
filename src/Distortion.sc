@@ -58,6 +58,8 @@ theme: /Distortion
             go!: /Start
         elseif: ($request.query == "Next_theory") && ($context.session.lastState == "/Distortion/DistortionBegin")
             go!: /Distortion/DistortionBegin/DistortionBegin2
+        elseif: ($request.query == "Техники эмоциональной саморегуляции")
+            go!: /Distortion/RegulationInfo
         elseif: ($request.query == "Next_theory") && ($context.session.lastState == "/Distortion/DistortionBegin/DistortionBegin2")
             go!: /Distortion/DistortionBegin/DistortionBegin3
         elseif: ($request.query == "Next_theory") && ($context.session.lastState == "/Distortion/DistortionBegin/DistortionBegin3")
@@ -111,3 +113,8 @@ theme: /Distortion
                     sendMultipleCards($context, urls, urls_solutions, $client.cardNumber);
                     
                 };
+    
+    state: RegulationInfo
+        a: {{distortion_contents.regulation_info}}
+        inlineButtons:
+            { text: "Далее", callback_data: "Next_regulation" }
