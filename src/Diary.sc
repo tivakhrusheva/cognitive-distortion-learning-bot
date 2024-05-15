@@ -198,19 +198,19 @@ theme: /Journal
                 
             state: EmotionChange
                 script:
-                    if ($session.emotion_intensivity_after > $session.emotion_intensivity_before) {
+                    if (Number($session.emotion_intensivity_after) > Number($session.emotion_intensivity_before)) {
                         $reactions.answer(diary_contents.diary_neg_result);
                     }
-                    else if ($session.emotion_intensivity_after == $session.emotion_intensivity_before) { 
+                    else if (Number($session.emotion_intensivity_after) == Number($session.emotion_intensivity_before)) { 
                         $reactions.answer(diary_contents.diary_no_result);
                     }
                     
                     else {
                         $reactions.answer(diary_contents.diary_pos_result);
                     };
-                timeout: : /Journal/DiarySession/End/Conclusion || interval = "2 seconds"
+                timeout: /Journal/DiarySession/End/Conclusion || interval = "2 seconds"
                     
             state: Conclusion
                 a: {{diary_contents.diary_session_end}}
-                timeout:: /Start/CommandDescription || interval = "5 seconds"
+                timeout:: /Start || interval = "5 seconds"
             
