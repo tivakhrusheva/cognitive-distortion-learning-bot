@@ -22,24 +22,32 @@ theme: /Journal
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Emotion", onlyThisState = true
         script:
             $session.emotion = $request.query
+            log("$session.emotion")
+            log($session.emotion)
         go!: /Journal/DiarySession/EmotionIntensivity
     
     state: CallBackProcessorEmotionIntensivity
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/EmotionIntensivity", onlyThisState = true
         script:
             $session.emotion_intensivity_before = $request.query
+            log("$session.emotion_intensivity_before")
+            log($session.emotion_intensivity_before)
         go!: /Journal/DiarySession/Autothought
     
     state: CallBackProcessorDistortion
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/DistortionFormulation", onlyThisState = true
         script:
             $session.distortion = $request.query
+            log("$session.distortion")
+            log($session.distortion)
         go!: /Journal/DiarySession/RationalResponse
     
     state: CallBackProcessorEmotionIntensivityAfter
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/FinalEmotionIntensivity", onlyThisState = true
         script:
             $session.emotion_intensivity_after = $request.query
+            log("$session.emotion_intensivity_after")
+            log($session.emotion_intensivity_after)
         go!: /Journal/DiarySession/End
     
     state: Start
@@ -86,6 +94,8 @@ theme: /Journal
             a: {{diary_contents.diary_emotion}}
             script:
                 $session.thought = $request.query;
+                log("$session.thought")
+                log($session.thought)
                 sendInlineButtons($context, emotions)
         
         state: EmotionIntensivity
@@ -110,6 +120,8 @@ theme: /Journal
             a: {{diary_contents.diary_distortion}}
             script:
                 $session.autothought = $request.query;
+                log("$session.autothought")
+                log($session.autothought)
                 sendInlineButtons($context, Object.keys(urls))
         
         state: RationalResponse
@@ -121,6 +133,8 @@ theme: /Journal
             a: {{diary_contents.diary_emotion_aftermath}}
             script:
                 $session.rational_resp = $request.query;
+                log("$session.rational_resp")
+                log($session.rational_resp)
                 sendInlineButtons($context, [1, 2, 3, 4, 5])
                 sendInlineButtons($context, [6, 7, 8, 9, 10])
             
