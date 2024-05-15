@@ -86,6 +86,7 @@ theme: /
         state: CommandDescription
             a: <b>Навигация</b>: \n\n{{contents.nagivation}}
             script:
+                log("$client")
                 log($client)
 
     state: NoMatch || noContext = true
