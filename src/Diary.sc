@@ -18,9 +18,6 @@ theme: /Journal
                     $client.diaryExplanationDone = 0;
                 }
             go!: /Start/CommandDescription
-            
-        elseif: $request.query == "Нет"
-            go!: /Journal/DiarySession/NoSituation
         
         elseif: $request.query == "Вернуться в меню"
             go!: /Start
@@ -38,7 +35,11 @@ theme: /Journal
             go!: /Journal/Start/Agreement
             
             
-            
+    state: CallBackProcessorNo
+        event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Thought", onlyThisState = true
+        if: $request.query == "Нет"
+            go!: /Journal/DiarySession/NoSituation
+    
     state: CallBackProcessorEmotion
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Emotion", onlyThisState = true
         go!: /Journal/DiarySession/EmotionIntensivity
