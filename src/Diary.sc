@@ -112,14 +112,14 @@ theme: /Journal
             script:
                 sendInlineButtons($context, ["Вернуться в меню"])
         
-        state: Emotion
-            q:* || fromState = "/Journal/DiarySession/Thought"
-            a: {{diary_contents.diary_emotion}}
-            script:
-                $session.thought = $request.query;
-                log("$session.thought")
-                log($session.thought)
-                sendInlineButtons($context, emotions)
+        # state: Emotion
+        #     q:* || fromState = "/Journal/DiarySession/Thought"
+        #     a: {{diary_contents.diary_emotion}}
+        #     script:
+        #         $session.thought = $request.query;
+        #         log("$session.thought")
+        #         log($session.thought)
+        #         sendInlineButtons($context, emotions)
         
         state: EmotionIntensivity
             q:* || fromState = "/Journal/DiarySession/Emotion"
