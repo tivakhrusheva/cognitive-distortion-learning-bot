@@ -85,6 +85,12 @@ theme: /Distortion
         elseif: $request.query == "theory2"
             go!: /Distortion/DistortionBegin/DistortionBegin2
             
+        elseif: $request.query == "theory3"
+            go!: /Distortion/DistortionBegin/DistortionBegin3
+        
+        elseif: $request.query == "theory4"
+            go!: /Distortion/DistortionBegin/DistortionFightInfo
+    
         elseif: ($request.query == "Next_regulation")  && ($context.session.lastState == "/Distortion/RegulationInfo")
             go!: /Distortion/RegulationInfo/RegulationTechniques
     
@@ -100,12 +106,12 @@ theme: /Distortion
         state: DistortionBegin2
             a: {{distortion_contents.distortion_begin2}}
             inlineButtons:
-                { text: "Далее", callback_data: "Next_theory" }
+                { text: "Далее", callback_data: "theory3" }
         
         state: DistortionBegin3
             a: {{distortion_contents.distortion_begin3}}
             inlineButtons:
-                { text: "Далее", callback_data: "Next_theory" }
+                { text: "Далее", callback_data: "theory4" }
         
         state: DistortionFightInfo
             a: {{distortion_contents.distortion_fight}}
