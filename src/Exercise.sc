@@ -27,6 +27,9 @@ theme: /Exercise
     state: NextButtonProcessor 
         event: telegramCallbackQuery || fromState = "/Exercise/Start"
         event: telegramCallbackQuery || fromState = "/Exercise/Answer"
+        script:
+            log("$context.session.lastState")
+            log($context.session.lastState)
         if: ($context.session.lastState == "/Exercise/Answer") && ($request.query == "Next_situation") 
             go!: /Exercise/Question
             
