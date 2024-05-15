@@ -45,7 +45,7 @@ theme: /Distortion
         if: $request.query == "/train"
             go!: /Exercise/Start
         elseif: $request.query == "Виды искажений" && $context.session.lastState != "/Distortion/DistortionBegin/DistortionFightInfo"
-            timeout: /Distortion/DistortionBegin/DistortionCard 
+            go!: /Distortion/DistortionBegin/DistortionCard 
         elseif: $request.query == "Виды искажений" && $context.session.lastState == "/Distortion/DistortionBegin/DistortionFightInfo"
             a: {{distortion_contents.distortion_intro_to_specific}}
             timeout: /Distortion/DistortionBegin/DistortionCard || interval = "1 seconds"
