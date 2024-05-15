@@ -227,5 +227,5 @@ theme: /Journal
                 a: {{diary_contents.diary_session_end}}
                 inlineButtons:
                     { text: "Добавить еще одну запись", callback_data: "to_journal_writing" }
-                    { text: "Переформулировать негативные мысли с помощь AI", callback_data: "to_journal_writing" }
+                    { text: "Переформулировать негативные мысли с помощью AI", callback_data: "/reframe" }
                     { text: "Вернуться в меню", callback_data: "to_menu"}
