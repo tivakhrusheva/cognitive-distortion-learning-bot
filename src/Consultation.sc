@@ -12,7 +12,7 @@ theme: /Consultation
         elseif: $request.query == "Задать еще вопрос"
             go!: /Consultation/UserInput
         elseif: $request.query == "Вернуться в меню"
-            a: Были рады помочь!
+            a: Был рад помочь!
             timeout: /Start || interval = "3 seconds"
     
     state: CallBackProcessor2
