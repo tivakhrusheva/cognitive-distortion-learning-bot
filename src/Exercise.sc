@@ -50,8 +50,8 @@ theme: /Exercise
             
     state: Question
         script: 
-            $client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
-            # $client.QuizQuestinNumber = $client.QuizQuestinNumber= 3;
+            #$client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
+            $client.QuizQuestinNumber = $client.QuizQuestinNumber= 1;
             if ($client.QuizQuestinNumber > 10) {
                 $client.QuizQuestinNumber = 11;
                 $reactions.answer(exercise_contents.last_question_occured);
