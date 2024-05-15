@@ -58,7 +58,7 @@ theme: /Distortion
             go!: /Start
         elseif: ($request.query == "Next_theory") && ($context.session.lastState == "/Distortion/DistortionBegin")
             go!: /Distortion/DistortionBegin/DistortionBegin2
-        elseif: ($request.query == "Техники эмоциональной саморегуляции")
+        elseif: $request.query == "regulation"
             go!: /Distortion/RegulationInfo
         elseif: ($request.query == "Next_theory") && ($context.session.lastState == "/Distortion/DistortionBegin/DistortionBegin2")
             go!: /Distortion/DistortionBegin/DistortionBegin3
@@ -92,7 +92,7 @@ theme: /Distortion
             a: {{distortion_contents.distortion_fight}}
             inlineButtons:
                 {text: "Виды искажений", callback_data: "Виды искажений"}
-                {text: "Техники эмоциональной саморегуляции", callback_data: "Техники эмоциональной саморегуляции"}
+                {text: "Техники эмоциональной саморегуляции", callback_data: "regulation"}
                 {text: "Вернуться в меню", callback_data: "Вернуться в меню"}
                 
             
