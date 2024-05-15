@@ -155,6 +155,8 @@ theme: /Journal
                 log("$session.emotion_intensivity_before")
                 log($session.emotion_intensivity_before)
             a: {{diary_contents.diary_autothought}}
+            script:
+                sendInlineButtons($context, ["Нет"])
         
         state: NoThought
             intent: /нет || fromState = "/Journal/DiarySession/Autothought"
