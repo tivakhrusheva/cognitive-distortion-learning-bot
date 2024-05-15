@@ -144,21 +144,27 @@ theme: /Journal
                 $client.DiaryHistory.push({"Thought": $session.thought, "Emotion": $session.emotion,
                     "Intensivity": $session.emotion_intensivity_before, "AutoThought": $session.autothought,
                     "Rational": $session.rational_resp, "IntensivityRepeat": $session.emotion_intensivity_after});
-                if ($session.emotion_intensivity_after > $session.emotion_intensivity_before) {
-                    $reactions.answer(diary_contents.diary_neg_result);
-                }
-                else if ($session.emotion_intensivity_after == $session.emotion_intensivity_before) { 
-                    $reactions.answer(diary_contents.diary_no_result);
-                }
-                
-                else {
-                    $reactions.answer(diary_contents.diary_pos_result);
-                };
                 log($session.thought, $session.emotion, $session.emotion_intensivity_before, 
                     $session.autothought, $session.rational_resp, $session.emotion_intensivity_after)
                 showDiaryNote($session.thought, $session.emotion, $session.emotion_intensivity_before, 
                     $session.autothought, $session.rational_resp, $session.emotion_intensivity_after)
-
-            a: {{diary_contents.diary_session_end}}
-            timeout:: /Start/CommandDescription || interval = "5 seconds"
-        
+            timeout: EmotionChange || interval = "2 seconds"
+                
+            state: EmotionChange
+                script:
+                    if ($session.emotion_intensivity_after > $session.emotion_intensivity_before) {
+                        $reactions.answer(diary_contents.diary_neg_result);
+                    }
+                    else if ($session.emotion_intensivity_after == $session.emotion_intensivity_before) { 
+                        $reactions.answer(diary_contents.diary_no_result);
+                    }
+                    
+                    else {
+                        $reactions.answer(diary_contents.diary_pos_result);
+                    };
+                timeout: : /Journal/DiarySession/End/Conclusion || interval = "2 seconds"
+                    
+            state: Conclusion
+                a: {{diary_contents.diary_session_end}}
+                timeout:: /Start/CommandDescription || interval = "5 seconds"
+            
