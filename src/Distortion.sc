@@ -131,9 +131,9 @@ theme: /Distortion
             { text: "Далее", callback_data: "Next_regulation" }
             
         state: RegulationTechniques
-        a: {{distortion_contents.regulation_technics}}
-        inlineButtons:
-            {text: "Вернуться в меню", callback_data: "Вернуться в меню"}
+            a: {{distortion_contents.regulation_technics}}
+            inlineButtons:
+                {text: "Вернуться в меню", callback_data: "Вернуться в меню"}
         
     
     state: DistortionNavigation
