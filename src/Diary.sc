@@ -23,13 +23,13 @@ theme: /Journal
             go!: /Journal/Start/Explanation
             
         elseif: $request.query == "to_goal"
-            go!: /Start/DiaryGoal
+            go!: /Journal/Start/DiaryGoal
             
         elseif: $request.query == "to_instructions"
-            go!: /Start/DiaryInstructions
+            go!: /Journal/Start/DiaryInstructions
             
         elseif: $request.query == "to_agreement"
-            go!: /Start/Agreement
+            go!: /Journal/Start/Agreement
             
             
             
