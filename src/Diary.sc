@@ -19,6 +19,12 @@ theme: /Journal
                 }
             go!: /Start/CommandDescription
             
+        elseif: $request.query == "Нет"
+            go!: /Journal/DiarySession/NoSituation
+        
+        elseif: $request.query == "Вернуться в меню"
+            go!: /Start
+        
         elseif: $request.query == "to_explanation"
             go!: /Journal/Start/Explanation
             
@@ -105,6 +111,8 @@ theme: /Journal
             q:* || fromState = "/Journal/DiarySession/NoThought"
             q: Да || fromState = "/Journal/Start/Agreement"
             a: {{diary_contents.diary_situation}}
+            script:
+                sendInlineButtons($context, ["Нет"])
         
         state: NoSituation
             intent: /нет || fromState = "/Journal/DiarySession/Thought"
@@ -112,14 +120,14 @@ theme: /Journal
             script:
                 sendInlineButtons($context, ["Вернуться в меню"])
         
-        # state: Emotion
-        #     q:* || fromState = "/Journal/DiarySession/Thought"
-        #     a: {{diary_contents.diary_emotion}}
-        #     script:
-        #         $session.thought = $request.query;
-        #         log("$session.thought")
-        #         log($session.thought)
-        #         sendInlineButtons($context, emotions)
+        state: Emotion
+            q:* || fromState = "/Journal/DiarySession/Thought"
+            a: {{diary_contents.diary_emotion}}
+            script:
+                $session.thought = $request.query;
+                log("$session.thought")
+                log($session.thought)
+                sendInlineButtons($context, emotions)
         
         state: EmotionIntensivity
             q:* || fromState = "/Journal/DiarySession/Emotion"
