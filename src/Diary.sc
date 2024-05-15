@@ -20,10 +20,6 @@ theme: /Journal
             
     state: CallBackProcessorEmotion
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Emotion", onlyThisState = true
-        script:
-            $session.emotion = $request.query
-            log("$session.emotion")
-            log($session.emotion)
         go!: /Journal/DiarySession/EmotionIntensivity
     
     state: CallBackProcessorEmotionIntensivity
@@ -88,8 +84,6 @@ theme: /Journal
             a: {{diary_contents.diary_situation}}
         
         state: Emotion
-            #TODO: DELETE SHORTCUT
-            q!: test
             q:* || fromState = "/Journal/DiarySession/Thought"
             a: {{diary_contents.diary_emotion}}
             script:
@@ -102,11 +96,18 @@ theme: /Journal
             q:* || fromState = "/Journal/DiarySession/Emotion"
             a: {{diary_contents.diary_emotion_intensivity}}
             script:
+                $session.emotion = $request.query
+                log("$session.emotion")
+                log($session.emotion)
                 sendInlineButtons($context, [1, 2, 3, 4, 5])
                 sendInlineButtons($context, [6, 7, 8, 9, 10])
         
         state: Autothought
             q:* || fromState = "/Journal/DiarySession/EmotionIntensivity"
+            script:
+                $session.emotion_intensivity_before = $request.query
+                log("$session.emotion_intensivity_before")
+                log($session.emotion_intensivity_before)
             a: {{diary_contents.diary_autothought}}
         
         state: NoThought
@@ -126,6 +127,10 @@ theme: /Journal
         
         state: RationalResponse
             q:* || fromState = "/Journal/DiarySession/DistortionFormulation"
+            script:
+                 $session.distortion = $request.query
+                log("$session.distortion")
+                log($session.distortion)
             a: {{diary_contents.diary_rational}}
             
         state: FinalEmotionIntensivity
@@ -139,8 +144,11 @@ theme: /Journal
                 sendInlineButtons($context, [6, 7, 8, 9, 10])
             
         state: End
-            q!: тест таня
+            q:* || fromState = "/Journal/DiarySession/FinalEmotionIntensivity"
             script:
+                $session.emotion_intensivity_after = $request.query
+                log("$session.emotion_intensivity_after")
+                log($session.emotion_intensivity_after)
                 $client.DiaryHistory.push({"Thought": $session.thought, "Emotion": $session.emotion,
                     "Intensivity": $session.emotion_intensivity_before, "AutoThought": $session.autothought,
                     "Rational": $session.rational_resp, "IntensivityRepeat": $session.emotion_intensivity_after});

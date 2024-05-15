@@ -83,7 +83,6 @@ theme: /Distortion
     state: DistortionBegin
         q!: $regex</learn>
         if: $client.cardNumber
-            # go!: DistortionCard
             go!: /Distortion/DistortionNavigation
         else:
             a: {{distortion_contents.distortion_begin}}
