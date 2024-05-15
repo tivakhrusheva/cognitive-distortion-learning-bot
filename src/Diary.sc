@@ -77,6 +77,8 @@ theme: /Journal
             go!: /Journal/DiarySession/Beginning
         elseif: $request.query == "to_menu"
             go!: /Start
+        elseif: $request.query == "/reframe"
+            go!: /Consultation/Start
     
     state: Start
         q!: $regex</journal>
