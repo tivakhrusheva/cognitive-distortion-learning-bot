@@ -68,6 +68,13 @@ theme: /Journal
             log($session.emotion_intensivity_after)
         go!: /Journal/DiarySession/End
     
+    state: CallBackProcessorConclusion
+        event: telegramCallbackQuery || fromState = "/Journal/DiarySession/End/Conclusion", onlyThisState = true
+        if: $request.query == "to_journal_writing
+            go!: /Journal/DiarySession/Beginning
+        elseif: $request.query == "to_menu
+            go!: /Start
+    
     state: Start
         q!: $regex</journal>
         q!: $regex</diary>
@@ -120,7 +127,6 @@ theme: /Journal
             a: {{diary_contents.diary_no_situation}}
             script:
                 sendInlineButtons($context, ["Вернуться в меню"])
-            # go: /Journal/DiarySession/Emotion
         
         state: Emotion
             q:* || fromState = "/Journal/DiarySession/Thought"
@@ -214,5 +220,6 @@ theme: /Journal
                     
             state: Conclusion
                 a: {{diary_contents.diary_session_end}}
-                timeout:: /Start || interval = "5 seconds"
-            
+                inlineButtons:
+                    { text: "Добавить еще одну запись", callback_data: "to_journal_writing" }
+                    { text: "Вернуться в меню", callback_data: "to_menu"}
