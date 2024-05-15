@@ -5,6 +5,7 @@ theme: /Journal
     
     state: CallBackProcessor
         event: telegramCallbackQuery || fromState = "/Journal/Start", onlyThisState = false
+        
         if: $request.query == "Да"
             script:
                 $client.diaryExplanationDone = 1;
@@ -17,6 +18,17 @@ theme: /Journal
                     $client.diaryExplanationDone = 0;
                 }
             go!: /Start/CommandDescription
+        
+        elseif: $request.query == "to_goal"
+            go!: /Start/DiaryGoal
+            
+        elseif: $request.query == "to_instructions"
+            go!: /Start/DiaryInstructions
+            
+        elseif: $request.query == "to_agreement"
+            go!: /Start/Agreement
+            
+            
             
     state: CallBackProcessorEmotion
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Emotion", onlyThisState = true
@@ -57,15 +69,21 @@ theme: /Journal
     
         state: Explanation
             a: {{diary_contents.diary_automatic_thoughts}}
-            timeout: /Journal/Start/DiaryGoal || interval = "5 seconds"
+            inlineButtons:
+                { text: "Далее", callback_data: "to_goal" }
+            #timeout: /Journal/Start/DiaryGoal || interval = "5 seconds"
         
         state: DiaryGoal
             a: {{diary_contents.diary_goal}}
-            timeout: /Journal/Start/DiaryInstructions || interval = "5 seconds"
+            inlineButtons:
+                { text: "Далее", callback_data: "to_instructions" }
+            #timeout: /Journal/Start/DiaryInstructions || interval = "5 seconds"
         
         state: DiaryInstructions
             a: {{diary_contents.diary_instructions}}
-            timeout: /Journal/Start/Agreement || interval = "5 seconds"
+            inlineButtons:
+                { text: "Далее", callback_data: "to_agreement" }
+            #timeout: /Journal/Start/Agreement || interval = "5 seconds"
         
         state: Agreement
             a: {{diary_contents.diary_readiness}}
