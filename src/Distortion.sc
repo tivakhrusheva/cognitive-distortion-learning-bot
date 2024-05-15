@@ -71,8 +71,10 @@ theme: /Distortion
         elseif: $request.query == "Теория искажений"
             a: {{distortion_contents.distortion_begin}}
             inlineButtons:
-                { text: "Далее", callback_data: "Next_theory" }
+                { text: "Далее", callback_data: "theory2" }
             # go!: /Distortion/DistortionBegin
+        elseif: $request.query == "theory2"
+            go!: /Distortion/DistortionBegin/DistortionBegin2
         elseif: ($request.query == "Next_regulation")  && ($context.session.lastState == "/Distortion/RegulationInfo")
             go!: /Distortion/RegulationInfo/RegulationTechniques
     
