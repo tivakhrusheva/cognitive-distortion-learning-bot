@@ -39,9 +39,9 @@ theme: /Journal
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Thought", onlyThisState = true
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Autothought", onlyThisState = true
         if: $request.query == "Нет" && $context.session.lastState == "/Journal/DiarySession/Thought"
-            go!: /Journal/DiarySession/NoThought
-        if: $request.query == "Нет" && $context.session.lastState == "/Journal/DiarySession/Autothought"
             go!: /Journal/DiarySession/NoSituation
+        if: $request.query == "Нет" && $context.session.lastState == "/Journal/DiarySession/Autothought"
+            go!: /Journal/DiarySession/NoThought
     
     state: CallBackProcessorEmotion
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Emotion", onlyThisState = true
@@ -165,7 +165,7 @@ theme: /Journal
             intent: /нет || fromState = "/Journal/DiarySession/Autothought"
             a: {{diary_contents.diary_no_thoughts_head_empty}}
             script:
-                sendInlineButtons($context, ["Да", "Нет"])
+                sendInlineButtons($context, ["Нет"])
         
         state: DistortionFormulation
             q:* || fromState = "/Journal/DiarySession/Autothought"
