@@ -53,22 +53,16 @@ theme: /Distortion
             
         elseif: $request.query == "Виды искажений" && $context.session.lastState == "/Distortion/DistortionBegin/DistortionFightInfo"
             a: {{distortion_contents.distortion_intro_to_specific}}
-            
             timeout: /Distortion/DistortionBegin/DistortionCard || interval = "1 seconds"
-        elseif: $request.query == "Distortion_next"
             
+        elseif: $request.query == "Distortion_next" ||  $request.query == "Дальше"
             go!: /Distortion/DistortionBegin/DistortionCard
-        elseif: $request.query == "Дальше"
-            
-            go!: /Distortion/DistortionBegin/DistortionCard
-        elseif: $request.query == "Distortion_back_to_menu" 
-            go!: /Start
             
         elseif: ($request.query == "Вернуться в меню" && $context.session.lastState == "/Distortion/DistortionBegin/DistortionFightInfo")
             a: Возвращайтесь, когда будете готовы!
             go!: /Start
             
-        elseif: ($request.query == "Вернуться в меню" && $context.session.lastState != "/Distortion/DistortionBegin/DistortionFightInfo")
+        elseif: ($request.query == "Вернуться в меню" && $context.session.lastState != "/Distortion/DistortionBegin/DistortionFightInfo") || ($request.query == "В меню") || ($request.query == "Distortion_back_to_menu")
             go!: /Start
             
         elseif: ($request.query == "Next_theory") && ($context.session.lastState == "/Distortion/DistortionBegin" || $context.session.lastState == "/Exercise/Answer")
@@ -83,16 +77,14 @@ theme: /Distortion
         elseif: ($request.query == "Next_theory") && ($context.session.lastState == "/Distortion/DistortionBegin/DistortionBegin3")
             go!: /Distortion/DistortionBegin/DistortionFightInfo
             
-        elseif: $request.query == "В меню"
-            go!: /Start/CommandDescription
-            
         elseif: $request.query == "Теория искажений"
             a: {{distortion_contents.distortion_begin}}
             inlineButtons:
                 { text: "Далее", callback_data: "theory2" }
-            # go!: /Distortion/DistortionBegin
+                
         elseif: $request.query == "theory2"
             go!: /Distortion/DistortionBegin/DistortionBegin2
+            
         elseif: ($request.query == "Next_regulation")  && ($context.session.lastState == "/Distortion/RegulationInfo")
             go!: /Distortion/RegulationInfo/RegulationTechniques
     
@@ -103,7 +95,7 @@ theme: /Distortion
         else:
             a: {{distortion_contents.distortion_begin}}
             inlineButtons:
-                { text: "Далее", callback_data: "Next_theory" }
+                { text: "Далее", callback_data: "theory2" }
         
         state: DistortionBegin2
             a: {{distortion_contents.distortion_begin2}}
