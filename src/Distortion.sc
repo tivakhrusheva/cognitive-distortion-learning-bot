@@ -71,7 +71,7 @@ theme: /Distortion
         elseif: ($request.query == "Вернуться в меню" && $context.session.lastState != "/Distortion/DistortionBegin/DistortionFightInfo")
             go!: /Start
             
-        elseif: ($request.query == "Next_theory") && ($context.session.lastState == "/Distortion/DistortionBegin")
+        elseif: ($request.query == "Next_theory") && ($context.session.lastState == "/Distortion/DistortionBegin" || $context.session.lastState == "/Exercise/Answer")
             go!: /Distortion/DistortionBegin/DistortionBegin2
             
         elseif: $request.query == "regulation"
