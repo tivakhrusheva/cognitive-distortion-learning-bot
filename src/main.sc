@@ -80,7 +80,7 @@ theme: /
                 $client.QuizQuestinNumber = 1;
                 $client.DiaryHistory = [];
             a: Здравствуйте, {{$client.name}}!😊\n\n{{contents.start}} 
-            timeout: CommandDescription || interval = "3 seconds"
+            timeout: CommandDescription || interval = "4 seconds"
         else:
             go!: CommandDescription
         
