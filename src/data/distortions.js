@@ -23,5 +23,5 @@ var urls_solutions = {
     "Навешивание ярлыков": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/advice/lab-advice.jpg",
     "Долженствование": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/advice/should-advice.jpg",
     "Чтение мыслей": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/advice/mind-advice.jpg",
-    "Иллюзия контроля": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/advice/control-cat.jpg"
+    "Иллюзия контроля": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/advice/control-recommendation.jpg"
 }

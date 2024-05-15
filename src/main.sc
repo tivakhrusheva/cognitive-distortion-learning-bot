@@ -40,17 +40,17 @@ init:
     #     $reactions.answer(randomAnswer);
     # });
     
-    bind("preMatch", function($context) {
-        log($context)
-    if ($context.request.channelType === "telegram" && $context.request.data.chatId != MY_ID) {
-        $context.temp.targetState = "/Unauthorized"
-    }
-    },
-    "/"
-    );
-    bind("postProcess", function($context) {
-        $context.session.lastState = $context.currentState;
-    });
+    # bind("preMatch", function($context) {
+    #     log($context)
+    # if ($context.request.channelType === "telegram" && $context.request.data.chatId != MY_ID) {
+    #     $context.temp.targetState = "/Unauthorized"
+    # }
+    # },
+    # "/"
+    # );
+    # bind("postProcess", function($context) {
+    #     $context.session.lastState = $context.currentState;
+    # });
 
 
  
