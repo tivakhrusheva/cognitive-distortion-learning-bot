@@ -67,7 +67,8 @@ theme: /Distortion
     state: DistortionBegin
         q!: $regex</learn>
         if: $client.cardNumber
-            go!: DistortionCard
+            # go!: DistortionCard
+            go!: /Distortion/DistortionBegin/DistortionFightInfo
         else:
             a: {{distortion_contents.distortion_begin}}
             inlineButtons:
@@ -89,6 +90,7 @@ theme: /Distortion
             a: {{distortion_contents.distortion_fight}}
             inlineButtons:
                 {text: "Виды искажений", callback_data: "Виды искажений"}
+                {text: "Техники эмоциональной саморегуляции", callback_data: "Техники эмоциональной саморегуляции"}
                 {text: "Вернуться в меню", callback_data: "Вернуться в меню"}
                 
             
