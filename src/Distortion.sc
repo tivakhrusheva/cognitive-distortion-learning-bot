@@ -46,7 +46,7 @@ theme: /Distortion
             go!: /Exercise/Start
         elseif: $request.query == "Виды искажений"
             a: {{distortion_contents.distortion_intro_to_specific}}
-            timeout: /Distortion/DistortionBegin/DistortionCard || interval = "2 seconds"
+            timeout: /Distortion/DistortionBegin/DistortionCard || interval = "1 seconds"
         elseif: $request.query == "Distortion_next"
             go!: /Distortion/DistortionBegin/DistortionCard
         elseif: $request.query == "Дальше"
@@ -64,7 +64,8 @@ theme: /Distortion
             go!: /Distortion/DistortionBegin/DistortionBegin3
         elseif: ($request.query == "Next_theory") && ($context.session.lastState == "/Distortion/DistortionBegin/DistortionBegin3")
             go!: /Distortion/DistortionBegin/DistortionFightInfo
-        
+        elseif: ($request.query == "В меню")
+            go!: /Start/CommandDescription
     
     state: DistortionBegin
         q!: $regex</learn>
