@@ -55,7 +55,7 @@ theme: /Distortion
             go!: /Distortion/DistortionBegin/DistortionCard
         elseif: $request.query == "Distortion_back_to_menu" 
             go!: /Start
-        elseif: $request.query == "Distortion_not_ready" || $request.query == "Вернуться в меню" 
+        elseif: $request.query == "Distortion_not_ready" || ($request.query == "Вернуться в меню" && $context.session.lastState == "/Distortion/DistortionBegin/DistortionFightInfo")
             a: Возвращайтесь, когда будете готовы!
             go!: /Start
         elseif: ($request.query == "Next_theory") && ($context.session.lastState == "/Distortion/DistortionBegin")
@@ -99,8 +99,6 @@ theme: /Distortion
                 { text: "Далее", callback_data: "Next_theory" }
         
         state: DistortionFightInfo
-            # TODO: DELETE SHORTCUT!
-            q!: Катя 
             a: {{distortion_contents.distortion_fight}}
             inlineButtons:
                 {text: "Виды искажений", callback_data: "Виды искажений"}
