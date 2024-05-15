@@ -69,7 +69,10 @@ theme: /Distortion
         elseif: $request.query == "В меню"
             go!: /Start/CommandDescription
         elseif: $request.query == "Теория искажений"
-            go!: /Distortion/DistortionBegin
+            a: {{distortion_contents.distortion_begin}}
+            inlineButtons:
+                { text: "Далее", callback_data: "Next_theory" }
+            # go!: /Distortion/DistortionBegin
         elseif: ($request.query == "Next_regulation")  && ($context.session.lastState == "/Distortion/RegulationInfo")
             go!: /Distortion/RegulationInfo/RegulationTechniques
     
