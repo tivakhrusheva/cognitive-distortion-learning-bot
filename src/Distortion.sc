@@ -82,13 +82,13 @@ theme: /Distortion
             inlineButtons:
                 { text: "Далее", callback_data: "theory2" }
                 
-        elseif: $request.query == "theory2"
+        elseif: $request.query == "distortion_origin" ||  $request.query == "theory2" 
             go!: /Distortion/DistortionBegin/DistortionBegin2
             
-        elseif: $request.query == "theory3"
+        elseif: $request.query == "theory3" || $request.query == "why_fight"
             go!: /Distortion/DistortionBegin/DistortionBegin3
         
-        elseif: $request.query == "theory4"
+        elseif: $request.query == "theory4" || $request.query == "distortion_fight"
             go!: /Distortion/DistortionBegin/DistortionBegin4
         
         elseif: $request.query == "theory5"
@@ -187,9 +187,9 @@ theme: /Distortion
         inlineButtons:
             {text: "Виды искажений", callback_data: "Виды искажений"}
             {text: "Что такое когнитивные искажения", callback_data: "Теория искажений"}
-            {text: "Откуда берутся когнитивные искажения", callback_data: "Теория искажений"}
-            {text: "Зачем бороться с когнитивными искажениями", callback_data: "Теория искажений"}
+            {text: "Откуда берутся когнитивные искажения", callback_data: "distortion_origin"}
+            {text: "Зачем бороться с когнитивными искажениями", callback_data: "why_fight"}
             {text: "Как бороться с когнитивными искажениями", callback_data: "distortion_fight"}
-            {text: "Эмоциональная саморегуляции", callback_data: "regulation"}
+            {text: "Что такое эмоциональная саморегуляция", callback_data: "regulation"}
             {text: "Техники эмоциональной саморегуляции", callback_data: "regulation_techniques"}
             {text: "Вернуться в меню", callback_data: "Вернуться в меню"}
