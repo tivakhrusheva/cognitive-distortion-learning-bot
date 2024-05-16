@@ -158,7 +158,7 @@ theme: /Distortion
                 log($client.cardNumber)
                 log("$context.session.lastState")
                 log($context.session.lastState)
-                if (i >= 1 && $context.session.lastState != "/Distortion/DistortionBegin/DistortionCard") {
+                if ($client.cardNumber >= 1 && $context.session.lastState != "/Distortion/DistortionBegin/DistortionCard") {
                         $reactions.answer("Я верну вас к тому искажению, на котором вы остановились в прошлый раз")
                 }
                 $client.cardNumber = $client.cardNumber+=1 || 0;
