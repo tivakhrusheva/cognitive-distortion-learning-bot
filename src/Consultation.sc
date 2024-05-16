@@ -45,7 +45,7 @@ theme: /Consultation
         timeout: Question || interval = "2 seconds"
     
         state: Question
-            a: Пожалуйста, введите ваш запрос, содержащий негативные мысли, или выберите один из примеров ниже:
+            a: Пожалуйста, опишите ситуацию и ваши негативные мысли по ее поводу, или выберите один из примеров ниже:
             script:
                 log(EXAMPLE_QUESTIONS)
                 log(_.sample(EXAMPLE_QUESTIONS, 2))
