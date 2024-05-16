@@ -92,10 +92,19 @@ theme: /Distortion
             go!: /Distortion/DistortionBegin/DistortionBegin4
         
         elseif: $request.query == "theory5"
-            go!: /Distortion/DistortionBegin/DistortionFightInfo
+            go!: /Distortion/DistortionBegin/DistortionBegin5
+        
+        elseif: $request.query == "theory6"
+            go!: /Distortion/DistortionBegin/DistortionBegin6
+        
+        elseif: $request.query == "theory7"
+            go!: /Distortion/DistortionBegin/DistortionBegin7
+        
+        elseif: $request.query == "theory8"
+            go!: /Distortion/DistortionBegin/DistortionBegin8
     
-        elseif: ($request.query == "Next_regulation")  && ($context.session.lastState == "/Distortion/RegulationInfo")
-            go!: /Distortion/RegulationInfo/RegulationTechniques
+        # elseif: ($request.query == "Next_regulation")  && ($context.session.lastState == "/Distortion/RegulationInfo")
+        #     go!: /Distortion/RegulationInfo/RegulationTechniques
     
     state: DistortionBegin
         q!: $regex</learn>
@@ -121,8 +130,23 @@ theme: /Distortion
             inlineButtons:
                 { text: "Далее", callback_data: "theory5" }
         
-        state: DistortionFightInfo
+        state: DistortionBegin5
             a: {{distortion_contents.distortion_fight}}
+            inlineButtons:
+                { text: "Далее", callback_data: "theory6" }
+        
+        state: DistortionBegin6
+            a: {{distortion_contents.regulation_info}}
+            inlineButtons:
+                { text: "Далее", callback_data: "theory7" }
+        
+        state: DistortionBegin7
+            a: {{distortion_contents.regulation_technics}}
+            inlineButtons:
+                { text: "Далее", callback_data: "theory8" }
+        
+        state: DistortionBegin8
+            a: {{distortion_contents.distortions_types}}
             inlineButtons:
                 {text: "Виды искажений", callback_data: "Виды искажений"}
                 {text: "Вернуться в меню", callback_data: "Вернуться в меню"}
