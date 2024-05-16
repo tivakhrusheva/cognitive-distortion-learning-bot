@@ -94,10 +94,10 @@ theme: /Distortion
         elseif: $request.query == "theory5"  || $request.query == "distortion_fight"
             go!: /Distortion/DistortionBegin/DistortionBegin5
         
-        elseif: $request.query == "theory6"
+        elseif: $request.query == "theory6"  || $request.query == "regulation"
             go!: /Distortion/DistortionBegin/DistortionBegin6
         
-        elseif: $request.query == "theory7"
+        elseif: $request.query == "theory7"  || $request.query == "regulation_techniques"
             go!: /Distortion/DistortionBegin/DistortionBegin7
         
         elseif: $request.query == "theory8"
