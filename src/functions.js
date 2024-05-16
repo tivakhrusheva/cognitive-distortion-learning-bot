@@ -62,7 +62,10 @@ function sendInlineButtonsWIndeces(context, buttonsNames) {
 
 function sendMultipleCards(context, object1, object2, i) {
     context.response.replies = context.response.replies || [];
-    
+    if (i > 1) {
+        $reactions.answer("Я верну вас к тому искажению, на котором вы остановились в прошлый раз")
+    }
+    }
     if (i < Object.keys(object1).length) {
         context.response.replies.push({
           "type": "raw",

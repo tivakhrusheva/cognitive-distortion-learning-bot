@@ -102,9 +102,7 @@ theme: /Distortion
         
         elseif: $request.query == "theory8"
             go!: /Distortion/DistortionBegin/DistortionBegin8
-    
-        # elseif: ($request.query == "Next_regulation")  && ($context.session.lastState == "/Distortion/RegulationInfo")
-        #     go!: /Distortion/RegulationInfo/RegulationTechniques
+
     
     state: DistortionBegin
         q!: $regex</learn>
