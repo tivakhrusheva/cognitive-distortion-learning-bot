@@ -185,7 +185,9 @@ theme: /Distortion
     state: DistortionNavigation
         a: ⬇️Выберите раздел теории:
         inlineButtons:
-            {text: "Теория искажений", callback_data: "Теория искажений"}
+            {text: "Что такое когнитивные искажения", callback_data: "Теория искажений"}
+            {text: "Как бороться с когнитивными искажениями", callback_data: "distortion_fight"}
             {text: "Виды искажений", callback_data: "Виды искажений"}
-            {text: "Техники эмоциональной саморегуляции", callback_data: "regulation"}
+            {text: "Эмоциональная саморегуляции", callback_data: "regulation"}
+            {text: "Техники эмоциональной саморегуляции", callback_data: "regulation_techniques"}
             {text: "Вернуться в меню", callback_data: "Вернуться в меню"}
