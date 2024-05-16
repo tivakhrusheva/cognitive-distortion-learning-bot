@@ -12,6 +12,20 @@ var urls = {
     "Иллюзия контроля": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/control.jpg"
 }
 
+var urls_markers = {
+    "Черно-белое мышление": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/bw-search.jpg",
+    "Негативный фильтр": "",
+    "Сверхобобщение": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/overgeneralization-search.jpg",
+    "Обесценивание положительного": "",
+    "Эмоциональное рассуждение": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/emotion-search.jpg",
+    "Катастрофизация": "",
+    "Персонализация": "",
+    "Навешивание ярлыков": "",
+    "Долженствование": "",
+    "Чтение мыслей": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/mind-reading-search.jpg",
+    "Иллюзия контроля": ""
+}
+
 var urls_solutions = {
     "Черно-белое мышление": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/advice/bw-thinking-advice.jpg",
     "Негативный фильтр": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/advice/neg-advice.jpg",
