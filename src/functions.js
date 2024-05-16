@@ -60,7 +60,7 @@ function sendInlineButtonsWIndeces(context, buttonsNames) {
     )
 };
 
-function sendMultipleCards(context, object1, object2, object3, i) {
+function sendMultipleCards(context, object1, object2, i) {
     context.response.replies = context.response.replies || [];
     
     if (i < Object.keys(object1).length) {
@@ -75,10 +75,6 @@ function sendMultipleCards(context, object1, object2, object3, i) {
             {
             "type": "photo",
             "media": object2[Object.keys(object2)[i]],
-            },
-            {
-            "type": "photo",
-            "media": object3[Object.keys(object3)[i]],
             }
         ]},
           "method": "sendMediaGroup"

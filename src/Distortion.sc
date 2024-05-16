@@ -139,10 +139,11 @@ theme: /Distortion
                 log($client.cardNumber)
                 if ($context.request.channelType != "telegram") {
                     sendCard($context, urls, $client.cardNumber, true);
-                    sendCard($context, urls_solutions, $client.cardNumber, false);
+                    sendCard($context, urls_markers, $client.cardNumber, false);
                     }
                 else {
-                    sendMultipleCards($context, urls, urls_solutions, urls_markers, $client.cardNumber);
+                    //sendMultipleCards($context, urls, urls_solutions, urls_markers, $client.cardNumber);
+                    sendMultipleCards($context, urls, urls_markers, $client.cardNumber);
                     
                 };
     
