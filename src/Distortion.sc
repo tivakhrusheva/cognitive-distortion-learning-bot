@@ -142,7 +142,7 @@ theme: /Distortion
                     sendCard($context, urls_solutions, $client.cardNumber, false);
                     }
                 else {
-                    sendMultipleCards($context, urls, urls_solutions, $client.cardNumber);
+                    sendMultipleCards($context, urls, urls_solutions, urls_markers, $client.cardNumber);
                     
                 };
     
