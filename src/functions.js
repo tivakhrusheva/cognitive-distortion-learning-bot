@@ -62,7 +62,6 @@ function sendInlineButtonsWIndeces(context, buttonsNames) {
 
 function sendMultipleCards(context, object1, object2, i) {
     context.response.replies = context.response.replies || [];
-    }
     if (i < Object.keys(object1).length) {
         context.response.replies.push({
           "type": "raw",
