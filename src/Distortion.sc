@@ -85,13 +85,13 @@ theme: /Distortion
         elseif: $request.query == "distortion_origin" ||  $request.query == "theory2" 
             go!: /Distortion/DistortionBegin/DistortionBegin2
             
-        elseif: $request.query == "theory3" || $request.query == "why_fight"
+        elseif: $request.query == "theory3"
             go!: /Distortion/DistortionBegin/DistortionBegin3
         
-        elseif: $request.query == "theory4" || $request.query == "distortion_fight"
+        elseif: $request.query == "theory4" || $request.query == "why_fight"
             go!: /Distortion/DistortionBegin/DistortionBegin4
         
-        elseif: $request.query == "theory5"
+        elseif: $request.query == "theory5"  || $request.query == "distortion_fight"
             go!: /Distortion/DistortionBegin/DistortionBegin5
         
         elseif: $request.query == "theory6"
