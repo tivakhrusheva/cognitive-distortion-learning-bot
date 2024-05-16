@@ -50,7 +50,6 @@ theme: /Exercise
             
     state: Question
         script: 
-            $client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
             # $client.QuizQuestinNumber = $client.QuizQuestinNumber= 1;
             if ($client.QuizQuestinNumber > 10) {
                 $client.QuizQuestinNumber = 11;
@@ -68,6 +67,7 @@ theme: /Exercise
         q: * || fromState = "/Exercise/Question", onlyThisState = true
         event: telegramCallbackQuery || fromState = "/Exercise/Question"
         script: 
+            $client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
             var corrAnswer = exercise_contents["correct" + $client.QuizQuestinNumber];
             log("corrAnswer")
             log(corrAnswer)
