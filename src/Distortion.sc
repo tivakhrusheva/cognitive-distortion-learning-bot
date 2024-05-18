@@ -173,6 +173,11 @@ theme: /Distortion
                     sendMultipleCards($context, urls, urls_markers, $client.cardNumber);
                     
                 };
+                if ($client.cardNumber >= Object.keys(urls).length) {
+                    $reactions.transition("/Distortion/DistortionBegin/DistortionDistinction");
+        
+        state: DistortionDistinction
+            a: {{distortion_contents.distortion_difference}}
     
     state: RegulationInfo
         a: {{distortion_contents.regulation_info}}
