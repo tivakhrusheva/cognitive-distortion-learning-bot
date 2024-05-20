@@ -67,6 +67,7 @@ theme: /Exercise
         script: 
             log("correct" + $client.QuizQuestinNumber)
             var corrAnswer = exercise_contents["correct" + $client.QuizQuestinNumber];
+            log("corrAnswer" + corrAnswer)
             if (corrAnswer instanceof Array) 
             {
                 log("corrAnswer" + corrAnswer)
