@@ -102,6 +102,9 @@ theme: /Distortion
         
         elseif: $request.query == "theory8"
             go!: /Distortion/DistortionBegin/DistortionBegin8
+        
+        elseif: $request.query == "end_theory"
+            go!: /Distortion/DistortionBegin/EndTheory
 
     
     state: DistortionBegin
@@ -154,30 +157,46 @@ theme: /Distortion
             q: Дальше || fromState = "/Distortion/DistortionBegin/DistortionCard", onlyThisState = true
             q: Виды искажений || fromState = "/Distortion/DistortionBegin/DistortionFightInfo"
             script:
-                log("$client.cardNumber")
-                log($client.cardNumber)
-                log("$context.session.lastState")
-                log($context.session.lastState)
                 if ($client.cardNumber >= 1 && $context.session.lastState != "/Distortion/DistortionBegin/DistortionCard") {
                         $reactions.answer("Я верну вас к тому искажению, на котором вы остановились в прошлый раз")
                 }
                 $client.cardNumber = $client.cardNumber+=1 || 0;
-                log("$client.cardNumber NOW")
-                log($client.cardNumber)
                 if ($context.request.channelType != "telegram") {
                     sendCard($context, urls, $client.cardNumber, true);
                     sendCard($context, urls_markers, $client.cardNumber, false);
                     }
                 else {
-                    //sendMultipleCards($context, urls, urls_solutions, urls_markers, $client.cardNumber);
                     sendMultipleCards($context, urls, urls_markers, $client.cardNumber);
                     
                 };
-                if ($client.cardNumber >= Object.keys(urls).length) {
-                    $reactions.transition("/Distortion/DistortionBegin/DistortionDistinction");
         
         state: DistortionDistinction
             a: {{distortion_contents.distortion_difference}}
+            inlineButtons:
+                { text: "Далее", callback_data: "end_theory" }
+            
+        state: EndTheory
+            script:
+                context.response.replies.push({
+                    "type": "text",
+                    "text": "Вы изучили всю теорию, которую я подготовил для вас! Самое время переходить к практике — для этого введите команду /practice.",
+                    "markup": "html"
+                });
+        
+                context.response.replies.push(
+                            {
+                              "type": "inlineButtons",
+                              "buttons": [
+                                {
+                                  "text": "Практика",
+                                  "callback_data": "/train"
+                                },
+                                {
+                                  "text": "Назад в меню",
+                                  "callback_data": "Distortion_back_to_menu"
+                                }
+                              ]
+                            });
     
     state: RegulationInfo
         a: {{distortion_contents.regulation_info}}

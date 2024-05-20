@@ -70,38 +70,42 @@ function sendMultipleCards(context, object1, object2, i) {
             {
             "type": "photo",
             "media": object1[Object.keys(object1)[i]],
-            "parse_mode": "html"},
+            "parse_mode": "html"
+            },
             {
             "type": "photo",
             "media": object2[Object.keys(object2)[i]],
             }
-        ]},
+        ]
+          },
           "method": "sendMediaGroup"
-        });
+        }
+        );
         $reactions.answer("<b>" + Object.keys(object1)[i] + "</b>");
         sendInlineButtons(context, ["Дальше", "В меню"]);
     }
     else {
-        context.response.replies.push({
-            "type": "text",
-            "text": "Вы изучили все искажения, которые мне известны! Самое время переходить к практике — для этого введите команду /practice.",
-            "markup": "html"
-        });
+            $reactions.transition("/Distortion/DistortionBegin/DistortionDistinction");
+        // context.response.replies.push({
+        //     "type": "text",
+        //     "text": "Вы изучили все искажения, которые мне известны! Самое время переходить к практике — для этого введите команду /practice.",
+        //     "markup": "html"
+        // });
 
-        context.response.replies.push(
-                    {
-                      "type": "inlineButtons",
-                      "buttons": [
-                        {
-                          "text": "Практика",
-                          "callback_data": "/train"
-                        },
-                        {
-                          "text": "Назад в меню",
-                          "callback_data": "Distortion_back_to_menu"
-                        }
-                      ]
-                    });
+        // context.response.replies.push(
+        //             {
+        //               "type": "inlineButtons",
+        //               "buttons": [
+        //                 {
+        //                   "text": "Практика",
+        //                   "callback_data": "/train"
+        //                 },
+        //                 {
+        //                   "text": "Назад в меню",
+        //                   "callback_data": "Distortion_back_to_menu"
+        //                 }
+        //               ]
+        //             });
     }
 };
 
