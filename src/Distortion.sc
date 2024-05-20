@@ -177,14 +177,14 @@ theme: /Distortion
             
         state: EndTheory
             script:
-                context.response.replies = context.response.replies || [];
-                context.response.replies.push({
+                $context.response.replies = $context.response.replies || [];
+                $context.response.replies.push({
                     "type": "text",
                     "text": "Вы изучили всю теорию, которую я подготовил для вас! Самое время переходить к практике — для этого введите команду /practice.",
                     "markup": "html"
                 });
         
-                context.response.replies.push(
+                $context.response.replies.push(
                             {
                               "type": "inlineButtons",
                               "buttons": [
