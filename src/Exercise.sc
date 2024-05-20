@@ -45,17 +45,15 @@ theme: /Exercise
         elseif: ($context.session.lastState == "/Exercise/Question") && ($request.query == "To_menu") 
             go!: /Start/CommandDescription
             
-        elseif: ($context.session.lastState == "/Exercise/Question") && ($request.query == "To_diary") 
+        elseif: ($context.session.lastState == "/Exercise/Question" || $context.session.lastState == "/Exercise/Answer") && ($request.query == "To_diary") 
             go!: /Diary/Start
+        
             
     state: Question
         script: 
             # $client.QuizQuestinNumber = $client.QuizQuestinNumber= 1;
             if ($client.QuizQuestinNumber > 10) {
                 $client.QuizQuestinNumber = 11;
-                $reactions.answer(exercise_contents.last_question_occured);
-                $reactions.inlineButtons({ text: "Дневник искажений", callback_data: "To_diary" });
-                $reactions.inlineButtons({ text: "Вернуться в меню", callback_data: "To_menu" });
             }
             else {
                 $reactions.answer(exercise_contents["quiz" + $client.QuizQuestinNumber]);
@@ -72,15 +70,18 @@ theme: /Exercise
             log(corrAnswer)
             var DistortionName = exercise_contents["distortion" + $client.QuizQuestinNumber];
             if ($request.query == corrAnswer) {
-                var explanation = _.sample(exercise_contents.quiz_correct, 1);
-                log("corr")
+                var corr_answer_remark = exercise_contents["quiz_correct" + $client.QuizQuestinNumber];
+                corr_answer_remark =_.sample(corr_answer_remar, 1);
+                var explanation = corr_answer_remark + "\n\n" + _.sample(exercise_contents.quiz_correct, 1);
                 log(exercise_contents["explanation_correct" + $client.QuizQuestinNumber]);
                 explanation += "\n\n" + exercise_contents["explanation_correct" + $client.QuizQuestinNumber];
                 log(explanation)
                 $client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
             }
             else {
-                var explanation = _.sample(exercise_contents.quiz_incorrect, 1);
+                var incorr_answer_remark = exercise_contents["quiz_incorrect" + $client.QuizQuestinNumber];
+                inicorr_answer_remark =_.sample(incorr_answer_remark, 1);
+                var explanation = inicorr_answer_remark + "\n\n" + _.sample(exercise_contents.quiz_incorrect, 1);
                 log(exercise_contents["explanation_correct" + $client.QuizQuestinNumber]);
                 explanation += "\n\n" + exercise_contents["explanation_correct" + $client.QuizQuestinNumber];
                 log(explanation)
@@ -91,5 +92,12 @@ theme: /Exercise
                 $reactions.inlineButtons({ text: "Следующий вопрос", callback_data: "Next_situation" });
                 $reactions.inlineButtons({ text: "Вернуться в меню", callback_data: "To_menu" });
             }
+            
+            else {
+                $reactions.answer(exercise_contents.last_question_occured);
+                $reactions.inlineButtons({ text: "Дневник искажений", callback_data: "To_diary" });
+                $reactions.inlineButtons({ text: "В меню", callback_data: "To_menu" });
+            }
+            
             
         # timeout: /Exercise/Question || interval = "5 seconds"
