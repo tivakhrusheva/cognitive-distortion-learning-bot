@@ -6,6 +6,7 @@ theme: /Consultation
         if: $request.query == "Да"
             script:
                 $client.agreeAI = 1;
+                log("soqua i added 1!!!")
             go!: /Consultation/UserInput
         elseif: $request.query == "Нет"
             go!: /Start
@@ -41,16 +42,11 @@ theme: /Consultation
                 {text: "Нет", callback_data: "Нет"}
         
     state: UserInput
-        q: Да ||fromState = "/Consultation/Start/Continue"
-        timeout: Question || interval = "2 seconds"
+        q: Да || fromState = "/Consultation/Start/Continue"
+        go!: Question 
     
         state: Question
             a: Пожалуйста, опишите ситуацию и ваши негативные мысли по ее поводу, или скопируйте ваш последний запрос из дневника автоматических мыслей и искажений:\n\n {{$session.thought}}
-            script:
-                
-            #     log(EXAMPLE_QUESTIONS)
-            #     log(_.sample(EXAMPLE_QUESTIONS, 2))
-            #     $reactions.inlineButtons(_.sample(EXAMPLE_QUESTIONS, 2));
             inlineButtons:
                 { text: "Вернуться в меню", callback_data: "Вернуться в меню" }
             
