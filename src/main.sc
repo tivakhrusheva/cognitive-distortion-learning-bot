@@ -67,6 +67,7 @@ theme: /
             delete $client.DiaryHistory;
             delete $client.diaryExplanationDone
         a: готово Танечка
+        go!: /Start
 
     state: Start
         q!: $regex</start>
