@@ -22,7 +22,7 @@ var urls_markers = {
     "Персонализация": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/personalization-search.jpg",
     "Навешивание ярлыков": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/labeleng-search.jpg",
     "Долженствование": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/should-search.jpg",
-    "Чтение мыслей": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/mind-reading-search.jpg",
+    "Чтение мыслей": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/mind-read-search.jpg",
     "Иллюзия контроля": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/control-search.jpg"
 }
 
