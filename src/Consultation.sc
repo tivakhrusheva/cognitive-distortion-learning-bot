@@ -58,7 +58,10 @@ theme: /Consultation
                     $reactions.inlineButtons({ text: "Использовать прошлый запрос", callback_data: "use_last_request" });
                 }
                 else {
-                    $reactions.answer("Пожалуйста, опишите ситуацию и ваши негативные мысли по ее поводу.\n\n⬇️Чтобы посмотреть примеры ситуаций, нажмите на кнопку 'Посмотреть примеры ситуаций'.")
+                    log($session.thought)
+                    log($session.emotion)
+                    log($session.authothought)
+                    $reactions.answer("Пожалуйста, опишите ситуацию и ваши негативные мысли по ее поводу.\n\n⬇️Чтобы посмотреть примеры ситуаций, нажмите на кнопку <b>'Посмотреть примеры ситуаций'</b>.")
                 }
             inlineButtons:
                 { text: "Посмотреть примеры ситуаций", callback_data: "give_examples" }
