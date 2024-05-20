@@ -66,10 +66,13 @@ theme: /Exercise
         event: telegramCallbackQuery || fromState = "/Exercise/Question"
         script: 
             var corrAnswer = exercise_contents["correct" + $client.QuizQuestinNumber];
-            log("corrAnswer")
-            log(corrAnswer)
+            log("corrAnswer" + corrAnswer)
+            if (corrAnswer instanceof Array) 
+            {
+                log(corrAnwser.indexOf($request.query)>= 0)
+            }
             var DistortionName = exercise_contents["distortion" + $client.QuizQuestinNumber];
-            if (($request.query == corrAnswer) || (corrAnswer instanceof Array && corrAnswer.indexOf($request.query)>= 0)) {
+            if (($request.query == corrAnswer) || (corrAnswer instanceof Array && corrAnwser.indexOf($request.query)>= 0)) {
                 var corr_answer_remark = exercise_contents["quiz_correct" +$client.QuizQuestinNumber];
                 log("corr_answer_remark " + corr_answer_remark)
                 if (corr_answer_remark instanceof Array) {
