@@ -54,7 +54,7 @@ theme: /Consultation
     
         state: Question
             script:
-                if ($session.thought && $session.emotion && $session.authothought)
+                if ($session.thought && $session.emotion && $session.authothought) {
                     $reactions.answer("Пожалуйста, опишите ситуацию и ваши негативные мысли по ее поводу, или намите на кнопку 'Использовать прошлый запрос', чтобы в качестве запроса был отправлен ваш последний запрос из дневника автоматических мыслей и искажений:\n\n<b>Мысль</b>: {{$session.thought}}.\n<b>Я чувствую</b> {{$session.emotion}}.\n<b>Я думаю, что</b> {{$session.autothought}}");
                     $reactions.inlineButtons({ text: "Использовать прошлый запрос", callback_data: "use_last_request" });
                 }
