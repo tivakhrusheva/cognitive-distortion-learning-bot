@@ -125,9 +125,17 @@ theme: /
                 corr_answer_remark =_.sample(corr_answer_remark, 1);   
                 var corr_answer_remark2 =_.sample(corr_answer_remark, 1);   
             }
+            else {
+                corr_answer_remark = String(corr_answer_remark)
+                var corr_answer_remark2 = "ITS NOT AN ARRAY"
+            }
             if (incorr_answer_remark instanceof Array) {
                 incorr_answer_remark =_.sample(incorr_answer_remark, 1);   
                 var incorr_answer_remark2 =_.sample(incorr_answer_remark, 1);   
+            }
+            else {
+                incorr_answer_remark = String(incorr_answer_remark)
+                var incorr_answer_remark2 = "ITS NOT AN ARRAY"
             }
             $reactions.answer("corr_answer_remark" + corr_answer_remark);
             $reactions.answer("corr_answer_remark2" + corr_answer_remark2);
