@@ -59,6 +59,7 @@ theme: /Exercise
                 $reactions.inlineButtons({ text: "В меню", callback_data: "To_menu" });
             }
             else {
+                log(exercise_contents[ + $client.QuizQuestinNumber]);
                 $reactions.answer(exercise_contents["quiz" + $client.QuizQuestinNumber]);
                 log(exercise_contents["options" + $client.QuizQuestinNumber]);
                 sendInlineButtonsWIndeces($context, exercise_contents["options" + $client.QuizQuestinNumber]);
