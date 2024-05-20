@@ -48,7 +48,7 @@ theme: /Exercise
         elseif: ($context.session.lastState == "/Exercise/Question" || $context.session.lastState == "/Exercise/Answer") && ($request.query == "To_diary") 
             go!: /Diary/Start
     
-    state: NextButtonProcessor 
+    state: NextButtonProcessor2
         event: telegramCallbackQuery || fromState = "/Exercise/Question"
         if: ($context.session.lastState == "/Exercise/Question") && ($request.query == "Дневник искажений") 
             go!: /Journal/Start
