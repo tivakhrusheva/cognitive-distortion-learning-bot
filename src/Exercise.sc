@@ -67,7 +67,6 @@ theme: /Exercise
         q: * || fromState = "/Exercise/Question", onlyThisState = true
         event: telegramCallbackQuery || fromState = "/Exercise/Question"
         script: 
-            $client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
             var corrAnswer = exercise_contents["correct" + $client.QuizQuestinNumber];
             log("corrAnswer")
             log(corrAnswer)
@@ -78,12 +77,14 @@ theme: /Exercise
                 log(exercise_contents["explanation_correct" + $client.QuizQuestinNumber]);
                 explanation += "\n\n" + exercise_contents["explanation_correct" + $client.QuizQuestinNumber];
                 log(explanation)
+                $client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
             }
             else {
                 var explanation = _.sample(exercise_contents.quiz_incorrect, 1);
                 log(exercise_contents["explanation_correct" + $client.QuizQuestinNumber]);
                 explanation += "\n\n" + exercise_contents["explanation_correct" + $client.QuizQuestinNumber];
                 log(explanation)
+                $client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
             }
             $reactions.answer(explanation)
             if ($client.QuizQuestinNumber < 10) {
