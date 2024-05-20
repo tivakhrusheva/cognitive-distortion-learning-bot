@@ -69,7 +69,8 @@ theme: /Exercise
             if (corrAnswer instanceof Array) 
             {
                 log("corrAnswer" + corrAnswer)
-                log(corrAnwser.indexOf($request.query)>= 0)
+                log("$request.query" + $request.query)
+                log("index " + corrAnwser.indexOf($request.query))
             }
             var DistortionName = exercise_contents["distortion" + $client.QuizQuestinNumber];
             if (($request.query == corrAnswer) || (corrAnswer instanceof Array && corrAnwser.indexOf($request.query)>= 0)) {
