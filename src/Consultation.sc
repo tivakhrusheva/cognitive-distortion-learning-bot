@@ -45,11 +45,12 @@ theme: /Consultation
         timeout: Question || interval = "2 seconds"
     
         state: Question
-            a: Пожалуйста, опишите ситуацию и ваши негативные мысли по ее поводу, или выберите один из примеров ниже:
+            a: Пожалуйста, опишите ситуацию и ваши негативные мысли по ее поводу, или скопируйте ваш последний запрос из дневника автоматических мыслей и искажений:\n\n {{$session.thought}}
             script:
-                log(EXAMPLE_QUESTIONS)
-                log(_.sample(EXAMPLE_QUESTIONS, 2))
-                $reactions.inlineButtons(_.sample(EXAMPLE_QUESTIONS, 2));
+                
+            #     log(EXAMPLE_QUESTIONS)
+            #     log(_.sample(EXAMPLE_QUESTIONS, 2))
+            #     $reactions.inlineButtons(_.sample(EXAMPLE_QUESTIONS, 2));
             inlineButtons:
                 { text: "Вернуться в меню", callback_data: "Вернуться в меню" }
             
