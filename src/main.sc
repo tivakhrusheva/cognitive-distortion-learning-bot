@@ -129,7 +129,7 @@ theme: /
                 incorr_answer_remark =_.sample(incorr_answer_remark, 1);   
                 var incorr_answer_remark2 =_.sample(incorr_answer_remark, 1);   
             }
-            $reactions.answer(corr_answer_remark);
-            $reactions.answer(corr_answer_remark2);
-            $reactions.answer(incorr_answer_remark);
-            $reactions.answer(incorr_answer_remark2)
+            $reactions.answer("corr_answer_remark" + corr_answer_remark);
+            $reactions.answer("corr_answer_remark2" + corr_answer_remark2);
+            $reactions.answer("incorr_answer_remark" + incorr_answer_remark);
+            $reactions.answer("incorr_answer_remark2" + incorr_answer_remark2)
