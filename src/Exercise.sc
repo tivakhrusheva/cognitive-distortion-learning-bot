@@ -50,7 +50,7 @@ theme: /Exercise
     
     state: NextButtonProcessor2
         event: telegramCallbackQuery || fromState = "/Exercise/Question"
-        if: ($context.session.lastState == "/Exercise/Question") && ($request.query == "Дневник искажений") 
+        if: ($context.session.lastState == "/Exercise/Question") && ($request.query == "To_diary") 
             go!: /Journal/Start
         
         elseif: ($context.session.lastState == "/Exercise/Question") && ($request.query == "To_menu") 
