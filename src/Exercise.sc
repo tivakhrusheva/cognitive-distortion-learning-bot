@@ -66,9 +66,9 @@ theme: /Exercise
         event: telegramCallbackQuery || fromState = "/Exercise/Question"
         script: 
             var corrAnswer = exercise_contents["correct" + $client.QuizQuestinNumber];
-            log("corrAnswer" + corrAnswer)
             if (corrAnswer instanceof Array) 
             {
+                log("corrAnswer" + corrAnswer)
                 log(corrAnwser.indexOf($request.query)>= 0)
             }
             var DistortionName = exercise_contents["distortion" + $client.QuizQuestinNumber];
