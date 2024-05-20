@@ -86,6 +86,7 @@ theme: /Exercise
             }
             else {
                 var incorr_answer_remark = exercise_contents["quiz_incorrect" + $client.QuizQuestinNumber];
+                log("quiz_incorrect" + $client.QuizQuestinNumber)
                 incorr_answer_remark = _.sample(incorr_answer_remark, 1);
                 var explanation = incorr_answer_remark
                 log("incorr_answer_remark NOW")
