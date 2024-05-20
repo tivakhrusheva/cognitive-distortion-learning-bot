@@ -54,6 +54,9 @@ theme: /Exercise
             # $client.QuizQuestinNumber = $client.QuizQuestinNumber= 1;
             if ($client.QuizQuestinNumber > 10) {
                 $client.QuizQuestinNumber = 11;
+                $reactions.answer(exercise_contents.last_question_occured);
+                $reactions.inlineButtons({ text: "Дневник искажений", callback_data: "To_diary" });
+                $reactions.inlineButtons({ text: "В меню", callback_data: "To_menu" });
             }
             else {
                 $reactions.answer(exercise_contents["quiz" + $client.QuizQuestinNumber]);
@@ -107,16 +110,16 @@ theme: /Exercise
                 $client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
             }
             $reactions.answer(explanation)
-            if ($client.QuizQuestinNumber < 10) {
+            if ($client.QuizQuestinNumber < 11) {
                 $reactions.inlineButtons({ text: "Следующий вопрос", callback_data: "Next_situation" });
                 $reactions.inlineButtons({ text: "Вернуться в меню", callback_data: "To_menu" });
             }
             
-            else {
-                $reactions.answer(exercise_contents.last_question_occured);
-                $reactions.inlineButtons({ text: "Дневник искажений", callback_data: "To_diary" });
-                $reactions.inlineButtons({ text: "В меню", callback_data: "To_menu" });
-            }
+            # else {
+            #     $reactions.answer(exercise_contents.last_question_occured);
+            #     $reactions.inlineButtons({ text: "Дневник искажений", callback_data: "To_diary" });
+            #     $reactions.inlineButtons({ text: "В меню", callback_data: "To_menu" });
+            # }
             
             
         # timeout: /Exercise/Question || interval = "5 seconds"
