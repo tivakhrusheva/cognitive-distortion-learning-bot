@@ -102,42 +102,42 @@ theme: /
     state: Unauthorized
         a: У вас нет доступа к этому боту :) 
     
-    state: Array
-        q!: 1
-        q!: 2
-        q!: 3
-        q!: 4
-        q!: 5
-        q!: 6
-        q!: 7
-        q!: 8
-        q!: 9
-        q!: 10
-        script:
-            var QuizQuestinNumber = $request.query
-            var corr_answer_remark = exercise_contents["quiz_correct" + QuizQuestinNumber];
-            var incorr_answer_remark = exercise_contents["quiz_incorrect" + QuizQuestinNumber];
-            log("corr_answer_remark")
-            log(corr_answer_remark)
-            log("incorr_answer_remark")
-            log(incorr_answer_remark)
-            if (corr_answer_remark instanceof Array) {
-                corr_answer_remark =_.sample(corr_answer_remark, 1);   
-                var corr_answer_remark2 =_.sample(corr_answer_remark, 1);   
-            }
-            else {
-                corr_answer_remark = String(corr_answer_remark)
-                var corr_answer_remark2 = "ITS NOT AN ARRAY"
-            }
-            if (incorr_answer_remark instanceof Array) {
-                incorr_answer_remark =_.sample(incorr_answer_remark, 1);   
-                var incorr_answer_remark2 =_.sample(incorr_answer_remark, 1);   
-            }
-            else {
-                incorr_answer_remark = String(incorr_answer_remark)
-                var incorr_answer_remark2 = "ITS NOT AN ARRAY"
-            }
-            $reactions.answer("corr_answer_remark" + corr_answer_remark);
-            $reactions.answer("corr_answer_remark2" + corr_answer_remark2);
-            $reactions.answer("incorr_answer_remark" + incorr_answer_remark);
-            $reactions.answer("incorr_answer_remark2" + incorr_answer_remark2)
+    # state: Array
+    #     q!: 1
+    #     q!: 2
+    #     q!: 3
+    #     q!: 4
+    #     q!: 5
+    #     q!: 6
+    #     q!: 7
+    #     q!: 8
+    #     q!: 9
+    #     q!: 10
+    #     script:
+    #         var QuizQuestinNumber = $request.query
+    #         var corr_answer_remark = exercise_contents["quiz_correct" + QuizQuestinNumber];
+    #         var incorr_answer_remark = exercise_contents["quiz_incorrect" + QuizQuestinNumber];
+    #         log("corr_answer_remark")
+    #         log(corr_answer_remark)
+    #         log("incorr_answer_remark")
+    #         log(incorr_answer_remark)
+    #         if (corr_answer_remark instanceof Array) {
+    #             corr_answer_remark =_.sample(corr_answer_remark, 1);   
+    #             var corr_answer_remark2 =_.sample(corr_answer_remark, 1);   
+    #         }
+    #         else {
+    #             corr_answer_remark = String(corr_answer_remark)
+    #             var corr_answer_remark2 = "ITS NOT AN ARRAY"
+    #         }
+    #         if (incorr_answer_remark instanceof Array) {
+    #             incorr_answer_remark =_.sample(incorr_answer_remark, 1);   
+    #             var incorr_answer_remark2 =_.sample(incorr_answer_remark, 1);   
+    #         }
+    #         else {
+    #             incorr_answer_remark = String(incorr_answer_remark)
+    #             var incorr_answer_remark2 = "ITS NOT AN ARRAY"
+    #         }
+    #         $reactions.answer("corr_answer_remark" + corr_answer_remark);
+    #         $reactions.answer("corr_answer_remark2" + corr_answer_remark2);
+    #         $reactions.answer("incorr_answer_remark" + incorr_answer_remark);
+    #         $reactions.answer("incorr_answer_remark2" + incorr_answer_remark2)
