@@ -71,7 +71,9 @@ theme: /Exercise
             var DistortionName = exercise_contents["distortion" + $client.QuizQuestinNumber];
             if (($request.query == corrAnswer) || (corrAnswer instanceof Array && corrAnswer.includes($request.query))) {
                 var corr_answer_remark = exercise_contents["quiz_correct" + $client.QuizQuestinNumber];
-                corr_answer_remark =toPrettyString(_.sample(corr_answer_remark, 1));
+                corr_answer_remark =_.sample(corr_answer_remark, 1);
+                log("corr_answer_remark")
+                log(corr_answer_remark)
                 var explanation = corr_answer_remark 
                 log(exercise_contents["explanation_correct" + $client.QuizQuestinNumber]);
                 explanation += "\n\n" + exercise_contents["explanation_correct" + $client.QuizQuestinNumber];
@@ -84,7 +86,8 @@ theme: /Exercise
                 var explanation = incorr_answer_remark
                 log(exercise_contents["explanation_correct" + $client.QuizQuestinNumber]);
                 explanation += "\n\n" + exercise_contents["explanation_correct" + $client.QuizQuestinNumber];
-                log(explanation)
+                log("incorr_answer_remark")
+                log(incorr_answer_remark)
                 $client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
             }
             $reactions.answer(explanation)
