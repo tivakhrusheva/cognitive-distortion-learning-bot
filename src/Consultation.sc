@@ -83,9 +83,6 @@ theme: /Consultation
             inlineButtons:
                 {text: "Задать еще вопрос", callback_data: "Задать еще вопрос"}
                 {text: "Вернуться в меню", callback_data: "Вернуться в меню"}
-            # script:
-            #     $analytics.setSessionResult("Answer");
-            #     $analytics.setSessionData("Answer", $temp.result);
 
         state: Error
             random:
@@ -94,7 +91,6 @@ theme: /Consultation
                 a: Внутри меня что-то сломалось. Пожалуйста, задайте ваш вопрос еще раз.
             script:
                 $analytics.setSessionResult("Error");
-                $jsapi.stopSession();
                 
 
 
