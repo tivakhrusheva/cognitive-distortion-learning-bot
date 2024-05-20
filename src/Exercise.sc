@@ -69,7 +69,7 @@ theme: /Exercise
             log("corrAnswer")
             log(corrAnswer)
             var DistortionName = exercise_contents["distortion" + $client.QuizQuestinNumber];
-            if (($request.query == corrAnswer) || (corrAnswer instanceof Array && corrAnswer.includes($request.query))) {
+            if (($request.query == corrAnswer) || (corrAnswer instanceof Array && corrAnswer.indexOf($request.query)>= 0)) {
                 var corr_answer_remark = exercise_contents["quiz_correct" + $client.QuizQuestinNumber];
                 log("corr_answer_remark")
                 log(corr_answer_remark)
