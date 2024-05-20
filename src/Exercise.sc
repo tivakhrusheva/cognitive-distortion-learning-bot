@@ -74,6 +74,13 @@ theme: /Exercise
                 log("corr_answer_remark")
                 log(corr_answer_remark)
                 corr_answer_remark =_.sample(corr_answer_remark, 1);
+                log(_.sample(
+                        [
+                            "Готовлю ответ. Подождите, пожалуйста…",
+                            "Одну минуточку, подождите…"
+                        ]
+                    )
+                )
                 log("corr_answer_remark NOW")
                 log(corr_answer_remark)
                 var explanation = corr_answer_remark 
