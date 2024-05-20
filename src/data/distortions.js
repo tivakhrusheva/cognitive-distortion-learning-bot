@@ -1,6 +1,6 @@
 var urls = {
     "Черно-белое мышление": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/black-n-white-thinking.jpg",
-    "Негативный фильтр": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/filtering.jpg",
+    "Негативный фильтр": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/negative-filter.jpg",
     "Сверхобобщение": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/overgeneralization.jpg",
     "Обесценивание положительного": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/discounting_the_positive.jpg",
     "Эмоциональное рассуждение": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/emotional-argument.jpg",
