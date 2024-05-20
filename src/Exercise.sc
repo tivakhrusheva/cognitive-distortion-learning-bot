@@ -72,10 +72,10 @@ theme: /Exercise
             {
                 log("corrAnswer" + corrAnswer)
                 log("$request.query" + $request.query)
-                log("index " + corrAnwser.indexOf($request.query))
+                log("index " + corrAnswer.indexOf($request.query))
             }
             var DistortionName = exercise_contents["distortion" + $client.QuizQuestinNumber];
-            if (($request.query == corrAnswer) || (corrAnswer instanceof Array && corrAnwser.indexOf($request.query)>= 0)) {
+            if (($request.query == corrAnswer) || (corrAnswer instanceof Array && corrAnswer.indexOf($request.query)>= 0)) {
                 var corr_answer_remark = exercise_contents["quiz_correct" +$client.QuizQuestinNumber];
                 log("corr_answer_remark " + corr_answer_remark)
                 if (corr_answer_remark instanceof Array) {
