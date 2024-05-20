@@ -70,33 +70,34 @@ theme: /Exercise
             log(corrAnswer)
             var DistortionName = exercise_contents["distortion" + $client.QuizQuestinNumber];
             if (($request.query == corrAnswer) || (corrAnswer instanceof Array && corrAnswer.indexOf($request.query)>= 0)) {
-                var corr_answer_remark = exercise_contents["quiz_correct" + $client.QuizQuestinNumber];
-                log("corr_answer_remark")
-                log(corr_answer_remark)
+                var corr_answer_remark = exercise_contents["quiz_correct" +$client.QuizQuestinNumber];
+                log("corr_answer_remark " + corr_answer_remark)
                 if (corr_answer_remark instanceof Array) {
                     corr_answer_remark =_.sample(corr_answer_remark, 1);   
                 }
-                log("corr_answer_remark NOW")
-                log(corr_answer_remark)
-                var explanation = corr_answer_remark 
-                log(exercise_contents["explanation_correct" + $client.QuizQuestinNumber]);
-                explanation += "\n\n" + exercise_contents["explanation_correct" + $client.QuizQuestinNumber];
-                log(explanation)
+                else {
+                    corr_answer_remark = String(corr_answer_remark)
+                }
+                log("corr_answer_remark NOW " + corr_answer_remark)
+                var explanation = corr_answer_remark + "\n\n" + exercise_contents["explanation_correct" + $client.QuizQuestinNumber];
+                log("explanation " + explanation)
                 $client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
             }
             else {
                 var incorr_answer_remark = exercise_contents["quiz_incorrect" + $client.QuizQuestinNumber];
                 log("quiz_incorrect" + $client.QuizQuestinNumber)
-                log("incorr_answer_remark")
-                log(incorr_answer_remark)
-                incorr_answer_remark = _.sample(incorr_answer_remark, 1);
+                log("incorr_answer_remark" + incorr_answer_remark)
+                if (incorr_answer_remark instanceof Array) {
+                    incorr_answer_remark = _.sample(incorr_answer_remark, 1)
+                }
+                else {
+                    incorr_answer_remark = String(incorr_answer_remark)
+                }
                 var explanation = incorr_answer_remark
-                log("incorr_answer_remark NOW")
-                log(incorr_answer_remark)
+                log("incorr_answer_remark NOW" + incorr_answer_remark)
                 log(exercise_contents["explanation_correct" + $client.QuizQuestinNumber]);
-                explanation += "\n\n" + exercise_contents["explanation_correct" + $client.QuizQuestinNumber];
-                log("incorr_answer_remark")
-                log(incorr_answer_remark)
+                var explanation = incorr_answer_remark + "\n\n" + exercise_contents["explanation_correct" + $client.QuizQuestinNumber];
+                log("explanation " + explanation)
                 $client.QuizQuestinNumber = $client.QuizQuestinNumber+=1 || 1;
             }
             $reactions.answer(explanation)
