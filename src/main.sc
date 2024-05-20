@@ -122,11 +122,11 @@ theme: /
             log("incorr_answer_remark")
             log(incorr_answer_remark)
             if (corr_answer_remark instanceof Array) {
-                corr_answer_remark =_.sample(corr_answer_remark, 1)[0];   
+                corr_answer_remark =_.sample(corr_answer_remark, 1);   
                 var corr_answer_remark2 =_.sample(corr_answer_remark, 1);   
             }
             if (incorr_answer_remark instanceof Array) {
-                incorr_answer_remark =_.sample(incorr_answer_remark, 1)[0];   
+                incorr_answer_remark =_.sample(incorr_answer_remark, 1);   
                 var incorr_answer_remark2 =_.sample(incorr_answer_remark, 1);   
             }
             $reactions.answer(corr_answer_remark);
