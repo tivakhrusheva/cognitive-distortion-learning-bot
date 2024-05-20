@@ -9,7 +9,7 @@ theme: /Exercise
         q!: practice
         q!: practie
         q!: практика
-        if: $client.QuizQuestinNumber > 1
+        if: $client.QuizQuestinNumber > 1 && $client.QuizQuestinNumber < 11 
             a: {{exercise_contents['quiz_continue']}}
             timeout: /Exercise/Question || interval = "2 seconds"
         else: 
