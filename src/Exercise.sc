@@ -65,6 +65,7 @@ theme: /Exercise
         q: * || fromState = "/Exercise/Question", onlyThisState = true
         event: telegramCallbackQuery || fromState = "/Exercise/Question"
         script: 
+            log("correct" + $client.QuizQuestinNumber)
             var corrAnswer = exercise_contents["correct" + $client.QuizQuestinNumber];
             if (corrAnswer instanceof Array) 
             {
