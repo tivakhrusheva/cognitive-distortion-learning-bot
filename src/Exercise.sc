@@ -93,13 +93,6 @@ theme: /Exercise
                 var explanation = incorr_answer_remark
                 log("incorr_answer_remark NOW")
                 log(incorr_answer_remark)
-                log(_.sample(
-                        [
-                            "Готовлю ответ. Подождите, пожалуйста…",
-                            "Одну минуточку, подождите…"
-                        ]
-                    )
-                )
                 log(exercise_contents["explanation_correct" + $client.QuizQuestinNumber]);
                 explanation += "\n\n" + exercise_contents["explanation_correct" + $client.QuizQuestinNumber];
                 log("incorr_answer_remark")

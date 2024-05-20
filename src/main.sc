@@ -10,6 +10,8 @@ require: Distortion.sc
 require: Exercise.sc
 require: Consultation.sc
 require: Settings.sc
+require: ./data/practice_contents.yaml
+    var = exercise_contents
     
   
 init:
@@ -101,6 +103,33 @@ theme: /
         a: У вас нет доступа к этому боту :) 
     
     state: Array
-        q!: ТЕСТ
+        q!: 1
+        q!: 2
+        q!: 3
+        q!: 4
+        q!: 5
+        q!: 6
+        q!: 7
+        q!: 8
+        q!: 9
+        q!: 10
         script:
-            $reactions.answer(_.sample(["А. поступает неэтично","К. берет на свой счет чужое самочувствие","Нет никакой проблемы"], 1)[0])
+            var QuizQuestinNumber = $request.query
+            var corr_answer_remark = exercise_contents["quiz_correct" + QuizQuestinNumber];
+            var incorr_answer_remark = exercise_contents["quiz_incorrect" + QuizQuestinNumber];
+            log("corr_answer_remark")
+            log(corr_answer_remark)
+            log("incorr_answer_remark")
+            log(incorr_answer_remark)
+            if (corr_answer_remark instanceof Array) {
+                corr_answer_remark =_.sample(corr_answer_remark, 1)[0];   
+                corr_answer_remark2 =_.sample(corr_answer_remark, 1);   
+            }
+            if (incorr_answer_remark instanceof Array) {
+                incorr_answer_remark =_.sample(incorr_answer_remark, 1)[0];   
+                incorr_answer_remark2 =_.sample(incorr_answer_remark, 1);   
+            }
+            $reactions.answer(corr_answer_remark);
+            $reactions.answer(corr_answer_remark2);
+            $reactions.answer(incorr_answer_remark);
+            $reactions.answer(incorr_answer_remark2)
