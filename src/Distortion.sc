@@ -157,7 +157,7 @@ theme: /Distortion
             q: Дальше || fromState = "/Distortion/DistortionBegin/DistortionCard", onlyThisState = true
             q: Виды искажений || fromState = "/Distortion/DistortionBegin/DistortionFightInfo"
             script:
-                if ($client.cardNumber >= 1 && $context.session.lastState != "/Distortion/DistortionBegin/DistortionCard") {
+                if ($client.cardNumber >= 1 && $client.cardNumber < 10 && $context.session.lastState != "/Distortion/DistortionBegin/DistortionCard") {
                     $reactions.answer("Я верну вас к тому искажению, на котором вы остановились в прошлый раз")
                 }
                 $client.cardNumber = $client.cardNumber+=1 || 0;
