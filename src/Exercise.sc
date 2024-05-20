@@ -47,11 +47,17 @@ theme: /Exercise
             
         elseif: ($context.session.lastState == "/Exercise/Question" || $context.session.lastState == "/Exercise/Answer") && ($request.query == "To_diary") 
             go!: /Diary/Start
+    
+    state: NextButtonProcessor 
+        event: telegramCallbackQuery || fromState = "/Exercise/Question"
+        if: ($context.session.lastState == "/Exercise/Question") && ($request.query == "Дневник искажений") 
+            go!: /Journal/Start
         
+        elseif: ($context.session.lastState == "/Exercise/Question") && ($request.query == "To_menu") 
+            go!: /Start
             
     state: Question
         script: 
-            # $client.QuizQuestinNumber = $client.QuizQuestinNumber= 1;
             if ($client.QuizQuestinNumber > 10) {
                 $client.QuizQuestinNumber = 11;
                 $reactions.answer(exercise_contents.last_question_occured);
@@ -66,7 +72,6 @@ theme: /Exercise
             }
         
     state: Answer
-        q: * || fromState = "/Exercise/Question", onlyThisState = true
         event: telegramCallbackQuery || fromState = "/Exercise/Question"
         script: 
             log("correct" + $client.QuizQuestinNumber)
