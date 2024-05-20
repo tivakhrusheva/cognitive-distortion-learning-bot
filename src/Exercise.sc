@@ -73,13 +73,15 @@ theme: /Exercise
                 var corr_answer_remark = exercise_contents["quiz_correct" + $client.QuizQuestinNumber];
                 log("corr_answer_remark")
                 log(corr_answer_remark)
-                corr_answer_remark =_.sample(corr_answer_remark, 1);
+                if (corr_answer_remark instanceof Array) {
+                    corr_answer_remark =_.sample(corr_answer_remark, 1);   
+                }
                 log(_.sample(
                         [
                             "Готовлю ответ. Подождите, пожалуйста…",
                             "Одну минуточку, подождите…"
                         ]
-                    )
+                    , 1)
                 )
                 log("corr_answer_remark NOW")
                 log(corr_answer_remark)
