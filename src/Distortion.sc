@@ -158,7 +158,7 @@ theme: /Distortion
             q: Виды искажений || fromState = "/Distortion/DistortionBegin/DistortionFightInfo"
             script:
                 if ($client.cardNumber >= 1 && $context.session.lastState != "/Distortion/DistortionBegin/DistortionCard") {
-                        $reactions.answer("Я верну вас к тому искажению, на котором вы остановились в прошлый раз")
+                    $reactions.answer("Я верну вас к тому искажению, на котором вы остановились в прошлый раз")
                 }
                 $client.cardNumber = $client.cardNumber+=1 || 0;
                 if ($context.request.channelType != "telegram") {
