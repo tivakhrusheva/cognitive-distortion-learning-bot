@@ -72,7 +72,7 @@ theme: /Exercise
             {
                 log("corrAnswer" + corrAnswer)
                 log("$request.query" + $request.query)
-                log("index " + corrAnswer.indexOf($request.query))
+                log("index " + corrAnswer.indexOf(Number($request.query)))
             }
             var DistortionName = exercise_contents["distortion" + $client.QuizQuestinNumber];
             if (($request.query == corrAnswer) || (corrAnswer instanceof Array && corrAnswer.indexOf($request.query)>= 0)) {
