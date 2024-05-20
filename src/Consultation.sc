@@ -6,7 +6,6 @@ theme: /Consultation
         if: $request.query == "Да"
             script:
                 $client.agreeAI = 1;
-                log("soqua i added 1!!!")
             go!: /Consultation/UserInput
         elseif: $request.query == "Нет"
             go!: /Start
@@ -28,7 +27,7 @@ theme: /Consultation
             go!: /Consultation/Predict
         elseif: $request.query == "give_examples"
             a: <b>Примеры ситуации</b>:\n- У меня ничего не получается на работе, мне грустно, я думаю, что я никогда ничего не добьюсь\n- Мне кажется, что, когда я захожу в офис, на меня все косо смотрят и осуждают. Из-за этого я боюсь ходить в офис
-            go: /Consultation/UserInput  
+            timeout: /Consultation/UserInput/Question || interval = "5 seconds"
         else:
             go!: /Consultation/Predict
 
@@ -61,8 +60,6 @@ theme: /Consultation
                 else {
                     $reactions.answer("Пожалуйста, опишите ситуацию и ваши негативные мысли по ее поводу.\n\n⬇️Чтобы посмотреть примеры ситуаций, нажмите на кнопку 'Посмотреть примеры ситуаций'.")
                 }
-                    
-            #a: Пожалуйста, опишите ситуацию и ваши негативные мысли по ее поводу, или намите на кнопку "Использовать прошлый запрос", чтобы в качестве запроса был отправлен ваш последний запрос из дневника автоматических мыслей и искажений:\n\n<b>Мысль</b>: {{$session.thought}}.\n<b>Я чувствую</b> {{$session.emotion}}.\n<b>Я думаю, что</b> {{$session.autothought}}
             inlineButtons:
                 { text: "Посмотреть примеры ситуаций", callback_data: "give_examples" }
                 { text: "Вернуться в меню", callback_data: "Вернуться в меню" }
