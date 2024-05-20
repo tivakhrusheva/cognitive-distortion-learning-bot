@@ -74,15 +74,8 @@ theme: /Exercise
                 log("corr_answer_remark")
                 log(corr_answer_remark)
                 if (corr_answer_remark instanceof Array) {
-                    corr_answer_remark =_.sample(corr_answer_remark, 1);   
+                    corr_answer_remark =_.sample(corr_answer_remark, 1)[0];   
                 }
-                log(_.sample(
-                        [
-                            "Готовлю ответ. Подождите, пожалуйста…",
-                            "Одну минуточку, подождите…"
-                        ]
-                    , 1)
-                )
                 log("corr_answer_remark NOW")
                 log(corr_answer_remark)
                 var explanation = corr_answer_remark 
