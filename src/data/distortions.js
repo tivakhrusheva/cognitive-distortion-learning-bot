@@ -14,16 +14,16 @@ var urls = {
 
 var urls_markers = {
     "Черно-белое мышление": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/bw-search.jpg",
-    "Негативный фильтр": "",
+    "Негативный фильтр": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/neg-search.jpg",
     "Сверхобобщение": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/overgeneralization-search.jpg",
-    "Обесценивание положительного": "",
+    "Обесценивание положительного": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/discounting_the_positive-search.png",
     "Эмоциональное рассуждение": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/emotion-search.jpg",
-    "Катастрофизация": "",
-    "Персонализация": "",
-    "Навешивание ярлыков": "",
-    "Долженствование": "",
+    "Катастрофизация": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/catastrophizing-search.png",
+    "Персонализация": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/personalization-search.jpg",
+    "Навешивание ярлыков": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/labeleng-search.jpg",
+    "Долженствование": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/should-search.jpg",
     "Чтение мыслей": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/mind-reading-search.jpg",
-    "Иллюзия контроля": ""
+    "Иллюзия контроля": "https://storage.yandexcloud.net/test-bucket-for-uxers/cogdis-pictures/search/control-search.jpg"
 }
 
 var urls_solutions = {
