@@ -22,6 +22,10 @@ theme: /Consultation
         if: $request.query == "Вернуться в меню"
             a: Возвращайтесь, если захотите попробовать данный функционал!
             timeout: /Start || interval = "3 seconds"
+        elseif: $request.query == "use_last_request"
+            script:
+                $request.query = "Мысль: " + "\n" + $session.thought + ".\n" + "Я чувствую " + $session.emotion + ".\n" + "Я думаю, что" + $session.autothought
+            go!: /Consultation/Predict
         else:
             go!: /Consultation/Predict
 
@@ -46,8 +50,9 @@ theme: /Consultation
         go!: Question 
     
         state: Question
-            a: Пожалуйста, опишите ситуацию и ваши негативные мысли по ее поводу, или скопируйте ваш последний запрос из дневника автоматических мыслей и искажений:\n\n {{$session.thought}}
+            a: Пожалуйста, опишите ситуацию и ваши негативные мысли по ее поводу, или намите на кнопку "Использовать прошлый запрос", чтобы в качестве запроса был отправлен ваш последний запрос из дневника автоматических мыслей и искажений: \n\n "Мысль: {{$session.thought}}.\nЯ чувствую {{$session.emotion}}.\nЯ думаю, что {{$session.autothought}}.
             inlineButtons:
+                { text: "Использовать прошлый запрос", callback_data: "use_last_request" }
                 { text: "Вернуться в меню", callback_data: "Вернуться в меню" }
             
     state: Predict
