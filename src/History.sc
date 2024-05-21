@@ -51,7 +51,7 @@ theme: /History
                                     var time = new Date(d.Date).getTime();
                                     return (time <= today.getTime() && time >= sevenDaysBefore.getTime());
                                 });
-                console.log(resultWeek)
+                console.log("resultWeek" + resultWeek)
                 
         state: HistoryMonth
             script:
