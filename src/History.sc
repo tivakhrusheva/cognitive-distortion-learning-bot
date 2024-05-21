@@ -105,5 +105,5 @@ theme: /History
             if: $request.query == "month"
                 go!: /History/HistoryFull/HistoryMonth
             
-            if: $request.query == "month"
+            if: $request.query == "year"
                 go!: /History/HistoryFull/HistoryYear
