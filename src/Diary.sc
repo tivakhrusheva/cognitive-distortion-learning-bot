@@ -176,13 +176,13 @@ theme: /Journal
                 log($session.emotion_intensivity_before)
             a: {{diary_contents.diary_autothought}}
             script:
-                sendInlineButtons($context, ["Такой ситуации нет"])
+                sendInlineButtons($context, ["Таких мыслей нет"])
         
         state: NoThought
             intent: /нет || fromState = "/Journal/DiarySession/Autothought"
             a: {{diary_contents.diary_no_thoughts_head_empty}}
             script:
-                sendInlineButtons($context, ["Негативных мыслей нет"])
+                sendInlineButtons($context, ["Таких мыслей нет"])
         
         state: DistortionFormulation
             q:* || fromState = "/Journal/DiarySession/Autothought"
