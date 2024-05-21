@@ -1,4 +1,4 @@
-require: ./data/practice_contents.yaml
+require: ./data/practice_content.yaml
     var = exercise_contents
 
 theme: /Exercise

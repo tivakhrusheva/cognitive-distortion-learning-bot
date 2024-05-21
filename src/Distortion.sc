@@ -1,4 +1,4 @@
-require: ./data/distortion_contents.yaml
+require: ./data/distortion_content.yaml
     var = distortion_contents
 
 theme: /Distortion

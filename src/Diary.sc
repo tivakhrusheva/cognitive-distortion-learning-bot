@@ -1,4 +1,4 @@
-require: ./data/diary_contents.yaml
+require: ./data/diary_content.yaml
     var = diary_contents
 
 theme: /Journal
