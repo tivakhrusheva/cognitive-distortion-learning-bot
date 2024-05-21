@@ -126,7 +126,9 @@ function predict(question) {
     var result = $http.post("https://caila.io/api/mlpgate/account/1000062767/model/51022/predict?configId=499", {
         body: body,
         dataType: "json",
-        headers: headers
+        headers: headers,
+        timeout: 25000
+
     });
     
     if (result.isOk && result.data.replies[0]) {
