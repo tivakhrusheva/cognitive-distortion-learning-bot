@@ -147,7 +147,6 @@ theme: /Journal
                 { text: "Добавить запись", callback_data: "add_note" }
                 { text: "Посмотреть историю", callback_data: "show_history" }
                 { text: "Посмотреть статистику", callback_data: "show_statistics" }
-            # timeout: /Journal/DiarySession/Thought || interval = "2 seconds"
         
         state: Thought
             q:* || fromState = "/Journal/DiarySession/NoThought"

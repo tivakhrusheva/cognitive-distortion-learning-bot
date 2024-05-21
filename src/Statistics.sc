@@ -1,7 +1,7 @@
 theme: /Statistics
     
     state: StatisticsFull
-        q!: $regex</history>
+        q!: $regex</statistics>
         a: {{history_contents.choose_period}}
         inlineButtons:
             { text: "Час", callback_data: "hour" }
