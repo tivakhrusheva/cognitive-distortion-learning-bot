@@ -167,6 +167,7 @@ function prepareHistory(filtered_array) {
  
 function filterByPeriod(client, filter_mode) {
     var today = new Date();
+    today = today.setTime(today.getTime() + (3*60*60*1000));
     if (filter_mode == "hour") {
         log("hour")
         var periodStart = new Date(new Date().getTime() - (25 * 60 * 60 * 1000))
