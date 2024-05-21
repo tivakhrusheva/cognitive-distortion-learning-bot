@@ -197,7 +197,7 @@ function filterByPeriod(client, filter_mode) {
     log("Now it is " + periodEnd.toLocaleString());
     var result = client.DiaryHistory.filter(function(d) {
         var time = new Date(d.Date).getTime();
-        log("time" + time.toLocaleString());
+        log("time" + new Date(d.Date).toLocaleString());
         log("lastWeekStart.getTime()" + periodStart.toLocaleString());
         log("lastWeekEnd.getTime()" + periodEnd.toLocaleString());
         return (time >= periodStart.getTime() && time < periodEnd.getTime());
