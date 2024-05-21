@@ -42,9 +42,9 @@ theme: /Journal
     state: CallBackProcessorNo
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Thought", onlyThisState = true
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Autothought", onlyThisState = true
-        if: $request.query == "Нет" && $context.session.lastState == "/Journal/DiarySession/Thought"
+        if: $request.query == "Такой ситуации нет" && $context.session.lastState == "/Journal/DiarySession/Thought"
             go!: /Journal/DiarySession/NoSituation
-        if: $request.query == "Нет" && $context.session.lastState == "/Journal/DiarySession/Autothought"
+        if: $request.query == "Негативных мыслей нет" && $context.session.lastState == "/Journal/DiarySession/Autothought"
             go!: /Journal/DiarySession/NoThought
     
     state: CallBackProcessorEmotion
@@ -140,7 +140,7 @@ theme: /Journal
             q: Да || fromState = "/Journal/Start/Agreement"
             a: {{diary_contents.diary_situation}}
             script:
-                sendInlineButtons($context, ["Нет"])
+                sendInlineButtons($context, ["Такой ситуации нет"])
         
         state: NoSituation
             intent: /нет || fromState = "/Journal/DiarySession/Thought"
@@ -176,13 +176,13 @@ theme: /Journal
                 log($session.emotion_intensivity_before)
             a: {{diary_contents.diary_autothought}}
             script:
-                sendInlineButtons($context, ["Нет"])
+                sendInlineButtons($context, ["Такой ситуации нет"])
         
         state: NoThought
             intent: /нет || fromState = "/Journal/DiarySession/Autothought"
             a: {{diary_contents.diary_no_thoughts_head_empty}}
             script:
-                sendInlineButtons($context, ["Нет"])
+                sendInlineButtons($context, ["Негативных мыслей нет"])
         
         state: DistortionFormulation
             q:* || fromState = "/Journal/DiarySession/Autothought"
