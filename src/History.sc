@@ -26,7 +26,6 @@ theme: /History
                     return (hour === time);
                 });
                 log("resultHour" + toPrettyString(resultHour))
-
         
         state: HistoryDay
             script:
@@ -76,8 +75,19 @@ theme: /History
                 
         state: HistoryYear
             script:
-                var lastYearStart = new Date(today.getFullYear()-1, 0, 1);
-                var lastYearEnd = new Date(today.getFullYear(), 0, 1);
+                var lastYearEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
+                var lastYearStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-365);
+                log("365 Days Before was " + lastYearStart.toLocaleString());
+                log("Now it is " + lastYearEnd.toLocaleString());
+                var resultYear = $client.DiaryHistory.filter(function(d) {
+                    var time = new Date(d.Date).getTime();
+                    log("time" + time);
+                    log("lastYearStart.getTime()" + lastYearStart.getTime());
+                    log("lastYearEnd.getTime()" + lastYearEnd.getTime());
+                    log(time >= lastYearStart.getTime() && time <= lastYearEnd.getTime())
+                    return (time >= lastYearStart.getTime() && time <= lastYearEnd.getTime());
+                });
+                log("resultYear" + toPrettyString(resultYear))
 
         
         state: PrepareHistory
