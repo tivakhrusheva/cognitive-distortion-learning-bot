@@ -243,7 +243,7 @@ theme: /Journal
                 log($session.thought, $session.emotion, $session.emotion_intensivity_before, 
                     $session.autothought, $session.rational_resp, $session.emotion_intensivity_after)
                 showDiaryNote($session.thought, $session.emotion, $session.emotion_intensivity_before, 
-                    $session.autothought, $session.rational_resp, $session.emotion_intensivity_after)
+                    $session.autothought, $session.distortion, $session.rational_resp, $session.emotion_intensivity_after)
             timeout: EmotionChange || interval = "2 seconds"
                 
             state: EmotionChange

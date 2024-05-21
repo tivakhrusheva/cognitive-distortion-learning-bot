@@ -142,11 +142,12 @@ _.sample = _.wrap(_.sample, function(_sample, array, n) {
 });
 
 
-function showDiaryNote(situation, emotion, strenth_before, autothought, rat_response, strenth_after) {
+function showDiaryNote(situation, emotion, strenth_before, autothought, distortion, rat_response, strenth_after) {
     var Text = "<b>Ситуация</b>: " + situation +
      "\n<b>Эмоция</b>: " + emotion + 
      "\n<b>Сила эмоции</b>: " + strenth_before +
      "\n<b>Автомысль</b>: " + autothought +
+     "\n<b>Искажение</b>: " + distortion +
      "\n<b>Рациональный ответ</b>: " + rat_response +
      "\n<b>Сила эмоции после рационального ответа</b>: " + strenth_after;
     $reactions.answer("<b>Ваша запись</b>:\n\n" + Text)
@@ -160,6 +161,7 @@ function prepareHistory(filtered_array) {
        "\n<b>Эмоция</b>: " + filtered_array[i]["Emotion"]  + 
        "\n<b>Сила эмоции</b>: " + filtered_array[i]["Intensivity"] +
        "\n<b>Автомысль</b>: " + filtered_array[i]["AutoThought"] +
+       "\n<b>Искажение</b>: " + filtered_array[i]["Distortion"] +
        "\n<b>Рациональный ответ</b>: " + filtered_array[i]["Rational"] +
        "\n<b>Сила эмоции после рационального ответа</b>: " + filtered_array[i]["IntensivityRepeat"];
        History+="\n" + Text + "\n";
