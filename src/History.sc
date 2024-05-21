@@ -76,6 +76,7 @@ theme: /History
                 
         state: HistoryYear
             script:
+                var today = new Date();
                 var lastYearEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
                 var lastYearStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-365);
                 log("365 Days Before was " + lastYearStart.toLocaleString());
