@@ -56,7 +56,7 @@ theme: /Journal
     state: CallBackProcessorNo
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Thought", onlyThisState = true
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Autothought", onlyThisState = true
-        if: $request.query == "Такой ситуации нет" && $context.session.lastState == "/Journal/DiarySaession/Thought"
+        if: $request.query == "Такой ситуации нет" && $context.session.lastState == "/Journal/DiarySession/Thought"
             go!: /Journal/DiarySession/NoSituation
         if: $request.query == "Таких мыслей нет" && $context.session.lastState == "/Journal/DiarySession/Autothought"
             go!: /Journal/DiarySession/NoThought
