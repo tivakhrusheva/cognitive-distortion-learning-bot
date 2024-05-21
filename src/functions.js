@@ -176,7 +176,7 @@ function filterByPeriod(client, filter_mode) {
     }
     if (filter_mode == "day") {
         log("day")
-        var periodStart = today.getTime() - (24 * 60 * 60 * 1000));
+        var periodStart = today.getTime() - (24 * 60 * 60 * 1000);
         var periodEnd = today;
     }
     if (filter_mode == "week") {
