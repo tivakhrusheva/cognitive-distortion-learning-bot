@@ -213,7 +213,7 @@ theme: /Journal
                 log("$session.emotion_intensivity_after")
                 log($session.emotion_intensivity_after)
                 # $session.diaryDate = moment(now).utcOffset(180).format('YYYY-MM-DD HH:mm'));
-                $client.DiaryHistory.push({"Date": moment(now).utcOffset(180).format('YYYY-MM-DD HH:mm'));, "Thought": $session.thought, "Emotion": $session.emotion,
+                $client.DiaryHistory.push({"Date": moment(now).utcOffset(180).format('YYYY-MM-DD HH:mm')), "Thought": $session.thought, "Emotion": $session.emotion,
                     "Intensivity": $session.emotion_intensivity_before, "AutoThought": $session.autothought,
                     "Rational": $session.rational_resp, "IntensivityRepeat": $session.emotion_intensivity_after});
                 log($session.thought, $session.emotion, $session.emotion_intensivity_before, 
