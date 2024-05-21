@@ -48,7 +48,7 @@ theme: /History
                 # var lastWeekStart = now.subtract(7, 'days');
                 var resultWeek = $client.DiaryHistory.filter(function(d) {
                                     var time = new Date(d.Date).getTime();
-                                    return (time <= today.getTime() && time >= lastWeekStart.getTime());
+                                    return (time >= lastWeekStart.getTime() && time < lastWeekEnd.getTime());
                                 });
                 log("resultWeek" + resultWeek)
                 
