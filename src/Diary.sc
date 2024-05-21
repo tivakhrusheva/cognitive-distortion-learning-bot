@@ -83,6 +83,10 @@ theme: /Journal
             go!: /Start
         elseif: $request.query == "/reframe"
             go!: /Consultation/Start
+        elseif: $request.query == "to_history"
+            go!: /History/HistoryFull
+        elseif: $request.query == "to_statistics"
+            go!: /Consultation/Start
         
     state: CallBackProcessorwHistory
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Beginning", onlyThisState = true
@@ -241,5 +245,7 @@ theme: /Journal
                 a: {{diary_contents.diary_session_end}}
                 inlineButtons:
                     { text: "Добавить еще одну запись", callback_data: "to_journal_writing" }
+                    { text: "Посмотреть историю записей", callback_data: "to_history" }
+                    { text: "Посмотреть статистику по дневнику", callback_data: "to_statistics" }
                     { text: "Переформулировать негативные мысли с помощью AI", callback_data: "/reframe" }
                     { text: "Вернуться в меню", callback_data: "to_menu"}
