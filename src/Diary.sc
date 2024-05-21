@@ -38,11 +38,25 @@ theme: /Journal
         elseif: $request.query == "to_agreement"
             go!: /Journal/Start/Agreement
             
+        
+    state: CallBackProcessorNoThought
+        event: telegramCallbackQuery || fromState = "/Journal/DiarySession/NoThought", onlyThisState = true
+        if: $request.query == "change_sit" 
+            a: Перемещаю вас назад.. 
+            script:
+                delete $session.thought;
+                delete $session.emotion;
+                delete $session.emotion_intensivity_before;
+            timeout: /Journal/DiarySession/Thought || interval = "2 seconds"
             
+        if: $request.query == "stay_w_the_same_sit" 
+            a: Попробуем продолжить работу с этой ситуацией!
+            timeout: /Journal/DiarySession/Autothought || interval = "2 seconds"
+    
     state: CallBackProcessorNo
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Thought", onlyThisState = true
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Autothought", onlyThisState = true
-        if: $request.query == "Такой ситуации нет" && $context.session.lastState == "/Journal/DiarySession/Thought"
+        if: $request.query == "Такой ситуации нет" && $context.session.lastState == "/Journal/DiarySaession/Thought"
             go!: /Journal/DiarySession/NoSituation
         if: $request.query == "Таких мыслей нет" && $context.session.lastState == "/Journal/DiarySession/Autothought"
             go!: /Journal/DiarySession/NoThought
@@ -182,6 +196,9 @@ theme: /Journal
             intent: /нет || fromState = "/Journal/DiarySession/Autothought"
             a: {{diary_contents.diary_no_thoughts_head_empty}}
             timeout:  /Journal/DiarySession/Thought || interval = "3 seconds"
+            inlineButtons:
+                { text: "Да", callback_data: "change_sit" }
+                { text: "Нет", callback_data: "stay_w_the_same_sit" }
             # script:
             #     sendInlineButtons($context, ["Таких мыслей нет"])
         
