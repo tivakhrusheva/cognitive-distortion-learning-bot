@@ -10,6 +10,7 @@ require: Distortion.sc
 require: Exercise.sc
 require: Consultation.sc
 require: Settings.sc
+require: Feedback.sc
 require: ./data/practice_contents.yaml
     var = exercise_contents
     
