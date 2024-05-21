@@ -15,11 +15,11 @@ theme: /Settings
             go!: /Settings/DiaryStatisticsSetting
     
     state: ReminderFrequencyChoice
-        event: telegramCallbackQuery || fromState = "/Settings/DiaryReminderSetting/ReminderFrequency", onlyThisState= rue
-        if: $request.query == "diary_reminder_settings"
-            go!: /Settings/DiaryReminderSetting
-        elseif: $request.query == "diary_stats_settings"
-            go!: /Settings/DiaryStatisticsSetting
+        event: telegramCallbackQuery || fromState = "/Settings/DiaryReminderSetting", onlyThisState= false
+        if: $request.query ==  "diary_reminder_frequency"
+            go!: /Settings/DiaryReminderSetting/DiaryReminderFrequency
+        elseif: $request.query == "theory_reminder_frequency"
+            go!: /Settings/DiaryReminderSetting/TheoryReminderFrequency
     
     state: StatisticsFrequencyChoice
         event: telegramCallbackQuery || fromState = "/Settings/SettingsDiaryStatisticsSetting/StatisticsFrequency", onlyThisState = true
@@ -31,11 +31,21 @@ theme: /Settings
     state: DiaryReminderSetting
         a: Выберите настройку
         inlineButtons:
-            { text: "Частота напоминаний", callback_data: "reminder_frequency" }
+            { text: "Частота напоминаний о ведении дневника", callback_data: "diary_reminder_frequency" }
+            { text: "Частота напоминаний об изучении теории", callback_data: "theory_reminder_frequency" }
         
-        
-        state: ReminderFrequency
+        state: DiaryReminderFrequency
             a: Как часто вы хотели бы получать напоминания о заполнении дневника автоматических мыслей?
+            inlineButtons:
+                { text: "Раз в день", callback_data: "once_a_day" }
+                { text: "Два раза в неделю", callback_data: "twice_a_week" }
+                { text: "Раз в неделю", callback_data: "once_a_week" }
+                { text: "Раз в две недели", callback_data: "once_two_weeks" }
+                { text: "Раз в месяц", callback_data: "once_a_month" }
+                { text: "Свой вариант", callback_data: "another_option" }
+        
+        state: TheoryReminderFrequency
+            a: Как часто вы хотели бы получать напоминания об изучении теории?
             inlineButtons:
                 { text: "Раз в день", callback_data: "once_a_day" }
                 { text: "Два раза в неделю", callback_data: "twice_a_week" }
