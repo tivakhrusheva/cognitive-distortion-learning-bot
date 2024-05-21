@@ -74,6 +74,11 @@ theme: /Exercise
         
     state: Answer
         event: telegramCallbackQuery || fromState = "/Exercise/Question"
+        if: ($context.session.lastState == "/Exercise/Question") && ($request.query == "To_diary") 
+                go!: /Journal/Start
+            
+            elseif: ($context.session.lastState == "/Exercise/Question") && ($request.query == "To_menu") 
+                go!: /Start
         script: 
             log("correct" + $client.QuizQuestinNumber)
             var corrAnswer = exercise_contents["correct" + $client.QuizQuestinNumber];
