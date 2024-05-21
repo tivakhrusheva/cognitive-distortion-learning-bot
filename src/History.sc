@@ -41,11 +41,11 @@ theme: /History
         state: HistoryWeek
             q!: тест время
             script:
-                # var lastWeekStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-7);
+                var today = new Date();
                 var lastWeekEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate());
                 console.log('Seven Days Before was ' + sevenDaysBefore.format('MMM Do YYYY'));
                 # var now = moment()
-                var today = new Date();
+            
                 var lastWeekStart = now.subtract(7, 'days');
                 var resultWeek = $client.DiaryHistory.filter(function(d) {
                                     var time = new Date(d.Date).getTime();
