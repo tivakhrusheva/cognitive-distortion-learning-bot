@@ -59,8 +59,8 @@ theme: /History
         state: HistoryMonth
             script:
                 var today = new Date();
-                var lastMonthEnd = new Date(today.getFullYear(), today.getMonth(), 1);
-                var lastMonthStart = new Date(lastMonthEnd.getFullYear(), lastMonthEnd.getMonth()-1, 1);
+                var lastMonthEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
+                var lastMonthStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-30);
                 log("30 Days Before was " + lastMonthStart.toLocaleString());
                 log("Now it is " + lastMonthEnd.toLocaleString());
                 var resultMonth = $client.DiaryHistory.filter(function(d) {
