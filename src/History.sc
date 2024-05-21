@@ -20,8 +20,11 @@ theme: /History
                 var now = moment()
                 log(moment(now).utcOffset(180).format('YYYY-MM-DD HH:mm'))
                 var day = new Date(now).getDate()
-                var result = $client.DiaryHistory.filter(d => {var time = new Date(d.Date).getDate();
-                    return (day === time)});
+                var result = $client.DiaryHistory.filter(function(d) {
+                    var time = new Date(d.Date).getDate();
+                    return (day === time);
+                });
+
                 log(result)
 
         state: HistoryWeek
