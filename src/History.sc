@@ -21,11 +21,12 @@ theme: /History
                 var now = moment()
                 log(moment(now).utcOffset(180).format('YYYY-MM-DD HH:mm'))
                 var hour = new Date(now).getHours()
-                var result = $client.DiaryHistory.filter(function(d) {
+                var resultHour = $client.DiaryHistory.filter(function(d) {
                     var time = new Date(d.Date).getHours();
                     return (hour === time);
                 });
-                log(result)
+                log("resultHour" + toPrettyString(resultHour))
+
         
         state: HistoryDay
             script:
@@ -58,8 +59,8 @@ theme: /History
         state: HistoryMonth
             script:
                 var today = new Date();
-                var lastMonthEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
-                var lastMonthStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-30);
+                let lastMonthEnd = new Date(today.getFullYear(), today.getMonth(), 1);
+                let lastMonthStart = new Date(lastMonthEnd.getFullYear(), lastMonthEnd.getMonth()-1, 1);
                 log("30 Days Before was " + lastMonthStart.toLocaleString());
                 log("Now it is " + lastMonthEnd.toLocaleString());
                 var resultMonth = $client.DiaryHistory.filter(function(d) {
@@ -67,9 +68,9 @@ theme: /History
                     log("time" + time);
                     log("lastMonthStart.getTime()" + lastMonthStart.getTime());
                     log("lastMonthEnd.getTime()" + lastMonthEnd.getTime());
-                    return (time >= lastMonthStart.getTime() && time < lastMonthEnd.getTime());
+                    return (time >= lastMonthStart.getTime() && < lastMonthEnd.getTime());
                 });
-                log("lastMonthEnd" + toPrettyString(lastMonthEnd))
+                log("resultMonth" + toPrettyString(resultMonth))
                 
                 
         state: HistoryYear
