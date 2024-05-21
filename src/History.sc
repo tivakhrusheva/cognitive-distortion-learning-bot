@@ -42,8 +42,8 @@ theme: /History
             q!: тест время
             script:
                 var today = new Date();
-                var lastWeekEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-                var lastWeekStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-7);
+                var lastWeekEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
+                var lastWeekStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-6);
                 # log('Seven Days Before was ' + lastWeekStart.format('MMM Do YYYY'));
                 # var lastWeekStart = now.subtract(7, 'days');
                 log("Seven Days Before was " + lastWeekStart.toLocaleString());
