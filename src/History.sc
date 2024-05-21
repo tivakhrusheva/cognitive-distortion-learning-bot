@@ -36,7 +36,7 @@ theme: /History
                     var time = new Date(d.Date).getDate();
                     return (day === time);
                 });
-                log(result)
+                log("result" + toPrettyString(result))
 
         state: HistoryWeek
             q!: тест время
@@ -55,7 +55,7 @@ theme: /History
                                     log("lastWeekEnd.getTime()" + lastWeekEnd.getTime());
                                     return (time >= lastWeekStart.getTime() && time < lastWeekEnd.getTime());
                                 });
-                log("resultWeek" + resultWeek)
+                log("resultWeek" + toPrettyString(resultWeek))
                 
         state: HistoryMonth
             script:
