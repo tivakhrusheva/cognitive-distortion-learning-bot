@@ -168,22 +168,27 @@ function prepareHistory(filtered_array) {
 function filterByPeriod(client, filter_mode) {
     var today = new Date();
     if (filter_mode == "hour") {
+        log("hour")
         var periodStart = new Date(new Date().getTime() - (25 * 60 * 60 * 1000))
         var periodEnd = new Date(new Date().getTime())
     }
     if (filter_mode == "day") {
+        log("day")
         var periodStart = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
         var periodEnd = new Date(new Date().getTime());
     }
     if (filter_mode == "week") {
+        log("week")
         var periodEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
         var periodStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-6);
     }
     if (filter_mode == "month") {
+        log("month")
         var periodEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
         var periodStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-30);
     }
     if (filter_mode == "year") {
+        log("year")
         var periodEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
         var periodStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-364);
     }
