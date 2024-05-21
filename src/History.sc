@@ -20,7 +20,7 @@ theme: /History
                 var now = moment()
                 log(moment(now).utcOffset(180).format('YYYY-MM-DD HH:mm'))
                 var day = new Date(now).getDate()
-                var result = History.filter(d => {var time = new Date(d.Date).getDate();
+                var result = $client.DiaryHistory.filter(d => {var time = new Date(d.Date).getDate();
                     return (day === time)});
                 log(result)
 
