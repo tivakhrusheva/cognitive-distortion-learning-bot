@@ -50,6 +50,9 @@ theme: /History
                 log("Now it is " + lastWeekEnd.toLocaleString());
                 var resultWeek = $client.DiaryHistory.filter(function(d) {
                                     var time = new Date(d.Date).getTime();
+                                    log("time" + time);
+                                    log("lastWeekStart.getTime()" + lastWeekStart.getTime());
+                                    log("lastWeekEnd.getTime()" + lastWeekEnd.getTime());
                                     return (time >= lastWeekStart.getTime() && time < lastWeekEnd.getTime());
                                 });
                 log("resultWeek" + resultWeek)
