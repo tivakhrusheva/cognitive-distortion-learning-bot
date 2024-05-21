@@ -44,7 +44,7 @@ theme: /History
                 var today = new Date();
                 var lastWeekEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate());
                 var lastWeekStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-7);
-                log('Seven Days Before was ' + lastWeekStart.format('MMM Do YYYY'));
+                # log('Seven Days Before was ' + lastWeekStart.format('MMM Do YYYY'));
                 # var lastWeekStart = now.subtract(7, 'days');
                 var resultWeek = $client.DiaryHistory.filter(function(d) {
                                     var time = new Date(d.Date).getTime();
