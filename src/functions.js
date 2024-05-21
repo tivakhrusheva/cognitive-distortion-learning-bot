@@ -152,7 +152,7 @@ function showDiaryNote(situation, emotion, strenth_before, autothought, rat_resp
 
 
 function prepareHistory(filtered_array) {
-    var History = [];
+    var History = "";
     for (var i = 0; i < filtered_array.length; i++) {
       var Text = "<b>Ситуация</b>: " + situation +
        "\n<b>Эмоция</b>: " + emotion + 
@@ -160,7 +160,7 @@ function prepareHistory(filtered_array) {
        "\n<b>Автомысль</b>: " + autothought +
        "\n<b>Рациональный ответ</b>: " + rat_response +
        "\n<b>Сила эмоции после рационального ответа</b>: " + strenth_after;
-       History.push(Text)
+       History+=Text;
   }
   return History;
   }
