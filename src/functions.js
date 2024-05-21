@@ -177,12 +177,12 @@ function filterByPeriod(client, filter_mode) {
     if (filter_mode == "day") {
         log("day")
         var periodStart = today.getTime() - (24 * 60 * 60 * 1000);
-        var periodEnd = today;
+        var periodEnd = today.getTime();
     }
     if (filter_mode == "week") {
         log("week")
-        var periodEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
-        var periodStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-6);
+        var periodEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1).getTime();
+        var periodStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-6).getTime();
     }
     if (filter_mode == "month") {
         log("month")
