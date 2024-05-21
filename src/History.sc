@@ -43,7 +43,7 @@ theme: /History
             script:
                 var today = new Date();
                 var lastWeekEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-                console.log('Seven Days Before was ' + sevenDaysBefore.format('MMM Do YYYY'));
+                log('Seven Days Before was ' + sevenDaysBefore.format('MMM Do YYYY'));
                 # var now = moment()
             
                 var lastWeekStart = now.subtract(7, 'days');
@@ -51,7 +51,7 @@ theme: /History
                                     var time = new Date(d.Date).getTime();
                                     return (time <= today.getTime() && time >= sevenDaysBefore.getTime());
                                 });
-                console.log("resultWeek" + resultWeek)
+                log("resultWeek" + resultWeek)
                 
         state: HistoryMonth
             script:
