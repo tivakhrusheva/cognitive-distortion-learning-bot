@@ -43,13 +43,12 @@ theme: /History
             script:
                 var today = new Date();
                 var lastWeekEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-                log('Seven Days Before was ' + sevenDaysBefore.format('MMM Do YYYY'));
-                # var now = moment()
-            
-                var lastWeekStart = now.subtract(7, 'days');
+                var lastWeekStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-7);
+                log('Seven Days Before was ' + lastWeekStart.format('MMM Do YYYY'));
+                # var lastWeekStart = now.subtract(7, 'days');
                 var resultWeek = $client.DiaryHistory.filter(function(d) {
                                     var time = new Date(d.Date).getTime();
-                                    return (time <= today.getTime() && time >= sevenDaysBefore.getTime());
+                                    return (time <= today.getTime() && time >= lastWeekStart.getTime());
                                 });
                 log("resultWeek" + resultWeek)
                 
