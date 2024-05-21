@@ -44,22 +44,34 @@ theme: /History
                 var today = new Date();
                 var lastWeekEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
                 var lastWeekStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-6);
-                # log('Seven Days Before was ' + lastWeekStart.format('MMM Do YYYY'));
-                # var lastWeekStart = now.subtract(7, 'days');
                 log("Seven Days Before was " + lastWeekStart.toLocaleString());
                 log("Now it is " + lastWeekEnd.toLocaleString());
                 var resultWeek = $client.DiaryHistory.filter(function(d) {
-                                    var time = new Date(d.Date).getTime();
-                                    log("time" + time);
-                                    log("lastWeekStart.getTime()" + lastWeekStart.getTime());
-                                    log("lastWeekEnd.getTime()" + lastWeekEnd.getTime());
-                                    return (time >= lastWeekStart.getTime() && time < lastWeekEnd.getTime());
-                                });
+                    var time = new Date(d.Date).getTime();
+                    log("time" + time);
+                    log("lastWeekStart.getTime()" + lastWeekStart.getTime());
+                    log("lastWeekEnd.getTime()" + lastWeekEnd.getTime());
+                    return (time >= lastWeekStart.getTime() && time < lastWeekEnd.getTime());
+                });
                 log("resultWeek" + toPrettyString(resultWeek))
                 
         state: HistoryMonth
             script:
-        
+                var today = new Date();
+                var lastMonthEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
+                var lastMonthStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-30);
+                log("30 Days Before was " + lastMonthStart.toLocaleString());
+                log("Now it is " + lastMonthEnd.toLocaleString());
+                var resultMonth = $client.DiaryHistory.filter(function(d) {
+                    var time = new Date(d.Date).getTime();
+                    log("time" + time);
+                    log("lastMonthStart.getTime()" + lastMonthStart.getTime());
+                    log("lastMonthEnd.getTime()" + lastMonthEnd.getTime());
+                    return (time >= lastMonthStart.getTime() && time < lastMonthEnd.getTime());
+                });
+                log("lastMonthEnd" + toPrettyString(lastMonthEnd))
+                
+                
         state: HistoryYear
             script:
                 var lastYearStart = new Date(today.getFullYear()-1, 0, 1);
