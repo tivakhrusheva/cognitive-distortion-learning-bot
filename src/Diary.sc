@@ -181,8 +181,9 @@ theme: /Journal
         state: NoThought
             intent: /нет || fromState = "/Journal/DiarySession/Autothought"
             a: {{diary_contents.diary_no_thoughts_head_empty}}
-            script:
-                sendInlineButtons($context, ["Таких мыслей нет"])
+            timeout:  /Journal/DiarySession/Thought || interval = "3 seconds"
+            # script:
+            #     sendInlineButtons($context, ["Таких мыслей нет"])
         
         state: DistortionFormulation
             q:* || fromState = "/Journal/DiarySession/Autothought"
