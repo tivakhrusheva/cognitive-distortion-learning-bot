@@ -15,6 +15,7 @@ theme: /History
             { text: "День", callback_data: "day" }
             { text: "Неделя", callback_data: "week" }
             { text: "Месяц", callback_data: "month" }
+            { text: "Год", callback_data: "year" }
         
         state: HistoryHour
             script:
@@ -103,3 +104,6 @@ theme: /History
             
             if: $request.query == "month"
                 go!: /History/HistoryFull/HistoryMonth
+            
+            if: $request.query == "month"
+                go!: /History/HistoryFull/HistoryYear
