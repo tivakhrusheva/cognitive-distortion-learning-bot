@@ -18,7 +18,7 @@ theme: /Statistics
 
     
     state: PrepareHistory
-            event: telegramCallbackQuery || fromState = "/Statistics/Statistics", onlyThisState = true
+            event: telegramCallbackQuery || fromState = "/Statistics/StatisticsFull", onlyThisState = true
             if: $request.query == "hour"
                 go!: /Statistics/StatisticsFull/StatisticsByPeriod
             
