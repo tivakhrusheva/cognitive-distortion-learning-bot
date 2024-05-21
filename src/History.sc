@@ -27,7 +27,10 @@ theme: /History
                     return (hour === time);
                 });
                 log("resultHour" + toPrettyString(resultHour));
-                $reactions.answer(prepareHistory(resultHour))
+                $reactions.answer("✅История ваших запросов за час готова:");
+                $reactions.answer(prepareHistory(resultHour));
+                $reactions.inlineButtons({ text: "Ещё запрос", callback_data: "one_more_request" });
+                $reactions.inlineButtons({ text: "В меню", callback_data: "to_menu" });
         
         state: HistoryDay
             script:
@@ -38,8 +41,11 @@ theme: /History
                     var time = new Date(d.Date).getDate();
                     return (day === time);
                 });
-                log("result" + toPrettyString(resultDay))
-                $reactions.answer(prepareHistory(resultDay))
+                log("result" + toPrettyString(resultDay));
+                $reactions.answer("✅История ваших запросов за день готова:");
+                $reactions.answer(prepareHistory(resultDay));
+                $reactions.inlineButtons({ text: "Ещё запрос", callback_data: "one_more_request" });
+                $reactions.inlineButtons({ text: "В меню", callback_data: "to_menu" });
 
         state: HistoryWeek
             q!: тест время
@@ -57,7 +63,10 @@ theme: /History
                     return (time >= lastWeekStart.getTime() && time < lastWeekEnd.getTime());
                 });
                 log("resultWeek" + toPrettyString(resultWeek));
-                $reactions.answer(prepareHistory(resultWeek))
+                $reactions.answer("✅История ваших запросов за неделю готова:");
+                $reactions.answer(prepareHistory(resultWeek));
+                $reactions.inlineButtons({ text: "Ещё запрос", callback_data: "one_more_request" });
+                $reactions.inlineButtons({ text: "В меню", callback_data: "to_menu" });
                 
         state: HistoryMonth
             script:
@@ -75,7 +84,10 @@ theme: /History
                     return (time >= lastMonthStart.getTime() && time <= lastMonthEnd.getTime());
                 });
                 log("resultMonth" + toPrettyString(resultMonth));
-                $reactions.answer(prepareHistory(resultMonth))
+                $reactions.answer("✅История ваших запросов за месяц готова:")
+                $reactions.answer(prepareHistory(resultMonth));
+                $reactions.inlineButtons({ text: "Ещё запрос", callback_data: "one_more_request" });
+                $reactions.inlineButtons({ text: "В меню", callback_data: "to_menu" });
                 
                 
         state: HistoryYear
@@ -94,7 +106,10 @@ theme: /History
                     return (time >= lastYearStart.getTime() && time <= lastYearEnd.getTime());
                 });
                 log("resultYear" + toPrettyString(resultYear));
+                $reactions.answer("✅История ваших запросов за год готова:")
                 $reactions.answer(prepareHistory(resultYear))
+                $reactions.inlineButtons({ text: "Ещё запрос", callback_data: "one_more_request" });
+                $reactions.inlineButtons({ text: "В меню", callback_data: "to_menu" });
 
         
         state: PrepareHistory
@@ -113,3 +128,12 @@ theme: /History
             
             if: $request.query == "year"
                 go!: /History/HistoryFull/HistoryYear
+        
+        state: Navigation
+            event: telegramCallbackQuery || fromState = "/History/HistoryFull", onlyThisState = false
+            if: $request.query == "one_more_request"
+                go!: /History/HistoryFull
+            
+            if: $request.query == "to_menu"
+                go!: /Start
+ 
