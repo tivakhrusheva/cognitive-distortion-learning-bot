@@ -214,8 +214,8 @@ function filterByPeriod(client, filter_mode) {
  
  function countValueOccurrencesForAll(filtered_array, key) {
   var counts = {};
-  for (var i = 0; i < array.length; i++) {
-    var value = array[i][key];
+  for (var i = 0; i < filtered_array.length; i++) {
+    var value = filtered_array[i][key];
     if (counts[value]) {
       counts[value]++;
     } else {
