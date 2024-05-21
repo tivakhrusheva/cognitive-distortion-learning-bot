@@ -1,16 +1,15 @@
 theme: /Pushgate
     
     state: CreateReminder
-        
-    script:
-        var pushback = $pushgate.createEvent(
-            $request.channelType,
-            $request.botId,
-            $request.channelUserId,
-            "DiaryNotification",
-            {{"text": "Скидка только для вас!"}}
-        );
-                            
+        script:
+            var pushback = $pushgate.createEvent(
+                $request.channelType,
+                $request.botId,
+                $request.channelUserId,
+                "DiaryNotification",
+                {{"text": "Скидка только для вас!"}}
+            );
+                                
     state: AlterReminder
         
         

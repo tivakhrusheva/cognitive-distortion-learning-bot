@@ -1,5 +1,9 @@
+require: dateTime/moment.min.js
+    module = sys.zb-common
+
 require: ./data/diary_content.yaml
     var = diary_contents
+
 
 theme: /Journal
     
@@ -208,7 +212,8 @@ theme: /Journal
                 $session.emotion_intensivity_after = $request.query
                 log("$session.emotion_intensivity_after")
                 log($session.emotion_intensivity_after)
-                $client.DiaryHistory.push({"Thought": $session.thought, "Emotion": $session.emotion,
+                $session.diaryDate = moment(now).utcOffset(180).format('YYYY-MM-DD HH:mm'));
+                $client.DiaryHistory.push({"Date": $session.diaryDate, "Thought": $session.thought, "Emotion": $session.emotion,
                     "Intensivity": $session.emotion_intensivity_before, "AutoThought": $session.autothought,
                     "Rational": $session.rational_resp, "IntensivityRepeat": $session.emotion_intensivity_after});
                 log($session.thought, $session.emotion, $session.emotion_intensivity_before, 

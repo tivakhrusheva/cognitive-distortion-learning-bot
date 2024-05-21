@@ -8,5 +8,9 @@ theme: /History
         a: {{history_contents.choose_period}}
         inlineButtons:
             { text: "День", callback_data: "day" }
-            { text: "Недея", callback_data: "week" }
+            { text: "Неделя", callback_data: "week" }
             { text: "Месяц", callback_data: "month" }
+        
+        state: PrepareHistory
+            script:
+                log($client.DiaryHistory)

@@ -158,13 +158,25 @@ theme: /Settings
                 state: Pushgate
                     event: telegramCallbackQuery || fromState = "/Settings/SettingsDiaryStatisticsSetting/StatisticsFrequency", onlyThisState = true
                     script:
-                        $client.time = $request.query
-                        if ($context.session.lastState == "/Settings/LearningReminderSetting/DiaryReminderFrequency") {
-                            var pushback = $pushgate.createEvent(
-                                $request.channelType,
-                                $request.botId,
-                                $request.channelUserId,
-                                "DiaryNotification",
-                                {{"text": "Скидка только для вас!"}}
-                            );
-                        };
+                        # $client.time = $request.query
+                        # if ($context.session.lastState == "/Settings/LearningReminderSetting/DiaryReminderFrequency") {
+                        #     var pushback = $pushgate.createEvent(
+                        #         $request.channelType,
+                        #         $request.botId,
+                        #         $request.channelUserId,
+                        #         "DiaryNotification",
+                        #         {{"text": "Скидка только для вас!"}}
+                        #     );
+                        # };
+    
+    state: time
+        q!: время
+        script:
+            function convertTZ(date, tzString) {
+                return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("ru-RU", {timeZone: tzString}));   
+            }
+            var now = moment()
+            log("now" + now)
+            log("now formated" + moment(now).utcOffset(180).format('YYYY-MM-DD HH:mm'))
+
+    
