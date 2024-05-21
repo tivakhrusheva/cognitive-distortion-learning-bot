@@ -20,16 +20,16 @@ theme: /Statistics
     state: PrepareHistory
             event: telegramCallbackQuery || fromState = "/Statistics/Statistics", onlyThisState = true
             if: $request.query == "hour"
-                go!: /StatisticsFull/StatisticsByPeriod
+                go!: /Statistics/StatisticsFull/StatisticsByPeriod
             
             if: $request.query == "day"
-                go!: /History/StatisticsByPeriod
+                go!: /Statistics/StatisticsFull/StatisticsByPeriod
             
             if: $request.query == "week"
-                go!: /History/StatisticsByPeriod/
+                go!: /Statistics/StatisticsFull/StatisticsByPeriod/
             
             if: $request.query == "month"
-                go!: /History/StatisticsByPeriod
+                go!: /Statistics/StatisticsFull/StatisticsByPeriod
             
             if: $request.query == "year"
-                go!: /History/StatisticsByPeriod
+                go!: /Statistics/StatisticsFull/StatisticsByPeriod
