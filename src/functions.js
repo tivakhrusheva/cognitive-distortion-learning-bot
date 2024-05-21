@@ -202,7 +202,7 @@ function filterByPeriod(client, filter_mode) {
         log("time" + new Date(d.Date).toLocaleString());
         log("lastWeekStart.getTime()" + periodStart.toLocaleString());
         log("lastWeekEnd.getTime()" + periodEnd.toLocaleString());
-        return (time >= periodStart && time < periodEnd;
+        return (time >= periodStart && time < periodEnd);
                 });
     return result;
   }
