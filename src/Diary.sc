@@ -89,7 +89,7 @@ theme: /Journal
         if: $request.query == "show_history"
             go!: /History/HistoryFull
         elseif: $request.query == "add_note"
-            go!: Journal/DiarySession/Thought
+            go!: /Journal/DiarySession/Thought
     
     state: Start
         q!: $regex</journal>
