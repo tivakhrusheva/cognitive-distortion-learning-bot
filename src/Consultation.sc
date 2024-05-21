@@ -27,7 +27,6 @@ theme: /Consultation
             go!: /Consultation/Predict
         elseif: $request.query == "give_examples"
             a: <b>Примеры ситуации</b>:\n- У меня ничего не получается на работе, мне грустно, я думаю, что я никогда ничего не добьюсь\n- Мне кажется, что, когда я захожу в офис, на меня все косо смотрят и осуждают. Из-за этого я боюсь ходить в офис
-            timeout: /Consultation/UserInput/Question || interval = "5 seconds"
         else:
             go!: /Consultation/Predict
 
@@ -89,7 +88,7 @@ theme: /Consultation
                 {text: "Задать еще вопрос", callback_data: "Задать еще вопрос"}
                 {text: "Вернуться в меню", callback_data: "Вернуться в меню"}
 
-        state: Error
+        state: Error || noContext = true
             random:
                 a: Извините, произошла ошибка. Попробуйте спросить позже.
                 a: К сожалению, я не смог обработать ваш запрос из-за ошибки. Я передам ее разработчикам.
