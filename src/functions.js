@@ -171,8 +171,8 @@ function filterByPeriod(client, filter_mode) {
     log("today" + today)
     if (filter_mode == "hour") {
         log("hour")
-        var periodStart = today.getTime() - (25 * 60 * 60 * 1000))
-        var periodEnd = today.getTime())
+        var periodStart = today.getTime() - (25 * 60 * 60 * 1000)
+        var periodEnd = today.getTime()
     }
     if (filter_mode == "day") {
         log("day")
