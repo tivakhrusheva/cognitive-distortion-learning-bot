@@ -5,6 +5,7 @@ theme: /Feedback
 
 
     state: UserInput
+        q!: $regex</feedback>
         a: {{feedback_contents.request_feedback}}
         
         state: MerciUser
