@@ -65,7 +65,9 @@ theme: /
             delete $client.cardNumber;
             delete $client.QuizQuestinNumber;
             delete $client.DiaryHistory;
-            delete $client.diaryExplanationDone
+            delete $client.diaryExplanationDone;
+            delete $client.StatisticsFrequency;
+            delete $client.StatisticsDay;
         a: готово Танечка
         go!: /Start
 
@@ -83,6 +85,8 @@ theme: /
                 $client.cardNumber = 0;
                 $client.QuizQuestinNumber = 1;
                 $client.DiaryHistory = [];
+                $client.StatisticsFrequency = 1;
+                $client.StatisticsDay = "Sun"
             a: Здравствуйте, {{$client.name}}!😊\n\n{{contents.start}} 
             timeout: CommandDescription || interval = "4 seconds"
         else:

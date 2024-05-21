@@ -89,25 +89,21 @@ theme: /Journal
         a: {{diary_contents.diary_session_beg}}\n\n{{diary_contents.diary_begin}}
         inlineButtons:
             { text: "Далее", callback_data: "to_explanation" }
-        # timeout: /Journal/Start/Explanation || interval = "5 seconds"
     
         state: Explanation
             a: {{diary_contents.diary_automatic_thoughts}}
             inlineButtons:
                 { text: "Далее", callback_data: "to_goal" }
-            #timeout: /Journal/Start/DiaryGoal || interval = "5 seconds"
         
         state: DiaryGoal
             a: {{diary_contents.diary_goal}}
             inlineButtons:
                 { text: "Далее", callback_data: "to_instructions" }
-            #timeout: /Journal/Start/DiaryInstructions || interval = "5 seconds"
         
         state: DiaryInstructions
             a: {{diary_contents.diary_instructions}}
             inlineButtons:
                 { text: "Далее", callback_data: "to_agreement" }
-            #timeout: /Journal/Start/Agreement || interval = "5 seconds"
         
         state: Agreement
             a: {{diary_contents.diary_readiness}}
