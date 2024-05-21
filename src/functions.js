@@ -171,7 +171,7 @@ function filterByPeriod(client, filter_mode) {
     log("today" + today)
     if (filter_mode == "hour") {
         log("hour")
-        var periodStart = today.getTime() - (25 * 60 * 60 * 1000)
+        var periodStart = today
         var periodEnd = today
     }
     if (filter_mode == "day") {
@@ -202,7 +202,7 @@ function filterByPeriod(client, filter_mode) {
         log("time" + new Date(d.Date).toLocaleString());
         log("Period Start" + periodStart.toLocaleString());
         log("Period End" + periodEnd.toLocaleString());
-        return (time >= periodStart.getTime() && time < periodEnd.getTime());
+        return (time >= periodStart.getTime() - (25 * 60 * 60 * 1000) && time < periodEnd.getTime());
                 });
     return result;
   }
