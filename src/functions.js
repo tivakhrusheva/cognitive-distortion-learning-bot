@@ -172,12 +172,12 @@ function filterByPeriod(client, filter_mode) {
     if (filter_mode == "hour") {
         log("hour")
         var periodStart = today.getTime() - (25 * 60 * 60 * 1000)
-        var periodEnd = today.getTime()
+        var periodEnd = today
     }
     if (filter_mode == "day") {
         log("day")
-        var periodStart = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
-        var periodEnd = new Date(new Date().getTime());
+        var periodStart = today.getTime() - (24 * 60 * 60 * 1000));
+        var periodEnd = today;
     }
     if (filter_mode == "week") {
         log("week")
@@ -200,9 +200,9 @@ function filterByPeriod(client, filter_mode) {
     var result = client.DiaryHistory.filter(function(d) {
         var time = new Date(d.Date).getTime();
         log("time" + new Date(d.Date).toLocaleString());
-        log("lastWeekStart.getTime()" + periodStart.toLocaleString());
-        log("lastWeekEnd.getTime()" + periodEnd.toLocaleString());
-        return (time >= periodStart && time < periodEnd);
+        log("Period Start" + periodStart.toLocaleString());
+        log("Period End" + periodEnd.toLocaleString());
+        return (time >= periodStart.getTime() && time < periodEnd.getTime());
                 });
     return result;
   }
