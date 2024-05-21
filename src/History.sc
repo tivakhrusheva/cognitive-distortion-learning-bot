@@ -44,11 +44,12 @@ theme: /History
                 # var lastWeekStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-7);
                 var lastWeekEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate());
                 console.log('Seven Days Before was ' + sevenDaysBefore.format('MMM Do YYYY'));
-                var now = moment()
+                # var now = moment()
+                var today = new Date();
                 var lastWeekStart = now.subtract(7, 'days');
                 var resultWeek = $client.DiaryHistory.filter(function(d) {
                                     var time = new Date(d.Date).getTime();
-                                    return (time > now && time >= sevenDaysBefore);
+                                    return (time <= today.getTime() && time >= sevenDaysBefore.getTime());
                                 });
                 console.log(resultWeek)
                 
