@@ -34,14 +34,16 @@ theme: /History
         
         state: HistoryDay
             script:
-                var now = moment()
-                log(moment(now).utcOffset(180).format('YYYY-MM-DD HH:mm'))
-                var day = new Date(now).getDate()
-                var resultDay = $client.DiaryHistory.filter(function(d) {
-                    var time = new Date(d.Date).getDate();
-                    return (day === time);
-                });
-                log("result" + toPrettyString(resultDay));
+                # var now = moment()
+                # log(moment(now).utcOffset(180).format('YYYY-MM-DD HH:mm'))
+                # var day = new Date(now).getDate()
+                # var resultDay = $client.DiaryHistory.filter(function(d) {
+                #     var time = new Date(d.Date).getDate();
+                #     return (day === time);
+                # });
+                # log("result" + toPrettyString(resultDay));
+                var resultDay = filterByPeriod($client, "day")
+                $reactions.answer(prepareHistory(resultDay));
                 $reactions.answer("✅История ваших запросов за день готова:");
                 $reactions.answer(prepareHistory(resultDay));
                 $reactions.inlineButtons({ text: "Ещё запрос", callback_data: "one_more_request" });
@@ -50,20 +52,21 @@ theme: /History
         state: HistoryWeek
             q!: тест время
             script:
-                var today = new Date();
-                var lastWeekEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
-                var lastWeekStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-6);
-                log("Seven Days Before was " + lastWeekStart.toLocaleString());
-                log("Now it is " + lastWeekEnd.toLocaleString());
-                var resultWeek = $client.DiaryHistory.filter(function(d) {
-                    var time = new Date(d.Date).getTime();
-                    log("time" + time.toLocaleString());
-                    log("lastWeekStart.getTime()" + lastWeekStart.getTime());
-                    log("lastWeekEnd.getTime()" + lastWeekEnd.getTime());
-                    return (time >= lastWeekStart.getTime() && time < lastWeekEnd.getTime());
-                });
-                log("resultWeek" + toPrettyString(resultWeek));
+                # var today = new Date();
+                # var lastWeekEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
+                # var lastWeekStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-6);
+                # log("Seven Days Before was " + lastWeekStart.toLocaleString());
+                # log("Now it is " + lastWeekEnd.toLocaleString());
+                # var resultWeek = $client.DiaryHistory.filter(function(d) {
+                #     var time = new Date(d.Date).getTime();
+                #     log("time" + time.toLocaleString());
+                #     log("lastWeekStart.getTime()" + lastWeekStart.getTime());
+                #     log("lastWeekEnd.getTime()" + lastWeekEnd.getTime());
+                #     return (time >= lastWeekStart.getTime() && time < lastWeekEnd.getTime());
+                # });
+                # log("resultWeek" + toPrettyString(resultWeek));
                 $reactions.answer("✅История ваших запросов за неделю готова:");
+                var resultWeek = filterByPeriod($client, "week")
                 $reactions.answer(prepareHistory(resultWeek));
                 $reactions.inlineButtons({ text: "Ещё запрос", callback_data: "one_more_request" });
                 $reactions.inlineButtons({ text: "В меню", callback_data: "to_menu" });

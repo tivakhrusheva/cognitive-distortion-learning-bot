@@ -164,3 +164,38 @@ function prepareHistory(filtered_array) {
   }
   return History;
   }
+ 
+function filterByPeriod(client, filter_mode) {
+    var today = new Date();
+    if (filter_mode == "hour") {
+        var periodStart = new Date(new Date().getTime() - (25 * 60 * 60 * 1000))
+        var periodEnd = new Date(new Date().getTime())
+    }
+    if (filter_mode == "day") {
+        var periodStart = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
+        var periodEnd = new Date(new Date().getTime());
+    }
+    if (filter_mode == "week") {
+        var periodEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
+        var periodStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-6);
+    }
+    if (filter_mode == "month") {
+        var periodEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
+        var periodStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-30);
+    }
+    if (filter_mode == "year") {
+        var periodEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
+        var periodStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-364);
+    }
+    
+    log("Period Start was " + periodStart.toLocaleString());
+    log("Now it is " + periodEnd.toLocaleString());
+    var result = client.DiaryHistory.filter(function(d) {
+        var time = new Date(d.Date).getTime();
+        log("time" + time.toLocaleString());
+        log("lastWeekStart.getTime()" + periodStart.getTime());
+        log("lastWeekEnd.getTime()" + periodEnd.getTime());
+        return (time >= periodStart.getTime() && time < periodEnd.getTime());
+                });
+    return result;
+  }
