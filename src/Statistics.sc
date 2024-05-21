@@ -1,6 +1,6 @@
 theme: /Statistics
     
-    state: Statistics
+    state: StatisticsFull
         q!: $regex</history>
         a: {{history_contents.choose_period}}
         inlineButtons:
@@ -9,3 +9,25 @@ theme: /Statistics
             { text: "Неделя", callback_data: "week" }
             { text: "Месяц", callback_data: "month" }
             { text: "Год", callback_data: "year" }
+        
+        state: StatisticsByPeriod
+            script:
+                var filtered_array = filterByPeriod($client, $request.query)
+
+    
+    state: PrepareHistory
+            event: telegramCallbackQuery || fromState = "/Statistics/Statistics", onlyThisState = true
+            if: $request.query == "hour"
+                go!: /StatisticsFull/HistoryFull/HistoryHour
+            
+            if: $request.query == "day"
+                go!: /History/HistoryFull/HistoryDay
+            
+            if: $request.query == "week"
+                go!: /History/HistoryFull/HistoryWeek
+            
+            if: $request.query == "month"
+                go!: /History/HistoryFull/HistoryMonth
+            
+            if: $request.query == "year"
+                go!: /History/HistoryFull/HistoryYear

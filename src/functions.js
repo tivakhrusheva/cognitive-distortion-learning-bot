@@ -202,10 +202,6 @@ function filterByPeriod(client, filter_mode) {
         log("time: " + new Date(d.Date).toLocaleString());
         log("Period Start" + periodStart.toLocaleString());
         log("Period End" + periodEnd.toLocaleString());
-        // var lastHourEnd = new Date(new Date().getTime()- (22 * 60 * 60 * 1000))
-        // lastHourEnd.setHours(lastHourEnd.getHours() + 3);
-        // var lastHourEnd = lastHourEnd.getTime()- (25 * 60 * 60 * 1000)
-        // log("Period End" + lastHourEnd.toLocaleString());
         log(time >= periodStart && time < periodEnd)
         return (time >= periodStart && time < periodEnd);
                 });

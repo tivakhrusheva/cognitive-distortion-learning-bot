@@ -48,13 +48,14 @@ theme: /Exercise
         elseif: ($context.session.lastState == "/Exercise/Question" || $context.session.lastState == "/Exercise/Answer") && ($request.query == "To_diary") 
             go!: /Diary/Start
     
-    state: NextButtonProcessor2
-        event: telegramCallbackQuery || fromState = "/Exercise/Question"
-        if: ($context.session.lastState == "/Exercise/Question") && ($request.query == "To_diary") 
-            go!: /Journal/Start
+    # state: NextButtonProcessor2
+    #     event: telegramCallbackQuery || fromState = "/Exercise/Question", onlyThisState = true
         
-        elseif: ($context.session.lastState == "/Exercise/Question") && ($request.query == "To_menu") 
-            go!: /Start
+    #     if: ($context.session.lastState == "/Exercise/Question") && ($request.query == "To_diary") 
+    #         go!: /Journal/Start
+        
+    #     elseif: ($context.session.lastState == "/Exercise/Question") && ($request.query == "To_menu") 
+    #         go!: /Start
             
     state: Question
         script: 
