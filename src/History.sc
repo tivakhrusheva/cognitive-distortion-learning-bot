@@ -16,7 +16,7 @@ theme: /History
             { text: "Неделя", callback_data: "week" }
             { text: "Месяц", callback_data: "month" }
         
-         state: HistoryHour
+        state: HistoryHour
             script:
                 var now = moment()
                 log(moment(now).utcOffset(180).format('YYYY-MM-DD HH:mm'))
