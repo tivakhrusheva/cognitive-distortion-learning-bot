@@ -12,5 +12,6 @@ theme: /History
             { text: "Месяц", callback_data: "month" }
         
         state: PrepareHistory
+            event: telegramCallbackQuery || fromState = "/History/HistoryFull", onlyThisState = true
             script:
                 log($client.DiaryHistory)
