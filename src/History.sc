@@ -68,7 +68,7 @@ theme: /History
                     log("time" + time);
                     log("lastMonthStart.getTime()" + lastMonthStart.getTime());
                     log("lastMonthEnd.getTime()" + lastMonthEnd.getTime());
-                    return (time >= lastMonthStart.getTime() && < lastMonthEnd.getTime());
+                    return (time >= lastMonthStart.getTime() && time < lastMonthEnd.getTime());
                 });
                 log("resultMonth" + toPrettyString(resultMonth))
                 
