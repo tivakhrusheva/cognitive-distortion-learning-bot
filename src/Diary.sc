@@ -79,6 +79,13 @@ theme: /Journal
             go!: /Start
         elseif: $request.query == "/reframe"
             go!: /Consultation/Start
+        
+    state: CallBackProcessorwHistory
+        event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Beginning", onlyThisState = true
+        if: $request.query == "show_history"
+            go!: /History/HistoryFull
+        elseif: $request.query == "add_note"
+            go!: Journal/DiarySession/Thought
     
     state: Start
         q!: $regex</journal>
@@ -114,7 +121,10 @@ theme: /Journal
         
         state: Beginning
             a: {{diary_contents.diary_session_beg}}
-            timeout: /Journal/DiarySession/Thought || interval = "2 seconds"
+            inlineButtons:
+                { text: "Добавить запись", callback_data: "add_note" }
+                { text: "Посмотреть историю", callback_data: "show_history" }
+            # timeout: /Journal/DiarySession/Thought || interval = "2 seconds"
         
         state: Thought
             q:* || fromState = "/Journal/DiarySession/NoThought"
