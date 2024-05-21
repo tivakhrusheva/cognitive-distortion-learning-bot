@@ -26,18 +26,20 @@ theme: /History
                     var time = new Date(d.Date).getHours();
                     return (hour === time);
                 });
-                log("resultHour" + toPrettyString(resultHour))
+                log("resultHour" + toPrettyString(resultHour));
+                $reactions.answer(prepareHistory(resultHour))
         
         state: HistoryDay
             script:
                 var now = moment()
                 log(moment(now).utcOffset(180).format('YYYY-MM-DD HH:mm'))
                 var day = new Date(now).getDate()
-                var result = $client.DiaryHistory.filter(function(d) {
+                var resultDay = $client.DiaryHistory.filter(function(d) {
                     var time = new Date(d.Date).getDate();
                     return (day === time);
                 });
-                log("result" + toPrettyString(result))
+                log("result" + toPrettyString(resultDay))
+                $reactions.answer(prepareHistory(resultDay))
 
         state: HistoryWeek
             q!: тест время
@@ -54,7 +56,8 @@ theme: /History
                     log("lastWeekEnd.getTime()" + lastWeekEnd.getTime());
                     return (time >= lastWeekStart.getTime() && time < lastWeekEnd.getTime());
                 });
-                log("resultWeek" + toPrettyString(resultWeek))
+                log("resultWeek" + toPrettyString(resultWeek));
+                $reactions.answer(prepareHistory(resultWeek))
                 
         state: HistoryMonth
             script:
@@ -71,7 +74,8 @@ theme: /History
                     log(time >= lastMonthStart.getTime() && time <= lastMonthEnd.getTime())
                     return (time >= lastMonthStart.getTime() && time <= lastMonthEnd.getTime());
                 });
-                log("resultMonth" + toPrettyString(resultMonth))
+                log("resultMonth" + toPrettyString(resultMonth));
+                $reactions.answer(prepareHistory(resultMonth))
                 
                 
         state: HistoryYear
@@ -89,7 +93,8 @@ theme: /History
                     log(time >= lastYearStart.getTime() && time <= lastYearEnd.getTime())
                     return (time >= lastYearStart.getTime() && time <= lastYearEnd.getTime());
                 });
-                log("resultYear" + toPrettyString(resultYear))
+                log("resultYear" + toPrettyString(resultYear));
+                $reactions.answer(prepareHistory(resultYear))
 
         
         state: PrepareHistory

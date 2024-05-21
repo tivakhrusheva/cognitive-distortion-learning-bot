@@ -149,3 +149,18 @@ function showDiaryNote(situation, emotion, strenth_before, autothought, rat_resp
      "\n<b>Сила эмоции после рационального ответа</b>: " + strenth_after;
     $reactions.answer("<b>Ваша запись</b>:\n\n" + Text)
 };
+
+
+function prepareHistory(filtered_array) {
+    var History = [];
+    for (var i = 0; i < filtered_array.length; i++) {
+      var Text = "<b>Ситуация</b>: " + situation +
+       "\n<b>Эмоция</b>: " + emotion + 
+       "\n<b>Сила эмоции</b>: " + strenth_before +
+       "\n<b>Автомысль</b>: " + autothought +
+       "\n<b>Рациональный ответ</b>: " + rat_response +
+       "\n<b>Сила эмоции после рационального ответа</b>: " + strenth_after;
+       History.push(Text)
+  }
+  return History;
+  }
