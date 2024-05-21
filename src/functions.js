@@ -157,7 +157,7 @@ function prepareHistory(filtered_array) {
       var Text = "<b>Ситуация</b>: " + filtered_array["Thought"] +
        "\n<b>Эмоция</b>: " + filtered_array["Emotion"]  + 
        "\n<b>Сила эмоции</b>: " + filtered_array["Intensivity"] +
-       "\n<b>Автомысль</b>: " + filtered_array"AutoThought"] +
+       "\n<b>Автомысль</b>: " + filtered_array["AutoThought"] +
        "\n<b>Рациональный ответ</b>: " + filtered_array["Rational"] +
        "\n<b>Сила эмоции после рационального ответа</b>: " + filtered_array["IntensivityRepeat"];
        History+="\n" + Text + "\n";
