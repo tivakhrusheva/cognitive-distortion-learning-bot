@@ -13,6 +13,8 @@ theme: /Statistics
         state: StatisticsByPeriod
             script:
                 var filtered_array = filterByPeriod($client, $request.query)
+                log(countValueOccurrencesForAll(filtered_array, "Distortion"))
+                log(countValueOccurrencesForAll(filtered_array, "Emotion"))
 
     
     state: PrepareHistory

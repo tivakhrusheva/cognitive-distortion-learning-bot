@@ -221,7 +221,7 @@ theme: /Journal
                 var now = moment()
                 $client.DiaryHistory.push({"Date": moment(now).utcOffset(180).format('YYYY-MM-DD HH:mm'), "Thought": $session.thought, "Emotion": $session.emotion,
                     "Intensivity": $session.emotion_intensivity_before, "AutoThought": $session.autothought,
-                    "Rational": $session.rational_resp, "IntensivityRepeat": $session.emotion_intensivity_after});
+                    "Distortion": $session.distortion, "Rational": $session.rational_resp, "IntensivityRepeat": $session.emotion_intensivity_after});
                 log($session.thought, $session.emotion, $session.emotion_intensivity_before, 
                     $session.autothought, $session.rational_resp, $session.emotion_intensivity_after)
                 showDiaryNote($session.thought, $session.emotion, $session.emotion_intensivity_before, 
