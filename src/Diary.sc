@@ -184,7 +184,9 @@ theme: /Journal
         state: Autothought
             q:* || fromState = "/Journal/DiarySession/EmotionIntensivity"
             script:
-                # $session.emotion_intensivity_before = $request.query
+                if (!$session.emotion_intensivity_before) {
+                    $session.emotion_intensivity_before = $request.query
+                }
                 # log("$session.emotion_intensivity_before")
                 # log($session.emotion_intensivity_before)
             a: {{diary_contents.diary_autothought}}
