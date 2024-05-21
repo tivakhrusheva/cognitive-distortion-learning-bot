@@ -11,6 +11,7 @@ require: Exercise.sc
 require: Consultation.sc
 require: Settings.sc
 require: Feedback.sc
+require: History.sc
 require: ./data/practice_content.yaml
     var = exercise_contents
     
