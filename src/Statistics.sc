@@ -10,30 +10,49 @@ theme: /Statistics
             { text: "Месяц", callback_data: "month" }
             { text: "Год", callback_data: "year" }
         
-        state: StatisticsByPeriod
-            script:
-                var filtered_array = filterByPeriod($client, $request.query)
-                var distortion_stats = countValueOccurrencesForAll(filtered_array, "Distortion")
-                log(distortion_stats)
-                $reactions.answer(distortion_stats);
-                var emotion_stats = countValueOccurrencesForAll(filtered_array, "Emotion")
-                log(emotion_stats)
-                $reactions.answer(emotion_stats);
+    state: StatisticsByPeriod
+        script:
+            var filtered_array = filterByPeriod($client, $request.query)
+            var distortion_stats = countValueOccurrencesForAll(filtered_array, "Distortion")
+            log("distortion_stats" + distortion_stats)
+            $reactions.answer("distortion_stats" + distortion_stats);
+            var emotion_stats = countValueOccurrencesForAll(filtered_array, "Emotion")
+            log("emotion_stats" + emotion_stats)
+            $reactions.answer("emotion_stats" + emotion_stats);
 
     
     state: PrepareStats
-        event: telegramCallbackQuery || fromState = "/Statistics/StatisticsFull", onlyThisState = true
+        event!: telegramCallbackQuery || fromState = "/Statistics/StatisticsFull", onlyThisState = true
         if: $request.query == "hour"
-            go!: /Statistics/StatisticsFull/StatisticsByPeriod
+            go!: /Statistics/StatisticsByPeriod
         
         if: $request.query == "day"
-            go!: /Statistics/StatisticsFull/StatisticsByPeriod
+            go!: /Statistics/StatisticsByPeriod
         
         if: $request.query == "week"
-            go!: /Statistics/StatisticsFull/StatisticsByPeriod/
+            go!: /Statistics/StatisticsByPeriod/
         
         if: $request.query == "month"
             go!: /Statistics/StatisticsFull/StatisticsByPeriod
         
         if: $request.query == "year"
-            go!: /Statistics/StatisticsFull/StatisticsByPeriod
+            go!: /Statistics/StatisticsByPeriod
+    
+    
+    # state: PrepareHistory
+    #     event: telegramCallbackQuery || fromState = "/History/HistoryFull", onlyThisState = true
+    #     if: $request.query == "hour"
+    #         go!: /History/HistoryFull/HistoryHour
+        
+    #     if: $request.query == "day"
+    #         go!: /History/HistoryFull/HistoryDay
+        
+    #     if: $request.query == "week"
+    #         go!: /History/HistoryFull/HistoryWeek
+        
+    #     if: $request.query == "month"
+    #         go!: /History/HistoryFull/HistoryMonth
+        
+    #     if: $request.query == "year"
+    #         go!: /History/HistoryFull/HistoryYear
+        
