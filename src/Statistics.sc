@@ -21,7 +21,7 @@ theme: /Statistics
                 $reactions.answer(emotion_stats);
 
     
-    state: PrepareHistory
+    state: PrepareStats
         event: telegramCallbackQuery || fromState = "/Statistics/StatisticsFull", onlyThisState = true
         if: $request.query == "hour"
             go!: /Statistics/StatisticsFull/StatisticsByPeriod
