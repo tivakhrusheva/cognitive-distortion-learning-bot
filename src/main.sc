@@ -67,10 +67,10 @@ theme: /
             delete $client.name;
             delete $client.cardNumber;
             delete $client.QuizQuestinNumber;
-            delete $client.DiaryHistory;
+            # delete $client.DiaryHistory;
             delete $client.diaryExplanationDone;
-            delete $client.StatisticsFrequency;
-            delete $client.StatisticsDay;
+            # delete $client.StatisticsFrequency;
+            # delete $client.StatisticsDay;
         a: готово Танечка
         go!: /Start
 

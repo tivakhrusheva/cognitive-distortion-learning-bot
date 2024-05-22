@@ -187,8 +187,6 @@ theme: /Journal
                 if (!$session.emotion_intensivity_before) {
                     $session.emotion_intensivity_before = $request.query
                 }
-                # log("$session.emotion_intensivity_before")
-                # log($session.emotion_intensivity_before)
             a: {{diary_contents.diary_autothought}}
             script:
                 sendInlineButtons($context, ["Таких мыслей нет"])
