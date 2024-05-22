@@ -22,18 +22,18 @@ theme: /Statistics
 
     
     state: PrepareHistory
-            event: telegramCallbackQuery || fromState = "/Statistics/StatisticsFull", onlyThisState = true
-            if: $request.query == "hour"
-                go!: /Statistics/StatisticsFull/StatisticsByPeriod
-            
-            if: $request.query == "day"
-                go!: /Statistics/StatisticsFull/StatisticsByPeriod
-            
-            if: $request.query == "week"
-                go!: /Statistics/StatisticsFull/StatisticsByPeriod/
-            
-            if: $request.query == "month"
-                go!: /Statistics/StatisticsFull/StatisticsByPeriod
-            
-            if: $request.query == "year"
-                go!: /Statistics/StatisticsFull/StatisticsByPeriod
+        event: telegramCallbackQuery || fromState = "/Statistics/StatisticsFull", onlyThisState = true
+        if: $request.query == "hour"
+            go!: /Statistics/StatisticsFull/StatisticsByPeriod
+        
+        if: $request.query == "day"
+            go!: /Statistics/StatisticsFull/StatisticsByPeriod
+        
+        if: $request.query == "week"
+            go!: /Statistics/StatisticsFull/StatisticsByPeriod/
+        
+        if: $request.query == "month"
+            go!: /Statistics/StatisticsFull/StatisticsByPeriod
+        
+        if: $request.query == "year"
+            go!: /Statistics/StatisticsFull/StatisticsByPeriod
