@@ -22,7 +22,9 @@ theme: /Statistics
 
     
     state: PrepareStats
-        event!: telegramCallbackQuery || fromState = "/Statistics/StatisticsFull", onlyThisState = true
+        event: telegramCallbackQuery || fromState = "/Statistics/StatisticsFull", onlyThisState = true
+        script:
+            log("bestie im here")
         if: $request.query == "hour"
             go!: /Statistics/StatisticsByPeriod
         
