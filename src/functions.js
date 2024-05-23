@@ -224,3 +224,18 @@ function filterByPeriod(client, filter_mode) {
   }
   return counts;
 }
+
+function prepareStatistics(filtered_array, mode) {
+    var Statistics = "";
+    for (var i = 0; i < filtered_array.length; i++) {
+        if (mode == "emotion") {
+            var Text = "\n<b>Эмоция</b>: " + filtered_array[i]["Emotion"]
+            Statistics+="\n" + Text + "\n";
+    }
+     else {
+            var Text = "\n<b>Искажение</b>: " + filtered_array[i]["Distortion"];
+            Statistics+="\n" + Text + "\n";
+     }
+  }
+  return Statistics;
+  }

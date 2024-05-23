@@ -14,11 +14,14 @@ theme: /Statistics
         script:
             var filtered_array = filterByPeriod($client, $request.query)
             var distortion_stats = countValueOccurrencesForAll(filtered_array, "Distortion")
-            log("distortion_stats" + toPrettyString(distortion_stats))
-            $reactions.answer("distortion_stats" + toPrettyString(distortion_stats));
+            var to_show =  prepareStatistics(distortion_stats, "distortion")
+            log("distortion_stats" + toPrettyString(distortion_stats) + "\n\n" + to_show)
+            $reactions.answer("distortion_stats\n\n" + to_show);
             var emotion_stats = countValueOccurrencesForAll(filtered_array, "Emotion")
-            log("emotion_stats" + toPrettyString(emotion_stats))
-            $reactions.answer("emotion_stats" + toPrettyString(emotion_stats));
+            var to_show2 = prepareStatistics(distortion_stats, "emotion")
+            log("emotion_stats\n\n" + to_show2)
+            $reactions.answer("emotion_stats" + toPrettyString(emotion_stats) + "\n\n" + to_show2);
+            log()
 
     
     state: PrepareStats
