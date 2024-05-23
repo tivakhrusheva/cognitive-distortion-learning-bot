@@ -15,7 +15,7 @@ theme: /Statistics
             var filtered_array = filterByPeriod($client, $request.query)
             var distortion_stats = countValueOccurrencesForAll(filtered_array, "Distortion")
             var to_show =  prepareStatistics(distortion_stats, "distortion")
-            log("distortion_stats" + toPrettyString(distortion_stats) + "\n\n" + to_show)
+            log("distortion_stats" + to_show)
             $reactions.answer("distortion_stats\n\n" + to_show);
             var emotion_stats = countValueOccurrencesForAll(filtered_array, "Emotion")
             var to_show2 = prepareStatistics(distortion_stats, "emotion")

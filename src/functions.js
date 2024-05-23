@@ -230,7 +230,7 @@ function prepareStatistics(filtered_array, mode) {
     for (var key in filtered_array) {
         if (mode == "emotion") {
             var Text = "\n<b>Эмоция</b>\n\n" + key + ": "+ filtered_array[key]
-            Statistics+="\n" + Text + "\n";
+            Statistics+= "\n" + Text + "\n";
     }
         if (mode == "distortion") {
             var Text = "\n<b>Искажение</b>\n\n" + key + ": " + filtered_array[key]
