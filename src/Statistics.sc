@@ -21,7 +21,6 @@ theme: /Statistics
             var to_show2 = prepareStatistics(distortion_stats, "emotion")
             log("emotion_stats\n\n" + to_show2)
             $reactions.answer("emotion_stats" + toPrettyString(emotion_stats) + "\n\n" + to_show2);
-            log()
 
     
     state: PrepareStats
