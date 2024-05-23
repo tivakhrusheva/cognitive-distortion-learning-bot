@@ -34,7 +34,7 @@ theme: /Statistics
             
             $reactions.answer(to_say)
             var emotion_stats = countValueOccurrencesForAll(filtered_array, "Emotion")
-            var to_show2 = prepareStatistics(distortion_stats, "emotion")
+            var to_show2 = prepareStatistics(emotion_stats, "emotion")
             var to_show = to_show1 + to_show2
             log("emotion_stats\n\n" + to_show2)
             $reactions.answer(to_show);
