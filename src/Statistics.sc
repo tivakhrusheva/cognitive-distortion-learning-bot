@@ -17,19 +17,19 @@ theme: /Statistics
             var to_show1 =  prepareStatistics(distortion_stats, "distortion")
             log("distortion_stats" + to_show)
             if ($request.query == "hour") { 
-                var to_say = "✅Статистика ваших запросов за час готова:")
+                var to_say = "✅Статистика ваших запросов за час готова:)
             }
             if ($request.query == "day") { 
-                var to_say = "✅Статистика ваших запросов за день готова:")
+                var to_say = "✅Статистика ваших запросов за день готова:"
             }
             if ($request.query == "week") { 
-                var to_say = "✅Статистика ваших запросов за неделю готова:")
+                var to_say = "✅Статистика ваших запросов за неделю готова:"
             }
             if ($request.query == "month") { 
-                var to_say = "✅Статистика ваших запросов за месяц готова:")
+                var to_say = "✅Статистика ваших запросов за месяц готова:"
             }
             if ($request.query == "year") { 
-                var to_say = "✅Статистика ваших запросов за год готова:")
+                var to_say = "✅Статистика ваших запросов за год готова:"
             }
             
             $reactions.answer(to_say)
