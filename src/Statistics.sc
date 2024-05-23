@@ -19,7 +19,7 @@ theme: /Statistics
             $reactions.answer("✅Статистика ваших запросов готова:")
             var emotion_stats = countValueOccurrencesForAll(filtered_array, "Emotion")
             var to_show2 = prepareStatistics(distortion_stats, "emotion")
-            var to_show = to_show1 + "\n\n" to_show2
+            var to_show = to_show1 + "\n\n" + to_show2
             log("emotion_stats\n\n" + to_show2)
             $reactions.answer(to_show);
 
