@@ -42,9 +42,6 @@ theme: /Distortion
         
     state: CallBackProcessor
         event!: telegramCallbackQuery 
-        script:
-            log("$context.session.lastState")
-            log($context.session.lastState)
         if: $request.query == "/train"
             go!: /Exercise/Start
             
