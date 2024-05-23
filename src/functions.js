@@ -229,11 +229,11 @@ function prepareStatistics(filtered_array, mode) {
     var Statistics = "";
     for (var key in filtered_array) {
         if (mode == "emotion") {
-            var Text = "\n<b>Эмоция</b>\n\n" + key + ": "+ filtered_array[key]
+            var Text = "\n<b>Эмоции</b>\n\n" + key + ": "+ filtered_array[key]
             Statistics+= "\n" + Text + "\n";
     }
         if (mode == "distortion") {
-            var Text = "\n<b>Искажение</b>\n\n" + key + ": " + filtered_array[key]
+            var Text = "\n<b>Искажения</b>\n\n" + key + ": " + filtered_array[key]
             Statistics+="\n" + Text + "\n";
      }
   }

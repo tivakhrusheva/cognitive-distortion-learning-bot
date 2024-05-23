@@ -16,7 +16,23 @@ theme: /Statistics
             var distortion_stats = countValueOccurrencesForAll(filtered_array, "Distortion")
             var to_show1 =  prepareStatistics(distortion_stats, "distortion")
             log("distortion_stats" + to_show)
-            $reactions.answer("✅Статистика ваших запросов готова:")
+            if $request.query == "hour" { 
+                var to_say = "✅Статистика ваших запросов за час готова:")
+            }
+            if $request.query == "hour" { 
+                var to_say = "✅Статистика ваших запросов за день готова:")
+            }
+            if $request.query == "day" { 
+                var to_say = "✅Статистика ваших запросов за неделю готова:")
+            }
+            if $request.query == "month" { 
+                var to_say = "✅Статистика ваших запросов за месяц готова:")
+            }
+            if $request.query == "year" { 
+                var to_say = "✅Статистика ваших запросов за год готова:")
+            }
+            
+            $reactions.answer(to_say)
             var emotion_stats = countValueOccurrencesForAll(filtered_array, "Emotion")
             var to_show2 = prepareStatistics(distortion_stats, "emotion")
             var to_show = to_show1 + to_show2
