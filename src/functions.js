@@ -227,7 +227,7 @@ function filterByPeriod(client, filter_mode) {
 
 function prepareStatistics(filtered_array, mode) {
     var Statistics = "";
-    for (var [key, value] of Object.entries(filtered_array)) {
+    for ([key, value] of Object.entries(filtered_array)) {
         if (mode == "emotion") {
             var Text = "\n<b>Эмоция</b> " + key + "\n\n:" + value
             Statistics+="\n" + Text + "\n";
