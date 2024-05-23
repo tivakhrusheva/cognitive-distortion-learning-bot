@@ -16,11 +16,11 @@ theme: /Statistics
             var distortion_stats = countValueOccurrencesForAll(filtered_array, "Distortion")
             var to_show =  prepareStatistics(distortion_stats, "distortion")
             log("distortion_stats" + to_show)
-            $reactions.answer("distortion_stats\n\n" + to_show);
+            $reactions.answer(to_show);
             var emotion_stats = countValueOccurrencesForAll(filtered_array, "Emotion")
             var to_show2 = prepareStatistics(distortion_stats, "emotion")
             log("emotion_stats\n\n" + to_show2)
-            $reactions.answer("emotion_stats" + toPrettyString(emotion_stats) + "\n\n" + to_show2);
+            $reactions.answer(to_show2);
 
     
     state: PrepareStats
