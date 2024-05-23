@@ -17,7 +17,7 @@ theme: /Statistics
             var to_show1 =  prepareStatistics(distortion_stats, "distortion")
             log("distortion_stats" + to_show)
             if ($request.query == "hour") { 
-                var to_say = "✅Статистика ваших запросов за час готова:)
+                var to_say = "✅Статистика ваших запросов за час готова:"
             }
             if ($request.query == "day") { 
                 var to_say = "✅Статистика ваших запросов за день готова:"
