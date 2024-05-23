@@ -14,13 +14,14 @@ theme: /Statistics
         script:
             var filtered_array = filterByPeriod($client, $request.query)
             var distortion_stats = countValueOccurrencesForAll(filtered_array, "Distortion")
-            var to_show =  prepareStatistics(distortion_stats, "distortion")
+            var to_show1 =  prepareStatistics(distortion_stats, "distortion")
             log("distortion_stats" + to_show)
-            $reactions.answer(to_show);
+            $reactions.answer("✅Статистика ваших запросов готова:")
             var emotion_stats = countValueOccurrencesForAll(filtered_array, "Emotion")
             var to_show2 = prepareStatistics(distortion_stats, "emotion")
+            var to_show = to_show1 + "\n\n" to_show2
             log("emotion_stats\n\n" + to_show2)
-            $reactions.answer(to_show2);
+            $reactions.answer(to_show);
 
     
     state: PrepareStats
