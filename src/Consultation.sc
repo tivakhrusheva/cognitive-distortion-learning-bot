@@ -65,6 +65,7 @@ theme: /Consultation
             
     state: Predict
         q: * || fromState = "/Consultation/UserInput", onlyThisState = false
+        q: * || fromState = "/Consultation/CallBackProcessor2", onlyThisState = false
         script:
             if (!$context.testContext) {
                 $conversationApi.sendTextToClient(
