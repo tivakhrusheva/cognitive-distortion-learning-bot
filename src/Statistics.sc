@@ -62,7 +62,7 @@ theme: /Statistics
             go!: /Statistics/StatisticsByPeriod
     
     
-    state: PrepareStats
+    state: Navigate
         event: telegramCallbackQuery || fromState = "/Statistics/StatisticsByPeriod", onlyThisState = true
         script:
             log("bestie im here")
