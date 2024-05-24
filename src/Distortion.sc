@@ -177,7 +177,7 @@ theme: /Distortion
                 $context.response.replies = $context.response.replies || [];
                 $context.response.replies.push({
                     "type": "text",
-                    "text": "Вы изучили всю теорию, которую я подготовил для вас! Самое время переходить к практике — для этого введите команду /practice.",
+                    "text": "Вы изучили всю теорию, которую я подготовил для вас! Самое время переходить к практике — для этого нажмите на кнопку ниже или введите команду /practice.",
                     "markup": "html"
                 });
         
