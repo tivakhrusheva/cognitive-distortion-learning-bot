@@ -106,6 +106,8 @@ theme: /Journal
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Beginning", onlyThisState = true
         if: $request.query == "show_history"
             go!: /History/HistoryFull
+        if: $request.query == "show_statistics"
+            go!: /Statistics/StatisticsFull
         elseif: $request.query == "add_note"
             go!: /Journal/DiarySession/Thought
     
