@@ -38,6 +38,8 @@ theme: /Statistics
             var to_show = to_show1 + to_show2
             log("emotion_stats\n\n" + to_show2)
             $reactions.answer(to_show);
+            $reactions.inlineButtons({ text: "Ещё запрос", callback_data: "one_more_request" });
+            $reactions.inlineButtons({ text: "В меню", callback_data: "to_menu" });
 
     
     state: PrepareStats
@@ -59,6 +61,16 @@ theme: /Statistics
         if: $request.query == "year"
             go!: /Statistics/StatisticsByPeriod
     
+    
+    state: PrepareStats
+        event: telegramCallbackQuery || fromState = "/Statistics/StatisticsByPeriod", onlyThisState = true
+        script:
+            log("bestie im here")
+        if: $request.query == "one_more_request"
+            go!: /Statistics/StatisticsFull
+        
+        elseif: $request.query == "to_menu"
+            go!: /Start
     
     # state: PrepareHistory
     #     event: telegramCallbackQuery || fromState = "/History/HistoryFull", onlyThisState = true
