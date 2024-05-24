@@ -238,10 +238,10 @@ function prepareStatistics(filtered_array, mode) {
      }
   }
    if (mode == "emotion") {
-       var FinalStatistics = "\n<b>Эмоции</b>\n\n" + Statistics
+       var FinalStatistics = "\n<b>Эмоции</b>\n" + Statistics
    }
    if (mode == "distortion") {
-       var FinalStatistics = "\n<b>Искажения</b>\n\n" + Statistics
+       var FinalStatistics = "\n<b>Искажения</b>\n" + Statistics
    }
   return FinalStatistics;
   }
