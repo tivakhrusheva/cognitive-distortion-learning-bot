@@ -243,5 +243,5 @@ function prepareStatistics(filtered_array, mode) {
    if (mode == "distortion") {
        var FinalStatistics = "\n<b>Искажения</b>\n\n" + Statistics
    }
-  return Statistics;
+  return FinalStatistics;
   }
