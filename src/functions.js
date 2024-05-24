@@ -150,7 +150,7 @@ function showDiaryNote(situation, emotion, strenth_before, autothought, distorti
      "\n<b>Искажение</b>: " + distortion +
      "\n<b>Рациональный ответ</b>: " + rat_response +
      "\n<b>Сила эмоции после рационального ответа</b>: " + strenth_after;
-    $reactions.answer("<b>Ваша запись</b>:\n\n" + Text)
+    $reactions.answer("📝<b>Ваша запись</b>:\n\n" + Text)
 };
 
 
@@ -173,11 +173,11 @@ function filterByPeriod(client, filter_mode) {
     var today = new Date();
     today.setHours(today.getHours() + 3);
     log("today" + today)
-    if (filter_mode == "hour") {
-        log("hour")
-        var periodEnd = new Date(new Date().getTime()- (22 * 60 * 60 * 1000))
-        var periodStart = new Date(new Date().getTime() - (25 * 60 * 60 * 1000))
-    }
+    // if (filter_mode == "hour") {
+    //     log("hour")
+    //     var periodEnd = new Date(new Date().getTime()- (22 * 60 * 60 * 1000))
+    //     var periodStart = new Date(new Date().getTime() - (25 * 60 * 60 * 1000))
+    // }
     if (filter_mode == "day") {
         log("day")
         var periodStart = today.getTime() - (24 * 60 * 60 * 1000);
@@ -229,13 +229,19 @@ function prepareStatistics(filtered_array, mode) {
     var Statistics = "";
     for (var key in filtered_array) {
         if (mode == "emotion") {
-            var Text = "\n<b>Эмоции</b>\n\n" + key + ": "+ filtered_array[key]
+            var Text = key + ": "+ filtered_array[key]
             Statistics+= "\n" + Text + "\n";
     }
         if (mode == "distortion") {
-            var Text = "\n<b>Искажения</b>\n\n" + key + ": " + filtered_array[key]
+            var Text =  key + ": " + filtered_array[key]
             Statistics+="\n" + Text + "\n";
      }
   }
+   if (mode == "emotion") {
+       var FinalStatistics = "\n<b>Эмоции</b>\n\n" + Statistics
+   }
+   if (mode == "distortion") {
+       var FinalStatistics = "\n<b>Искажения</b>\n\n" + Statistics
+   }
   return Statistics;
   }
