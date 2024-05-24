@@ -100,7 +100,7 @@ theme: /Journal
         elseif: $request.query == "to_history"
             go!: /History/HistoryFull
         elseif: $request.query == "to_statistics"
-            go!: /Consultation/Start
+            go!: /Statistics/StatisticsFull
         
     state: CallBackProcessorwHistory
         event: telegramCallbackQuery || fromState = "/Journal/DiarySession/Beginning", onlyThisState = true
